@@ -20,6 +20,7 @@ struct PanelState
     std::atomic<float> writePos { 0.0f };      // record head, valid while Recording
     std::atomic<float> recordedLen { 0.0f };   // samples captured, once a pass has finished
     std::atomic<float> loopLengthSamples { 1.0f }; // current musical loop length at host tempo
+    std::atomic<bool> inputStageActive { true };   // false once a loop is playing back
 };
 
 class TapeMachineProcessor final : public juce::AudioProcessor
@@ -82,7 +83,7 @@ private:
 
     std::atomic<float>* outParam = nullptr;
     std::atomic<float>* speedParam = nullptr;
-    std::atomic<float>* dlyDivParam = nullptr;
+    std::atomic<float>* dlyTimeParam = nullptr;
     std::atomic<float>* dlyFbParam = nullptr;
     std::atomic<float>* dlyToneParam = nullptr;
     std::atomic<float>* dlyRetParam = nullptr;

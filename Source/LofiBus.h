@@ -20,7 +20,7 @@ public:
 
     struct Params
     {
-        double delayBeats = 0.5; // in quarter-notes, from the note-division choice
+        double delayMs = 250.0; // free-running, not tempo-synced
         float delayFeedback = 0.45f;
         float delayTone = 0.5f; // 0 = darker/tighter, 1 = brighter/wider feedback band
         float delayReturnDb = 0.0f;
@@ -32,7 +32,7 @@ public:
     /** sendDelayIn/sendReverbIn: mono accumulators the tracks wrote into this
         block (caller-owned, already summed). outL/outR: added into, not
         overwritten, so the bus return sits behind the dry track signal. */
-    void process (const Params& p, double bpm, const float* sendDelayIn, const float* sendReverbIn,
+    void process (const Params& p, const float* sendDelayIn, const float* sendReverbIn,
                   float* outL, float* outR, int numSamples);
 
 private:

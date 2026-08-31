@@ -106,7 +106,12 @@ export function createKnob ({ label, min, max, value, format, bipolar = false, c
   wrap.append(labelEl, canvas, valueEl);
   setValue(value, false);
 
-  return { el: wrap, setValue: (v) => setValue(v, false), getValue: () => current };
+  return {
+    el: wrap,
+    setValue: (v) => setValue(v, false),
+    getValue: () => current,
+    setDisabled: (off) => wrap.classList.toggle('lt-disabled', off)
+  };
 }
 
 export function createSelector ({ options, selected = 0, onChange }) {

@@ -3,12 +3,6 @@
 
 #include <cmath>
 
-namespace
-{
-    // quarter-note multiplier for each dly.div choice: 1/16, 1/8T, 1/8, 1/8., 1/4, 1/4., 1/2
-    constexpr double kDelayDivisions[] = { 0.25, 1.0 / 3.0, 0.5, 0.75, 1.0, 1.5, 2.0 };
-}
-
 TapeMachineProcessor::TapeMachineProcessor()
     : AudioProcessor (BusesProperties()
                            .withInput ("Input", juce::AudioChannelSet::stereo(), true)
@@ -17,7 +11,7 @@ TapeMachineProcessor::TapeMachineProcessor()
 {
     outParam = apvts.getRawParameterValue (tape::pid::out);
     speedParam = apvts.getRawParameterValue (tape::global::speed);
-    dlyDivParam = apvts.getRawParameterValue (tape::global::dlyDiv);
+    dlyTimeParam = apvts.getRawParameterValue (tape::global::dlyTime);
     dlyFbParam = apvts.getRawParameterValue (tape::global::dlyFb);
     dlyToneParam = apvts.getRawParameterValue (tape::global::dlyTone);
     dlyRetParam = apvts.getRawParameterValue (tape::global::dlyRet);
@@ -96,13 +90,20 @@ void TapeMachineProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce:
     auto* chL = buffer.getWritePointer (0);
     auto* chR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : chL;
 
-    // Input stage: 2-band shelf EQ then preamp/drive, shapes what gets
-    // recorded and what you hear while monitoring -- before the tape.
-    tape::InputStage::Params inputParams;
-    inputParams.lowShelfDb = t0.inLow->load();
-    inputParams.highShelfDb = t0.inHigh->load();
-    inputParams.preampDb = t0.preamp->load();
-    inputStage.process (inputParams, chL, chR, numSamples);
+    // Input stage: 2-band shelf EQ then preamp/drive. It is a record-chain
+    // stage -- it shapes what goes onto the tape and what you monitor while
+    // getting a level, and goes inert once a loop is playing back, because by
+    // then the sound is already committed to tape and an input trim has
+    // nothing left to act on.
+    const bool inputStageActive = loop.getState() != tape::LoopState::Playing;
+    if (inputStageActive)
+    {
+        tape::InputStage::Params inputParams;
+        inputParams.lowShelfDb = t0.inLow->load();
+        inputParams.highShelfDb = t0.inHigh->load();
+        inputParams.preampDb = t0.preamp->load();
+        inputStage.process (inputParams, chL, chR, numSamples);
+    }
 
     loop.process (transportInfo, loopBars, armRequested, clearRequested, playing, varispeedRatio,
                   chL, chR, chL, chR, numSamples, sampleRate);
@@ -133,10 +134,8 @@ void TapeMachineProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce:
 
     strip.process (stripParams, chL, chR, numSamples, sendDelayPtr, sendReverbPtr);
 
-    const int divIndex = juce::jlimit (0, 6, (int) std::lround (dlyDivParam->load()));
-
     tape::LofiBus::Params busParams;
-    busParams.delayBeats = kDelayDivisions[divIndex];
+    busParams.delayMs = dlyTimeParam->load();
     busParams.delayFeedback = dlyFbParam->load();
     busParams.delayTone = dlyToneParam->load();
     busParams.delayReturnDb = dlyRetParam->load();
@@ -144,7 +143,7 @@ void TapeMachineProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce:
     busParams.reverbDamp = revDampParam->load();
     busParams.reverbReturnDb = revRetParam->load();
 
-    lofiBus.process (busParams, transportInfo.bpm, sendDelayPtr, sendReverbPtr, chL, chR, numSamples);
+    lofiBus.process (busParams, sendDelayPtr, sendReverbPtr, chL, chR, numSamples);
 
     outGain.setTargetValue (juce::Decibels::decibelsToGain (outParam->load()));
     for (int i = 0; i < numSamples; ++i)
@@ -162,6 +161,7 @@ void TapeMachineProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce:
     panelState.writePos.store ((float) loop.getWritePosition());
     panelState.recordedLen.store ((float) loop.getRecordedLength());
     panelState.loopLengthSamples.store ((float) juce::jmax (1.0, loopLenSamples));
+    panelState.inputStageActive.store (inputStageActive);
 
     juce::ignoreUnused (t0.source);
 }

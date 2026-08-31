@@ -263,6 +263,13 @@ a:hover { color: var(--coral); }
   letter-spacing: .04em;
 }
 
+/* A control that has nothing to act on right now (e.g. the input stage
+   once a loop is playing back) -- visible, but plainly inert. */
+.lt-disabled {
+  opacity: .3;
+  pointer-events: none;
+}
+
 .lt-knob-value {
   font: 700 7.5px var(--font-mono);
   color: var(--ink-70);

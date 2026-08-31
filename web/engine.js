@@ -48,8 +48,6 @@ function makeNoiseBuffer (ctx, seconds) {
   return buf;
 }
 
-const DELAY_DIVISIONS = [0.25, 1 / 3, 0.5, 0.75, 1.0, 1.5, 2.0]; // quarter-note multipliers
-
 export class TapeEngine {
   constructor (ctx) {
     this.ctx = ctx;
@@ -65,7 +63,7 @@ export class TapeEngine {
       eqLow: 0, eqMid: 0, eqHigh: 0, filter: 0,
       sendDelay: -60, sendReverb: -60,
       speedSemis: 0, wowDepth: 0.3, wowRate: 1.0, flutterDepth: 0.25, flutterRate: 1.0,
-      dlyDiv: 2, dlyFb: 0.45, dlyTone: 0.5, dlyRet: 0,
+      dlyMs: 250, dlyFb: 0.45, dlyTone: 0.5, dlyRet: 0,
       revSize: 0.55, revDamp: 0.5, revRet: 0,
       out: 1.5
     };
@@ -270,6 +268,11 @@ export class TapeEngine {
   }
 
   // ---- visualization state, for the UI to poll ----
+
+  /** The input stage (preamp + in-EQ) is a record-chain stage: it shapes
+      what goes onto the tape, and has nothing to act on once a loop is
+      playing back. The UI greys those controls out when this is false. */
+  isInputStageActive () { return this.state !== 'playing'; }
 
   getVizState () {
     const barSec = this.barSeconds();
@@ -598,7 +601,7 @@ export class TapeEngine {
   setSendDelay (db) { this.params.sendDelay = db; this.sendDelayGain.gain.setTargetAtTime(dbToGain(db), this.ctx.currentTime, 0.02); }
   setSendReverb (db) { this.params.sendReverb = db; this.sendReverbGain.gain.setTargetAtTime(dbToGain(db), this.ctx.currentTime, 0.02); }
 
-  setDelayDiv (idx) { this.params.dlyDiv = idx; this._updateDelayTime(); }
+  setDelayMs (ms) { this.params.dlyMs = ms; this._updateDelayTime(); }
   setDelayFeedback (v) {
     this.params.dlyFb = v;
     this.dlyFbL.gain.setTargetAtTime(v, this.ctx.currentTime, 0.02);
@@ -627,16 +630,15 @@ export class TapeEngine {
   setOutput (db) { this.params.out = db; this.outGain.gain.setTargetAtTime(dbToGain(db), this.ctx.currentTime, 0.02); }
 
   setBpm (bpm) {
-    // resync so the current musical position doesn't jump
+    // resync so the current musical position doesn't jump. The delay is
+    // free-running in ms, so tempo no longer touches it.
     this.transportStartPpq = this.currentPpq;
     this.transportStartCtxTime = this.ctx.currentTime;
     this.bpm = bpm;
-    this._updateDelayTime();
   }
 
   _updateDelayTime () {
-    const beats = DELAY_DIVISIONS[this.params.dlyDiv];
-    const seconds = clamp(beats * (60 / this.bpm), 0.001, 2.0);
+    const seconds = clamp(this.params.dlyMs / 1000, 0.001, 2.0);
     this.dlyNodeL.delayTime.setTargetAtTime(seconds, this.ctx.currentTime, 0.05);
     this.dlyNodeR.delayTime.setTargetAtTime(seconds, this.ctx.currentTime, 0.05);
   }

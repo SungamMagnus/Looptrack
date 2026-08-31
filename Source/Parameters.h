@@ -17,8 +17,8 @@ namespace pid
 
 namespace global
 {
-    constexpr const char* speed    = "speed"; // varispeed, semitones
-    constexpr const char* dlyDiv   = "dly.div";
+    constexpr const char* speed    = "speed"; // varispeed, semitones. id kept for preset compatibility
+    constexpr const char* dlyTime  = "dly.ms";
     constexpr const char* dlyFb    = "dly.fb";
     constexpr const char* dlyTone  = "dly.tone";
     constexpr const char* dlyRet   = "dly.ret";

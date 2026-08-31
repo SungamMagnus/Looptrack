@@ -14,6 +14,7 @@ function db (v) { return v <= -59.9 ? 'OFF' : (v >= 0 ? '+' : '') + v.toFixed(1)
 function pct (v) { return Math.round(v * 100) + '%'; }
 function filterText (v) { return Math.abs(v) < 0.02 ? 'OFF' : (v < 0 ? 'LP' : 'HP'); }
 function ratioText (v) { return v.toFixed(2) + 'x'; }
+function msText (v) { return Math.round(v) + ' ms'; }
 function panText (v) { return v.toFixed(2); }
 function speedText (v) { return (v >= 0 ? '+' : '') + v.toFixed(1) + ' st (' + Math.pow(2, v / 12).toFixed(2) + 'x)'; }
 
@@ -27,7 +28,7 @@ function labeled (text, el) {
   return wrap;
 }
 
-function buildTrack1 (engine, testTone) {
+function buildTrack1 (engine) {
   const frame = createFrame({ title: 'TRACK 1', color: 'var(--coral)' });
   frame.el.classList.add('lt-track');
   const body = document.createElement('div');
@@ -61,11 +62,7 @@ function buildTrack1 (engine, testTone) {
     label: 'CLR', color: '#4f7ea8',
     onToggle: () => { engine.clear(); clrLatch.setOn(false); }
   });
-  const toneLatch = createLatch({
-    label: 'TONE', color: '#6b5bc4',
-    onToggle: (on) => testTone.setOn(on)
-  });
-  latchRow.append(recLatch.el, playLatch.el, clrLatch.el, toneLatch.el);
+  latchRow.append(recLatch.el, playLatch.el, clrLatch.el);
 
   const loopView = createLoopView();
 
@@ -80,18 +77,19 @@ function buildTrack1 (engine, testTone) {
   const eqRow = document.createElement('div');
   eqRow.style.cssText = 'display:flex;justify-content:space-between;gap:6px';
 
+  // high at the top, low at the bottom -- frequency runs up the column
   const eqCol = document.createElement('div');
   eqCol.style.cssText = 'display:flex;flex-direction:column;gap:2px';
-  const lowK = createKnob({ label: 'Low', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqLow(v) });
-  const midK = createKnob({ label: 'Mid', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqMid(v) });
   const highK = createKnob({ label: 'High', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqHigh(v) });
-  eqCol.append(lowK.el, midK.el, highK.el);
+  const midK = createKnob({ label: 'Mid', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqMid(v) });
+  const lowK = createKnob({ label: 'Low', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqLow(v) });
+  eqCol.append(highK.el, midK.el, lowK.el);
 
   const fxCol = document.createElement('div');
   fxCol.style.cssText = 'display:flex;flex-direction:column;gap:2px';
   const filterK = createKnob({ label: 'Filter', min: -1, max: 1, value: 0, format: filterText, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setFilter(v) });
-  const sendDlyK = createKnob({ label: 'To Dly', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8', onChange: (v) => engine.setSendDelay(v) });
-  const sendRevK = createKnob({ label: 'To Verb', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8', onChange: (v) => engine.setSendReverb(v) });
+  const sendDlyK = createKnob({ label: 'Dly Send', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8', onChange: (v) => engine.setSendDelay(v) });
+  const sendRevK = createKnob({ label: 'Verb Send', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8', onChange: (v) => engine.setSendReverb(v) });
   fxCol.append(filterK.el, sendDlyK.el, sendRevK.el);
 
   eqRow.append(eqCol, fxCol);
@@ -111,6 +109,13 @@ function buildTrack1 (engine, testTone) {
     recLamp.setOn(st === 'armed' || st === 'recording');
     playLamp.setOn(st === 'playing');
     recLatch.setOn(st === 'armed' || st === 'recording');
+
+    // the input stage only shapes what goes onto tape -- inert once a loop
+    // is playing back
+    const inputOff = !engine.isInputStageActive();
+    preampK.setDisabled(inputOff);
+    inLowK.setDisabled(inputOff);
+    inHighK.setDisabled(inputOff);
   });
 
   (function tick () {
@@ -146,7 +151,7 @@ function buildGlobal (engine) {
 
   const speedRow = document.createElement('div');
   speedRow.style.cssText = 'display:flex;justify-content:center';
-  const speedK = createKnob({ label: 'Speed', min: -12, max: 12, value: 0, format: speedText, bipolar: true, color: '#ed8159', onChange: (v) => engine.setSpeed(v) });
+  const speedK = createKnob({ label: 'Varispeed', min: -12, max: 12, value: 0, format: speedText, bipolar: true, color: '#ed8159', onChange: (v) => engine.setSpeed(v) });
   speedRow.appendChild(speedK.el);
 
   const charFrame = createFrame({ title: 'Tape Character', color: 'var(--teal)' });
@@ -162,14 +167,14 @@ function buildGlobal (engine) {
   const dlyFrame = createFrame({ title: 'Delay', color: 'var(--teal)' });
   const dlyWrap = document.createElement('div');
   dlyWrap.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:10px';
-  const dlySel = createSelector({ options: ['1/16', '1/8T', '1/8', '1/8.', '1/4', '1/4.', '1/2'], selected: 2, onChange: (i) => engine.setDelayDiv(i) });
   const dlyKnobRow = document.createElement('div');
   dlyKnobRow.style.cssText = 'display:flex;gap:6px';
+  const dlyTimeK = createKnob({ label: 'Time', min: 10, max: 2000, value: 250, format: msText, color: '#52b0a4', onChange: (v) => engine.setDelayMs(v) });
   const dlyFbK = createKnob({ label: 'Fb', min: 0, max: 0.95, value: 0.45, format: pct, color: '#52b0a4', onChange: (v) => engine.setDelayFeedback(v) });
   const dlyToneK = createKnob({ label: 'Tone', min: 0, max: 1, value: 0.5, format: pct, color: '#52b0a4', onChange: (v) => engine.setDelayTone(v) });
   const dlyRetK = createKnob({ label: 'Return', min: -60, max: 6, value: 0, format: db, bipolar: true, color: '#52b0a4', onChange: (v) => engine.setDelayReturn(v) });
-  dlyKnobRow.append(dlyFbK.el, dlyToneK.el, dlyRetK.el);
-  dlyWrap.append(dlySel.el, dlyKnobRow);
+  dlyKnobRow.append(dlyTimeK.el, dlyFbK.el, dlyToneK.el, dlyRetK.el);
+  dlyWrap.append(dlyKnobRow);
   dlyFrame.body.appendChild(dlyWrap);
 
   const revFrame = createFrame({ title: 'Reverb', color: 'var(--teal)' });
@@ -204,7 +209,7 @@ function buildGlobal (engine) {
   wrap.append(heading, speedRow, charFrame.el, dlyFrame.el, revFrame.el, outRow, wordmark);
 
   engine.setSpeed(0); engine.setWowDepth(0.3); engine.setWowRate(1); engine.setFlutterDepth(0.25); engine.setFlutterRate(1);
-  engine.setDelayDiv(2); engine.setDelayFeedback(0.45); engine.setDelayTone(0.5); engine.setDelayReturn(0);
+  engine.setDelayMs(250); engine.setDelayFeedback(0.45); engine.setDelayTone(0.5); engine.setDelayReturn(0);
   engine.setReverbSize(0.55); engine.setReverbDamp(0.5); engine.setReverbReturn(0);
   engine.setOutput(1.5);
 
@@ -249,9 +254,12 @@ btnEnable.addEventListener('click', async () => {
       console.warn('mic unavailable:', micErr);
     }
 
-    const testTone = engine.addTestTone();
+    // ?tone=1 feeds a 220Hz tone in where a mic would connect, so the record
+    // path can be exercised on a machine with no audio input. Not a panel
+    // control -- a test hook.
+    if (new URLSearchParams(location.search).get('tone')) engine.addTestTone().setOn(true);
 
-    ltBody.appendChild(buildTrack1(engine, testTone));
+    ltBody.appendChild(buildTrack1(engine));
     ltBody.appendChild(buildDummyTrack('TRACK 2'));
     ltBody.appendChild(buildDummyTrack('TRACK 3'));
     ltBody.appendChild(buildDummyTrack('TRACK 4'));
@@ -280,7 +288,7 @@ btnEnable.addEventListener('click', async () => {
 
     statusLine.textContent = micOk
       ? 'Engine running. Press Play to start the transport, then REC to arm Track 1.'
-      : 'No microphone access -- use the Test Tone toggle on Track 1 to try recording, or reload and allow the mic.';
+      : 'No microphone access -- reload and allow the mic to record. (Append ?tone=1 to the URL for a test tone.)';
     if (!micOk) statusLine.classList.add('err');
   } catch (err) {
     console.error(err);

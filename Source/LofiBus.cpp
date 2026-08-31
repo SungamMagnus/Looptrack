@@ -61,10 +61,10 @@ void LofiBus::prepare (double newSampleRate)
     reverbReturnSmoothed.reset (sampleRate, 0.02);
 }
 
-void LofiBus::process (const Params& p, double bpm, const float* sendDelayIn, const float* sendReverbIn,
+void LofiBus::process (const Params& p, const float* sendDelayIn, const float* sendReverbIn,
                         float* outL, float* outR, int numSamples)
 {
-    const double delaySeconds = p.delayBeats * (60.0 / juce::jmax (1.0, bpm));
+    const double delaySeconds = p.delayMs * 0.001;
     const float delayTargetSamples =
         (float) juce::jlimit (1.0, (double) (delayCapacity - 8), delaySeconds * sampleRate);
     delayTimeSmoothed.setTargetValue (delayTargetSamples);

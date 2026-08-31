@@ -154,16 +154,18 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
             [] (float v, int) { return dbText (v); })));
 
     params.push_back (std::make_unique<juce::AudioParameterFloat> (
-        juce::ParameterID { global::speed, 1 }, "Tape Speed",
+        juce::ParameterID { global::speed, 1 }, "Varispeed",
         juce::NormalisableRange<float> (-12.0f, 12.0f, 0.01f), 0.0f,
         juce::AudioParameterFloatAttributes {}.withLabel ("st").withStringFromValueFunction (
             [] (float v, int) {
                 return juce::String (v, 1) + " st (" + juce::String (std::pow (2.0f, v / 12.0f), 2) + "x)";
             })));
 
-    params.push_back (std::make_unique<juce::AudioParameterChoice> (
-        juce::ParameterID { global::dlyDiv, 1 }, "Delay Time",
-        juce::StringArray { "1/16", "1/8T", "1/8", "1/8.", "1/4", "1/4.", "1/2" }, 2));
+    params.push_back (std::make_unique<juce::AudioParameterFloat> (
+        juce::ParameterID { global::dlyTime, 1 }, "Delay Time",
+        juce::NormalisableRange<float> (10.0f, 2000.0f, 1.0f, 0.4f), 250.0f,
+        juce::AudioParameterFloatAttributes {}.withLabel ("ms").withStringFromValueFunction (
+            [] (float v, int) { return juce::String (juce::roundToInt (v)) + " ms"; })));
 
     params.push_back (std::make_unique<juce::AudioParameterFloat> (
         juce::ParameterID { global::dlyFb, 1 }, "Delay Feedback",
