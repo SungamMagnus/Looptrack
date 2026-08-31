@@ -1,0 +1,354 @@
+/* Design tokens, verbatim from design/panel-sketch.html (the Sungam house
+   system). Component styling below is original -- the sketch's own
+   component JS is bundled/proprietary to the design tool and isn't reused. */
+:root {
+  --paper: #f0ece2;
+  --ink: #1a1a17;
+  --ink-08: rgba(26, 26, 23, .08);
+  --ink-13: rgba(26, 26, 23, .13);
+  --ink-18: rgba(26, 26, 23, .18);
+  --ink-22: rgba(26, 26, 23, .22);
+  --ink-28: rgba(26, 26, 23, .28);
+  --ink-32: rgba(26, 26, 23, .32);
+  --ink-38: rgba(26, 26, 23, .38);
+  --ink-45: rgba(26, 26, 23, .45);
+  --ink-55: rgba(26, 26, 23, .55);
+  --ink-62: rgba(26, 26, 23, .62);
+  --ink-70: rgba(26, 26, 23, .70);
+  --ink-78: rgba(26, 26, 23, .78);
+  --ink-85: rgba(26, 26, 23, .85);
+
+  --coral: #ed8159;
+  --teal: #52b0a4;
+  --steel: #4f7ea8;
+  --violet: #6b5bc4;
+  --amber: #c08d16;
+  --lilac: #d3a7dc;
+
+  --font-mono: Menlo, Monaco, "DejaVu Sans Mono", "Courier New", monospace;
+
+  --text-2xs: 7.5px;
+  --text-xs: 8px;
+  --text-sm: 8.5px;
+  --text-base: 9.5px;
+  --text-md: 10.5px;
+  --text-lg: 13px;
+  --text-xl: 16px;
+  --text-2xl: 22px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+
+  --knob-sweep-deg: 317.2;
+  --knob-arc-start-deg: 111.4;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #dedad0;
+  font-family: var(--font-mono);
+  color: var(--ink);
+}
+
+a { color: var(--steel); }
+a:hover { color: var(--coral); }
+
+.lt-app {
+  width: fit-content;
+  margin: 32px auto;
+  padding: 26px 30px 22px;
+  background: var(--paper);
+  border: 1.4px solid var(--ink-45);
+  position: relative;
+}
+
+.lt-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.lt-topbar-tag {
+  font: 700 9px var(--font-mono);
+  letter-spacing: .15em;
+  color: var(--ink-45);
+  text-transform: uppercase;
+}
+
+.lt-transport {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.lt-transport input[type="number"] {
+  width: 48px;
+  font: 700 10px var(--font-mono);
+  background: var(--paper);
+  border: 1.2px solid var(--ink-32);
+  color: var(--ink);
+  padding: 3px 4px;
+  text-align: center;
+}
+
+.lt-transport button {
+  font: 700 9px var(--font-mono);
+  letter-spacing: .06em;
+  padding: 5px 10px;
+  background: var(--paper);
+  border: 1.2px solid var(--ink-32);
+  color: var(--ink-70);
+  cursor: pointer;
+}
+
+.lt-transport button.on {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: #201008;
+}
+
+.lt-body {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+/* ---- Panel frame ---- */
+.lt-frame {
+  border: 1.2px solid var(--ink-22);
+  position: relative;
+  padding-top: 16px;
+}
+
+.lt-frame-title {
+  position: absolute;
+  top: -7px;
+  left: 8px;
+  background: var(--paper);
+  padding: 0 5px;
+  font: 700 9px var(--font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* ---- Track column ---- */
+.lt-track {
+  width: 320px;
+}
+
+.lt-track.lt-track-disabled {
+  opacity: .35;
+  pointer-events: none;
+}
+
+.lt-track-body {
+  padding: 14px 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lt-row { display: flex; gap: 8px; }
+
+.lt-control-label {
+  font-size: 7px;
+  color: var(--ink-45);
+  letter-spacing: .04em;
+  text-align: center;
+}
+
+/* ---- Selector (segmented buttons) ---- */
+.lt-selector {
+  display: flex;
+  border: 1.2px solid var(--ink-32);
+  overflow: hidden;
+}
+
+.lt-selector button {
+  font: 700 8.5px var(--font-mono);
+  background: var(--paper);
+  border: none;
+  border-right: 1px solid var(--ink-18);
+  color: var(--ink-62);
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.lt-selector button:last-child { border-right: none; }
+
+.lt-selector button.active {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ---- Waveform strip ---- */
+.lt-wave {
+  flex: 1;
+  position: relative;
+  background: var(--ink);
+  border: 1px solid var(--ink-38);
+  display: flex;
+  align-items: center;
+  padding: 0 3px;
+  overflow: hidden;
+  height: 60px;
+}
+
+.lt-wave-bars {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 1px;
+}
+
+.lt-wave-bars > div { flex: 1; min-width: 1px; }
+
+.lt-wave-head {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  width: 2px;
+}
+
+.lt-state-label {
+  font: 700 8px var(--font-mono);
+  letter-spacing: .05em;
+}
+
+/* ---- Lamp ---- */
+.lt-lamp {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--ink-32);
+  background: var(--ink-13);
+}
+
+.lt-lamp.on { box-shadow: 0 0 4px currentColor; }
+
+/* ---- Latch (toggle button) ---- */
+.lt-latch {
+  font: 700 7.5px var(--font-mono);
+  letter-spacing: .05em;
+  width: 42px;
+  height: 17px;
+  background: var(--paper);
+  border: 1.2px solid var(--ink-32);
+  color: var(--ink-62);
+  cursor: pointer;
+}
+
+.lt-latch.on { color: #fff; }
+
+/* ---- Knob ---- */
+.lt-knob-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  user-select: none;
+  cursor: ns-resize;
+}
+
+.lt-knob-label {
+  font-size: 7.5px;
+  color: var(--ink-55);
+  letter-spacing: .04em;
+}
+
+.lt-knob-value {
+  font: 700 7.5px var(--font-mono);
+  color: var(--ink-70);
+  min-height: 10px;
+}
+
+/* ---- Terminal (decorative jack) ---- */
+.lt-terminal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.lt-terminal-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #555, #111 70%);
+  border: 1px solid var(--ink-45);
+}
+
+.lt-terminal-label {
+  font-size: 6.5px;
+  color: var(--ink-45);
+  letter-spacing: .04em;
+}
+
+/* ---- Meter ---- */
+.lt-meter {
+  width: 150px;
+  height: 9px;
+  background: var(--ink-13);
+  border: 1px solid var(--ink-32);
+  position: relative;
+  overflow: hidden;
+}
+
+.lt-meter-fill {
+  position: absolute;
+  inset: 0;
+  width: 0%;
+  background: var(--steel);
+}
+
+/* ---- Wordmark ---- */
+.lt-wordmark {
+  font: 700 16px var(--font-mono);
+  letter-spacing: .28em;
+  color: var(--ink-85);
+}
+
+.lt-tagline {
+  font-size: 8px;
+  color: var(--ink-45);
+  letter-spacing: .1em;
+  margin-top: 2px;
+}
+
+/* ---- Global section ---- */
+.lt-global {
+  width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.lt-global-heading {
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--ink-18);
+  font: 700 11px var(--font-mono);
+  letter-spacing: .1em;
+  color: var(--ink-78);
+}
+
+.lt-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--ink-18);
+  margin: 0 4px;
+}
+
+.lt-status {
+  font-size: 8px;
+  color: var(--ink-45);
+  margin-top: 8px;
+  min-height: 12px;
+}
+
+.lt-status.err { color: var(--coral); }
