@@ -23,11 +23,11 @@ struct PanelState
     std::atomic<bool> inputStageActive { true };   // false once a loop is playing back
 };
 
-class TapeMachineProcessor final : public juce::AudioProcessor
+class LooptrackProcessor final : public juce::AudioProcessor
 {
 public:
-    TapeMachineProcessor();
-    ~TapeMachineProcessor() override = default;
+    LooptrackProcessor();
+    ~LooptrackProcessor() override = default;
 
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override {}
@@ -37,7 +37,7 @@ public:
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
 
-    const juce::String getName() const override { return "Tape Machine"; }
+    const juce::String getName() const override { return "Looptrack"; }
     bool acceptsMidi() const override { return false; }
     bool producesMidi() const override { return false; }
     bool isMidiEffect() const override { return false; }
@@ -105,5 +105,5 @@ private:
 
     juce::AudioBuffer<float> sendDelayAcc, sendReverbAcc;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (TapeMachineProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LooptrackProcessor)
 };

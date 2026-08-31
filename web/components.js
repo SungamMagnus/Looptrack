@@ -212,7 +212,7 @@ export function createLoopView () {
   head.className = 'lt-wave-head';
   head.style.display = 'none';
   const label = document.createElement('div');
-  label.style.cssText = 'position:absolute;top:6px;left:8px;font:700 12px var(--font-mono);letter-spacing:.08em;color:rgba(255,255,255,0.9);background:rgba(0,0,0,0.4);padding:2px 6px;';
+  label.style.cssText = 'position:absolute;top:50%;transform:translateY(-50%);left:6px;font:700 9px var(--font-mono);letter-spacing:.08em;color:rgba(255,255,255,0.9);';
   el.append(fill, head, label);
 
   function update ({ state, filledFrac, headFrac }) {

@@ -66,41 +66,40 @@ function buildTrack1 (engine) {
 
   const loopView = createLoopView();
 
-  const knobRow1 = document.createElement('div');
-  knobRow1.style.cssText = 'display:flex;justify-content:space-between;gap:2px';
+  // Two columns, each stacked in signal order. Left: the input trim and
+  // what it feeds -- Preamp above In Low, with the track EQ directly under
+  // it (high at the top, so frequency runs up the column). Right: In High
+  // above the filter and the two sends.
+  const knobCols = document.createElement('div');
+  knobCols.style.cssText = 'display:flex;justify-content:space-around;gap:6px';
+
+  const leftCol = document.createElement('div');
+  leftCol.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:2px';
   const preampK = createKnob({ label: 'Preamp', min: -24, max: 18, value: 0, format: db, color: '#ed8159', onChange: (v) => engine.setPreamp(v) });
   const inLowK = createKnob({ label: 'In Low', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159', onChange: (v) => engine.setInLow(v) });
-  const inHighK = createKnob({ label: 'In High', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159', onChange: (v) => engine.setInHigh(v) });
-  const hissK = createKnob({ label: 'Hiss', min: 0, max: 1, value: 0.25, format: pct, color: '#52b0a4', onChange: (v) => engine.setHiss(v) });
-  knobRow1.append(preampK.el, inLowK.el, inHighK.el, hissK.el);
-
-  const eqRow = document.createElement('div');
-  eqRow.style.cssText = 'display:flex;justify-content:space-between;gap:6px';
-
-  // high at the top, low at the bottom -- frequency runs up the column
-  const eqCol = document.createElement('div');
-  eqCol.style.cssText = 'display:flex;flex-direction:column;gap:2px';
   const highK = createKnob({ label: 'High', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqHigh(v) });
   const midK = createKnob({ label: 'Mid', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqMid(v) });
   const lowK = createKnob({ label: 'Low', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqLow(v) });
-  eqCol.append(highK.el, midK.el, lowK.el);
+  leftCol.append(preampK.el, inLowK.el, highK.el, midK.el, lowK.el);
 
-  const fxCol = document.createElement('div');
-  fxCol.style.cssText = 'display:flex;flex-direction:column;gap:2px';
+  const rightCol = document.createElement('div');
+  rightCol.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:2px';
+  const inHighK = createKnob({ label: 'In High', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159', onChange: (v) => engine.setInHigh(v) });
   const filterK = createKnob({ label: 'Filter', min: -1, max: 1, value: 0, format: filterText, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setFilter(v) });
   const sendDlyK = createKnob({ label: 'Dly Send', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8', onChange: (v) => engine.setSendDelay(v) });
   const sendRevK = createKnob({ label: 'Verb Send', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8', onChange: (v) => engine.setSendReverb(v) });
-  fxCol.append(filterK.el, sendDlyK.el, sendRevK.el);
+  rightCol.append(inHighK.el, filterK.el, sendDlyK.el, sendRevK.el);
 
-  eqRow.append(eqCol, fxCol);
+  knobCols.append(leftCol, rightCol);
 
   const bottomRow = document.createElement('div');
-  bottomRow.style.cssText = 'display:flex;justify-content:center;gap:14px;padding-top:2px;border-top:1px solid var(--ink-13)';
+  bottomRow.style.cssText = 'display:flex;justify-content:center;gap:12px;padding-top:2px;border-top:1px solid var(--ink-13)';
+  const hissK = createKnob({ label: 'Hiss', min: 0, max: 1, value: 0.25, format: pct, color: '#52b0a4', onChange: (v) => engine.setHiss(v) });
   const panK = createKnob({ label: 'Pan', min: -1, max: 1, value: 0, format: panText, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setPan(v) });
   const volumeK = createKnob({ label: 'Volume', min: -60, max: 6, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setVolume(v) });
-  bottomRow.append(panK.el, volumeK.el);
+  bottomRow.append(hissK.el, panK.el, volumeK.el);
 
-  body.append(selRow, stateRow, latchRow, loopView.el, knobRow1, eqRow, bottomRow);
+  body.append(selRow, stateRow, latchRow, loopView.el, knobCols, bottomRow);
 
   engine.onStateChange(() => {
     const st = engine.state;

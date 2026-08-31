@@ -31,13 +31,13 @@ struct FakePlayHead : public juce::AudioPlayHead
     bool isPlaying = true;
 };
 
-void setNorm (TapeMachineProcessor& p, const juce::String& id, float norm)
+void setNorm (LooptrackProcessor& p, const juce::String& id, float norm)
 {
     if (auto* param = p.apvts.getParameter (id))
         param->setValueNotifyingHost (norm);
 }
 
-void setValue (TapeMachineProcessor& p, const juce::String& id, float value)
+void setValue (LooptrackProcessor& p, const juce::String& id, float value)
 {
     if (auto* param = p.apvts.getParameter (id))
         param->setValueNotifyingHost (param->convertTo0to1 (value));
@@ -54,7 +54,7 @@ int main (int argc, char** argv)
     const double sr = 48000.0;
     const int blockSize = 256;
 
-    TapeMachineProcessor proc;
+    LooptrackProcessor proc;
     FakePlayHead playHead;
     proc.setPlayHead (&playHead);
     proc.setRateAndBufferSizeDetails (sr, blockSize);

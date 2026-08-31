@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-TapeMachineProcessor::TapeMachineProcessor()
+LooptrackProcessor::LooptrackProcessor()
     : AudioProcessor (BusesProperties()
                            .withInput ("Input", juce::AudioChannelSet::stereo(), true)
                            .withOutput ("Output", juce::AudioChannelSet::stereo(), true)),
@@ -42,7 +42,7 @@ TapeMachineProcessor::TapeMachineProcessor()
     t0.sendReverb = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::sendReverb));
 }
 
-void TapeMachineProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void LooptrackProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     outGain.reset (sampleRate, 0.02);
     outGain.setCurrentAndTargetValue (juce::Decibels::decibelsToGain (outParam->load()));
@@ -61,7 +61,7 @@ void TapeMachineProcessor::prepareToPlay (double sampleRate, int samplesPerBlock
     sendReverbAcc.setSize (1, samplesPerBlock, false, true, true);
 }
 
-bool TapeMachineProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool LooptrackProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
     auto in = layouts.getMainInputChannelSet();
     auto out = layouts.getMainOutputChannelSet();
@@ -70,7 +70,7 @@ bool TapeMachineProcessor::isBusesLayoutSupported (const BusesLayout& layouts) c
     return in == juce::AudioChannelSet::mono() || in == juce::AudioChannelSet::stereo();
 }
 
-void TapeMachineProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer&)
+void LooptrackProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer&)
 {
     juce::ScopedNoDenormals noDenormals;
 
@@ -166,19 +166,19 @@ void TapeMachineProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce:
     juce::ignoreUnused (t0.source);
 }
 
-juce::AudioProcessorEditor* TapeMachineProcessor::createEditor()
+juce::AudioProcessorEditor* LooptrackProcessor::createEditor()
 {
-    return new TapeMachineEditor (*this);
+    return new LooptrackEditor (*this);
 }
 
-void TapeMachineProcessor::getStateInformation (juce::MemoryBlock& destData)
+void LooptrackProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     if (auto state = apvts.copyState(); state.isValid())
         if (auto xml = state.createXml())
             copyXmlToBinary (*xml, destData);
 }
 
-void TapeMachineProcessor::setStateInformation (const void* data, int sizeInBytes)
+void LooptrackProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     if (auto xml = getXmlFromBinary (data, sizeInBytes))
         apvts.replaceState (juce::ValueTree::fromXml (*xml));
@@ -186,5 +186,5 @@ void TapeMachineProcessor::setStateInformation (const void* data, int sizeInByte
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new TapeMachineProcessor();
+    return new LooptrackProcessor();
 }

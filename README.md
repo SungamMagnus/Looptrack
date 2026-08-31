@@ -38,7 +38,7 @@ quarantined, and Gatekeeper then refuses to load the plug-in — usually
 installing:
 
 ```sh
-xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/"Tape Machine.vst3" ~/Library/Audio/Plug-Ins/Components/"Tape Machine.component"
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/Looptrack.vst3 ~/Library/Audio/Plug-Ins/Components/Looptrack.component
 ```
 
 Then restart your host and rescan. Building from source avoids this
@@ -55,9 +55,9 @@ altogether — a plug-in you compile yourself is never quarantined.
   recording starts the instant playback begins, no bar-boundary wait. Arm
   while already playing and it quantizes to the next bar — a standard
   punch-in.
-- **Varispeed**: the global Speed knob resamples the loop's own playback
-  head, so pitch and speed move together like a real reel, not an
-  independent pitch-shifter.
+- **Varispeed**: the global knob resamples the loop's own playback head, so
+  pitch and speed move together like a real reel, not an independent
+  pitch-shifter.
 - **Signal chain**: input → 2-band shelf EQ → preamp (clean below 0dB,
   blends in tape-style drive above it) → the tape (record/loop) →
   wow/flutter → hiss → 3-band EQ → DJ filter → volume fader → pan → two
@@ -100,7 +100,7 @@ AU and the standalone into your user plug-in folders, and produces universal
 ### Dev tools
 
 ```sh
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DTAPE_TOOLS=ON
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DLOOPTRACK_TOOLS=ON
 cmake --build build --target dsp_check panel_shot -j8
 
 ./build/dsp_check_artefacts/Release/dsp_check     # record/loop/varispeed correctness, headless

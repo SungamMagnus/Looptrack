@@ -17,7 +17,7 @@ if(APPLE)
     endif()
 endif()
 
-project(TapeMachineVST VERSION 0.1.0 LANGUAGES C CXX)
+project(LooptrackVST VERSION 0.1.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -30,7 +30,7 @@ if(NOT EXISTS "${JUCE_DIR}/CMakeLists.txt")
 endif()
 add_subdirectory("${JUCE_DIR}" "${CMAKE_BINARY_DIR}/JUCE" EXCLUDE_FROM_ALL)
 
-set(TAPE_SOURCES
+set(LOOPTRACK_SOURCES
     Source/PluginProcessor.cpp
     Source/PluginEditor.cpp
     Source/Parameters.cpp
@@ -40,13 +40,13 @@ set(TAPE_SOURCES
     Source/LofiBus.cpp
     Source/InputStage.cpp)
 
-juce_add_plugin(TapeMachine
+juce_add_plugin(Looptrack
     COMPANY_NAME            "Sungam"
-    BUNDLE_ID               "com.sungam.tapemachine"
+    BUNDLE_ID               "com.sungam.looptrack"
     PLUGIN_MANUFACTURER_CODE Sngm
-    PLUGIN_CODE             Tp41
+    PLUGIN_CODE             Lptk
     FORMATS                 VST3 AU Standalone
-    PRODUCT_NAME            "Tape Machine"
+    PRODUCT_NAME            "Looptrack"
     DESCRIPTION             "4-track tape machine looper"
     IS_SYNTH                FALSE
     NEEDS_MIDI_INPUT        FALSE
@@ -55,21 +55,21 @@ juce_add_plugin(TapeMachine
     EDITOR_WANTS_KEYBOARD_FOCUS FALSE
     COPY_PLUGIN_AFTER_BUILD TRUE
     MICROPHONE_PERMISSION_ENABLED TRUE
-    MICROPHONE_PERMISSION_TEXT "Tape Machine records audio from the selected input."
+    MICROPHONE_PERMISSION_TEXT "Looptrack records audio from the selected input."
     VST3_CATEGORIES         Fx
     AU_MAIN_TYPE            kAudioUnitType_Effect)
 
-target_sources(TapeMachine PRIVATE ${TAPE_SOURCES})
+target_sources(Looptrack PRIVATE ${LOOPTRACK_SOURCES})
 
-target_compile_definitions(TapeMachine PUBLIC
+target_compile_definitions(Looptrack PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_VST3_CAN_REPLACE_VST2=0
     JUCE_REPORT_APP_USAGE=0)
 
-target_include_directories(TapeMachine PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+target_include_directories(Looptrack PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 
-target_link_libraries(TapeMachine
+target_link_libraries(Looptrack
     PRIVATE juce::juce_audio_utils
     PUBLIC
         juce::juce_recommended_config_flags
@@ -77,12 +77,12 @@ target_link_libraries(TapeMachine
         juce::juce_recommended_warning_flags)
 
 # Dev tools: run the real processor through a set of configurations without a
-# host, and (later) render the faceplate to a PNG. -DTAPE_TOOLS=ON
-option(TAPE_TOOLS "Build the offscreen renderer and the DSP checker" OFF)
-if(TAPE_TOOLS)
+# host, and (later) render the faceplate to a PNG. -DLOOPTRACK_TOOLS=ON
+option(LOOPTRACK_TOOLS "Build the offscreen renderer and the DSP checker" OFF)
+if(LOOPTRACK_TOOLS)
     foreach(tool dsp_check panel_shot)
         juce_add_console_app(${tool} PRODUCT_NAME "${tool}" NEEDS_CURL FALSE)
-        target_sources(${tool} PRIVATE tools/${tool}.cpp ${TAPE_SOURCES})
+        target_sources(${tool} PRIVATE tools/${tool}.cpp ${LOOPTRACK_SOURCES})
         target_compile_definitions(${tool} PRIVATE
             JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0
             JUCE_STANDALONE_APPLICATION=1 JUCE_MODAL_LOOPS_PERMITTED=1)

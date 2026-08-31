@@ -13,7 +13,7 @@
 class LoopView final : public juce::Component, private juce::Timer
 {
 public:
-    explicit LoopView (TapeMachineProcessor& p) : processor (p)
+    explicit LoopView (LooptrackProcessor& p) : processor (p)
     {
         startTimerHz (30);
     }
@@ -76,5 +76,5 @@ private:
 
     void timerCallback() override { repaint(); }
 
-    TapeMachineProcessor& processor;
+    LooptrackProcessor& processor;
 };

@@ -7,10 +7,10 @@
 
 /** Loop visualization on top, the generic parameter list below -- swapped
     for a real panel once the DSP is proven out (build checklist step 10). */
-class TapeMachineEditor final : public juce::AudioProcessorEditor
+class LooptrackEditor final : public juce::AudioProcessorEditor
 {
 public:
-    explicit TapeMachineEditor (TapeMachineProcessor& p)
+    explicit LooptrackEditor (LooptrackProcessor& p)
         : juce::AudioProcessorEditor (p), loopView (p), paramList (p)
     {
         addAndMakeVisible (loopView);
