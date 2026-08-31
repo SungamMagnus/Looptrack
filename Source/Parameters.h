@@ -42,7 +42,8 @@ namespace track
     constexpr const char* play     = "play";
     constexpr const char* inLow    = "inlo";    // input-stage 2-band shelf, before the preamp
     constexpr const char* inHigh   = "inhi";
-    constexpr const char* preamp   = "preamp";  // was "gain" -- now the input preamp, drives above 0dB
+    constexpr const char* preamp   = "preamp";  // input trim, before the tape -- drives above 0dB
+    constexpr const char* volume   = "volume";  // output fader, after the tape -- post-filter, pre-send
     constexpr const char* pan      = "pan";
     constexpr const char* wow      = "wow";
     constexpr const char* wowRate  = "wowrate";

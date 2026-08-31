@@ -17,6 +17,7 @@ void ChannelStrip::prepare (double newSampleRate)
 {
     sampleRate = newSampleRate;
 
+    volumeSmoothed.reset (sampleRate, 0.02);
     panSmoothed.reset (sampleRate, 0.02);
     filterSmoothed.reset (sampleRate, 0.02);
     sendDelaySmoothed.reset (sampleRate, 0.02);
@@ -36,6 +37,7 @@ void ChannelStrip::process (const Params& p, float* l, float* r, int numSamples,
     eqHighR.highShelf (kHighShelfFreq, kHighShelfQ, p.eqHighDb, sampleRate);
 
     filterSmoothed.setTargetValue (p.filterKnob);
+    volumeSmoothed.setTargetValue (juce::Decibels::decibelsToGain (p.volumeDb));
     panSmoothed.setTargetValue (p.pan);
     sendDelaySmoothed.setTargetValue (juce::Decibels::decibelsToGain (p.sendDelayDb));
     sendReverbSmoothed.setTargetValue (juce::Decibels::decibelsToGain (p.sendReverbDb));
@@ -67,6 +69,10 @@ void ChannelStrip::process (const Params& p, float* l, float* r, int numSamples,
             xl = k < 0.0f ? lpL : hpL;
             xr = k < 0.0f ? lpR : hpR;
         }
+
+        const float vol = volumeSmoothed.getNextValue();
+        xl *= vol;
+        xr *= vol;
 
         const float sendMono = 0.5f * (xl + xr);
         sendDelayAcc[i] += sendMono * sendDelaySmoothed.getNextValue();

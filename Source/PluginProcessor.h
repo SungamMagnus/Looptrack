@@ -65,6 +65,7 @@ private:
         std::atomic<float>* inLow = nullptr;
         std::atomic<float>* inHigh = nullptr;
         std::atomic<float>* preamp = nullptr;
+        std::atomic<float>* volume = nullptr;
         std::atomic<float>* pan = nullptr;
         std::atomic<float>* wow = nullptr;
         std::atomic<float>* wowRate = nullptr;

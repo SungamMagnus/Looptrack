@@ -67,6 +67,13 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
                 [] (float v, int) { return dbText (v); })));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
+            juce::ParameterID { trackParamId (t, track::volume), 1 },
+            "Track " + juce::String (t + 1) + " Volume",
+            juce::NormalisableRange<float> (-60.0f, 6.0f, 0.01f), 0.0f,
+            dbAttrs ("dB").withStringFromValueFunction (
+                [] (float v, int) { return dbText (v); })));
+
+        params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::pan), 1 },
             "Track " + juce::String (t + 1) + " Pan",
             juce::NormalisableRange<float> (-1.0f, 1.0f, 0.001f), 0.0f));

@@ -61,7 +61,7 @@ export class TapeEngine {
     this.params = {
       bars: 2, source: 'input',
       inLow: 0, inHigh: 0, preamp: 0,
-      pan: 0, hiss: 0.25,
+      volume: 0, pan: 0, hiss: 0.25,
       eqLow: 0, eqMid: 0, eqHigh: 0, filter: 0,
       sendDelay: -60, sendReverb: -60,
       speedSemis: 0, wowDepth: 0.3, wowRate: 1.0, flutterDepth: 0.25, flutterRate: 1.0,
@@ -346,15 +346,18 @@ export class TapeEngine {
     this.eqHigh.connect(this.filterDry).connect(afterFilter);
     this.eqHigh.connect(this.filterNode).connect(this.filterWet).connect(afterFilter);
 
-    // -- pan + track output --
+    // -- volume (output fader, post-filter) + pan --
+    this.volumeGain = new GainNode(ctx, { gain: 1 });
+    afterFilter.connect(this.volumeGain);
     this.panNode = new StereoPannerNode(ctx, { pan: 0 });
-    afterFilter.connect(this.panNode);
+    this.volumeGain.connect(this.panNode);
 
-    // -- sends (post-EQ/filter, pre-pan, mono) --
+    // -- sends (post-EQ/filter/volume, pre-pan, mono) -- riding the fader
+    // down takes the sends with it, same as a real console's post-fader aux
     this.sendDelayGain = new GainNode(ctx, { gain: 0 });
     this.sendReverbGain = new GainNode(ctx, { gain: 0 });
-    afterFilter.connect(this.sendDelayGain);
-    afterFilter.connect(this.sendReverbGain);
+    this.volumeGain.connect(this.sendDelayGain);
+    this.volumeGain.connect(this.sendReverbGain);
 
     // -- lofi bus --
     this._buildLofiBus();
@@ -560,6 +563,7 @@ export class TapeEngine {
     this.preampDryWet.gain.setTargetAtTime(driveAmount, t, 0.02);
   }
 
+  setVolume (db) { this.params.volume = db; this.volumeGain.gain.setTargetAtTime(dbToGain(db), this.ctx.currentTime, 0.02); }
   setPan (v) { this.params.pan = v; this.panNode.pan.setTargetAtTime(v, this.ctx.currentTime, 0.02); }
   setHiss (v) { this.params.hiss = v; this.hissGain.gain.setTargetAtTime(dbToGain(-90 + v * 42), this.ctx.currentTime, 0.03); }
 

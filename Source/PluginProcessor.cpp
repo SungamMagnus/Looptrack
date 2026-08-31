@@ -33,6 +33,7 @@ TapeMachineProcessor::TapeMachineProcessor()
     t0.inLow = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::inLow));
     t0.inHigh = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::inHigh));
     t0.preamp = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::preamp));
+    t0.volume = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::volume));
     t0.pan = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::pan));
     t0.wow = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::wow));
     t0.wowRate = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::wowRate));
@@ -125,6 +126,7 @@ void TapeMachineProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce:
     stripParams.eqMidDb = t0.eqMid->load();
     stripParams.eqHighDb = t0.eqHigh->load();
     stripParams.filterKnob = t0.filter->load();
+    stripParams.volumeDb = t0.volume->load();
     stripParams.pan = t0.pan->load();
     stripParams.sendDelayDb = t0.sendDelay->load();
     stripParams.sendReverbDb = t0.sendReverb->load();

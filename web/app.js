@@ -34,12 +34,6 @@ function buildTrack1 (engine, testTone) {
   body.className = 'lt-track-body';
   frame.body.appendChild(body);
 
-  const topRow = document.createElement('div');
-  topRow.className = 'lt-row';
-
-  const leftCol = document.createElement('div');
-  leftCol.style.cssText = 'display:flex;flex-direction:column;gap:6px;width:184px';
-
   const selRow = document.createElement('div');
   selRow.className = 'lt-row';
   const barsSel = createSelector({ options: ['1', '2', '3', '4'], selected: 1, onChange: (i) => engine.setBars(i + 1) });
@@ -73,21 +67,16 @@ function buildTrack1 (engine, testTone) {
   });
   latchRow.append(recLatch.el, playLatch.el, clrLatch.el, toneLatch.el);
 
-  leftCol.append(selRow, stateRow, latchRow);
-
   const loopView = createLoopView();
-  loopView.el.style.flex = '1';
-  topRow.append(leftCol, loopView.el);
 
-  const chRow = document.createElement('div');
-  chRow.style.cssText = 'width:288px;display:flex;justify-content:space-between;gap:2px';
+  const knobRow1 = document.createElement('div');
+  knobRow1.style.cssText = 'display:flex;justify-content:space-between;gap:2px';
+  const preampK = createKnob({ label: 'Preamp', min: -24, max: 18, value: 0, format: db, color: '#ed8159', onChange: (v) => engine.setPreamp(v) });
   const inLowK = createKnob({ label: 'In Low', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159', onChange: (v) => engine.setInLow(v) });
   const inHighK = createKnob({ label: 'In High', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159', onChange: (v) => engine.setInHigh(v) });
   const hissK = createKnob({ label: 'Hiss', min: 0, max: 1, value: 0.25, format: pct, color: '#52b0a4', onChange: (v) => engine.setHiss(v) });
-  chRow.append(inLowK.el, inHighK.el, hissK.el);
+  knobRow1.append(preampK.el, inLowK.el, inHighK.el, hissK.el);
 
-  const eqSection = document.createElement('div');
-  eqSection.style.cssText = 'width:288px;display:flex;flex-direction:column;gap:8px';
   const eqRow = document.createElement('div');
   eqRow.style.cssText = 'display:flex;justify-content:space-between;gap:6px';
 
@@ -107,14 +96,13 @@ function buildTrack1 (engine, testTone) {
 
   eqRow.append(eqCol, fxCol);
 
-  const panRow = document.createElement('div');
-  panRow.style.cssText = 'width:288px;display:flex;justify-content:center;gap:14px;padding-top:2px;border-top:1px solid var(--ink-13)';
+  const bottomRow = document.createElement('div');
+  bottomRow.style.cssText = 'display:flex;justify-content:center;gap:14px;padding-top:2px;border-top:1px solid var(--ink-13)';
   const panK = createKnob({ label: 'Pan', min: -1, max: 1, value: 0, format: panText, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setPan(v) });
-  const preampK = createKnob({ label: 'Preamp', min: -24, max: 18, value: 0, format: db, color: '#ed8159', onChange: (v) => engine.setPreamp(v) });
-  panRow.append(panK.el, preampK.el);
+  const volumeK = createKnob({ label: 'Volume', min: -60, max: 6, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setVolume(v) });
+  bottomRow.append(panK.el, volumeK.el);
 
-  eqSection.append(eqRow, panRow);
-  body.append(topRow, chRow, eqSection);
+  body.append(selRow, stateRow, latchRow, loopView.el, knobRow1, eqRow, bottomRow);
 
   engine.onStateChange(() => {
     const st = engine.state;
@@ -130,7 +118,7 @@ function buildTrack1 (engine, testTone) {
     requestAnimationFrame(tick);
   })();
 
-  engine.setInLow(0); engine.setInHigh(0); engine.setPreamp(0); engine.setPan(0); engine.setHiss(0.25);
+  engine.setInLow(0); engine.setInHigh(0); engine.setPreamp(0); engine.setVolume(0); engine.setPan(0); engine.setHiss(0.25);
   engine.setEqLow(0); engine.setEqMid(0); engine.setEqHigh(0); engine.setFilter(0);
   engine.setSendDelay(-60); engine.setSendReverb(-60);
 
