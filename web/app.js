@@ -239,6 +239,11 @@ function withTimeout (promise, ms) {
   ]);
 }
 
+// ?autoboot=1 skips the click -- useful for automated screenshots/demos.
+if (new URLSearchParams(location.search).get('autoboot')) {
+  window.addEventListener('DOMContentLoaded', () => btnEnable.click());
+}
+
 btnEnable.addEventListener('click', async () => {
   btnEnable.disabled = true;
   statusLine.textContent = 'Starting engine…';
