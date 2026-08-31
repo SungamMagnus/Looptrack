@@ -57,7 +57,7 @@ export class TapeEngine {
     this.trackPlayEnabled = true; // the track's own Play switch, independent of transport
 
     this.params = {
-      bars: 2, source: 'input',
+      bars: 2,
       inLow: 0, inHigh: 0, preamp: 0,
       volume: 0, pan: 0, hiss: 0.25,
       eqLow: 0, eqMid: 0, eqHigh: 0, filter: 0,
@@ -120,15 +120,27 @@ export class TapeEngine {
     this._schedulerTimer = setInterval(() => this._tickScheduler(), SCHEDULER_INTERVAL_MS);
   }
 
-  _updateMonitorGains () {
-    const t = this.ctx.currentTime;
-    const live = this.state === 'armed' || this.state === 'recording' ? 1 : 0;
-    const loop = this.state === 'playing' && this.trackPlayEnabled ? 1 : 0;
-    this._liveMonitorGain.gain.setTargetAtTime(live, t, 0.005);
-    this._loopPlaybackGain.gain.setTargetAtTime(loop, t, 0.005);
+  /** The tape owns the output only while it is actually playing material
+      back. Any other time -- idle, armed, recording, or with PLAY off -- the
+      input is monitored, so what you are about to record is always audible. */
+  loopOwnsOutput () {
+    return this.state === 'playing' && this.trackPlayEnabled && this.recordedBuffer !== null;
   }
 
-  setPlayEnabled (v) { this.trackPlayEnabled = v; this._updateMonitorGains(); }
+  _updateMonitorGains () {
+    const t = this.ctx.currentTime;
+    const loopOwns = this.loopOwnsOutput();
+    this._liveMonitorGain.gain.setTargetAtTime(loopOwns ? 0 : 1, t, 0.005);
+    this._loopPlaybackGain.gain.setTargetAtTime(loopOwns ? 1 : 0, t, 0.005);
+  }
+
+  setPlayEnabled (v) {
+    this.trackPlayEnabled = v;
+    this._updateMonitorGains();
+    // toggling PLAY hands the output between the tape and the live input, so
+    // the panel has to re-evaluate what is active
+    this._onStateChange && this._onStateChange();
+  }
 
   stop () {
     if (!this.playing) return;
@@ -272,7 +284,7 @@ export class TapeEngine {
   /** The input stage (preamp + in-EQ) is a record-chain stage: it shapes
       what goes onto the tape, and has nothing to act on once a loop is
       playing back. The UI greys those controls out when this is false. */
-  isInputStageActive () { return this.state !== 'playing'; }
+  isInputStageActive () { return ! this.loopOwnsOutput(); }
 
   getVizState () {
     const barSec = this.barSeconds();
@@ -311,6 +323,9 @@ export class TapeEngine {
     this.preampGain.connect(this.preampDrive).connect(this.preampDryWet).connect(this.inputStageOut);
 
     // -- record/monitor vs loop-playback switch --
+    this.inputAnalyser = new AnalyserNode(ctx, { fftSize: 256 });
+    this.inputStageOut.connect(this.inputAnalyser);
+
     this._liveMonitorGain = new GainNode(ctx, { gain: 1 });
     this._loopPlaybackGain = new GainNode(ctx, { gain: 0 });
     this.inputStageOut.connect(this._liveMonitorGain);
@@ -551,7 +566,6 @@ export class TapeEngine {
   // ---- parameter setters ----
 
   setBars (bars) { this.params.bars = bars; }
-  setSource (src) { this.params.source = src; }
 
   setInLow (db) { this.params.inLow = db; this.inLowShelf.gain.setTargetAtTime(db, this.ctx.currentTime, 0.02); }
   setInHigh (db) { this.params.inHigh = db; this.inHighShelf.gain.setTargetAtTime(db, this.ctx.currentTime, 0.02); }

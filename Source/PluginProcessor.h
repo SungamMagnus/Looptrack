@@ -22,6 +22,7 @@ struct PanelState
     std::atomic<float> loopLengthSamples { 1.0f }; // current musical loop length at host tempo
     std::atomic<bool> inputStageActive { true };   // false once a loop is playing back
     std::atomic<float> outLevel { 0.0f };          // post-fader peak, for the meter
+    std::atomic<float> inLevel { 0.0f };           // post-preamp/in-EQ peak, for the input meter
 };
 
 class LooptrackProcessor final : public juce::AudioProcessor
@@ -60,7 +61,6 @@ private:
     struct TrackParamPtrs
     {
         std::atomic<float>* bars = nullptr;
-        std::atomic<float>* source = nullptr;
         std::atomic<float>* rec = nullptr;
         std::atomic<float>* clear = nullptr;
         std::atomic<float>* play = nullptr;

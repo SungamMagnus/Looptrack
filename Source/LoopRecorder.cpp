@@ -150,21 +150,24 @@ void LoopRecorder::renderRange (const float* inL, const float* inR, float* outL,
 
         float ol = 0.0f, orr = 0.0f;
 
-        if (state == LoopState::Recording || state == LoopState::Armed)
+        // The tape owns the output only while it is actually playing material
+        // back. Any other time -- idle, armed, recording, or with PLAY off --
+        // the input is passed straight through, so what you are about to
+        // record is always audible.
+        const bool loopHasTheOutput = state == LoopState::Playing && playing && recordedLen > 0;
+
+        if (! loopHasTheOutput)
         {
-            // monitor the live input while arming/recording, so you can hear
-            // yourself against the other tracks while punching in
             ol = wl;
             orr = wr;
         }
-        else if (state == LoopState::Playing && playing && recordedLen > 0
-                 && readPos < (double) recordedLen)
+        else if (readPos < (double) recordedLen)
         {
             readSample (ratio, ol, orr);
         }
-        // else: silence -- either nothing recorded yet, or the read head ran
-        // past the end of the material because tempo slowed down; it waits
-        // here for the next boundary rather than wrapping early
+        // else: silence -- the read head ran past the end of the material
+        // because tempo slowed down, so the tape has run out and waits here
+        // for the next boundary rather than wrapping early
 
         outL[i] = ol;
         outR[i] = orr;

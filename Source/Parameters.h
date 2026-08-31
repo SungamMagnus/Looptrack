@@ -36,7 +36,6 @@ inline juce::String trackParamId (int track, const char* leaf)
 namespace track
 {
     constexpr const char* bars     = "bars";
-    constexpr const char* source   = "source";
     constexpr const char* rec      = "rec";
     constexpr const char* clear    = "clear";
     constexpr const char* play     = "play";

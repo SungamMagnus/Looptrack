@@ -34,11 +34,6 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
             "Track " + juce::String (t + 1) + " Loop Bars",
             juce::StringArray { "1", "2", "3", "4" }, 1));
 
-        params.push_back (std::make_unique<juce::AudioParameterChoice> (
-            juce::ParameterID { trackParamId (t, track::source), 1 },
-            "Track " + juce::String (t + 1) + " Source",
-            juce::StringArray { "Input", "Sample" }, 0));
-
         params.push_back (std::make_unique<juce::AudioParameterBool> (
             juce::ParameterID { trackParamId (t, track::rec), 1 },
             "Track " + juce::String (t + 1) + " Record", false));

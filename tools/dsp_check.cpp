@@ -121,7 +121,9 @@ int main()
     const double loopSamplesD = bars * 4.0 * (60.0 / bpm) * sr; // 1 bar, 4/4, 120bpm
     const int loopSamples = (int) std::llround (loopSamplesD);
 
-    // --- idle: nothing recorded or loaded, output must be silent
+    // --- idle: nothing recorded yet, so the tape has nothing to play and the
+    // live input passes straight through -- you can always hear what you are
+    // about to record
     {
         Transport transport;
         transport.prepare (sr);
@@ -132,11 +134,34 @@ int main()
 
         std::vector<float> in (2000, 0.5f);
         auto out = feed (loop, transport, ph, sr, block, bars, false, false, true, 1.0, in);
-        bool silent = true;
-        for (auto v : out)
-            if (std::abs (v) > 1e-6f)
-                silent = false;
-        check (silent, "idle track outputs silence");
+        bool passesThrough = true;
+        for (size_t i = 0; i < out.size(); ++i)
+            if (std::abs (out[i] - in[i]) > 1e-6f)
+                passesThrough = false;
+        check (passesThrough, "idle track passes the input through");
+    }
+
+    // --- PLAY off while a loop exists: the tape is not driving the output,
+    // so monitoring comes back
+    {
+        Transport transport;
+        transport.prepare (sr);
+        LoopRecorder loop;
+        loop.prepare (sr);
+        FakePlayHead ph;
+        ph.bpm = bpm;
+
+        std::vector<float> rec ((size_t) loopSamples * 2, 0.3f);
+        feed (loop, transport, ph, sr, block, bars, true, false, true, 1.0, rec);
+        check (loop.getState() == LoopState::Playing, "monitor test: loop recorded and playing");
+
+        std::vector<float> in ((size_t) block * 4, 0.42f);
+        auto out = feed (loop, transport, ph, sr, block, bars, false, false, /*playing*/ false, 1.0, in);
+        bool monitors = true;
+        for (size_t i = 0; i < out.size(); ++i)
+            if (std::abs (out[i] - in[i]) > 1e-6f)
+                monitors = false;
+        check (monitors, "PLAY off passes the input through instead of the loop");
     }
 
     // --- arm before/at playback start: recording should begin immediately,
@@ -219,11 +244,13 @@ int main()
 
         check (loop.getState() == LoopState::Idle, "clear: returns to Idle");
         check (loop.getRecordedLength() == 0, "clear: recorded length reset to 0");
-        bool silentAfterClear = true;
-        for (auto v : out)
-            if (std::abs (v) > 1e-6f)
-                silentAfterClear = false;
-        check (silentAfterClear, "clear: output is silent immediately after clearing");
+        // with the tape wiped there is nothing to play back, so the output
+        // falls through to the live input rather than to silence
+        bool monitorsAfterClear = true;
+        for (size_t i = 0; i < out.size(); ++i)
+            if (std::abs (out[i] - tail[i]) > 1e-6f)
+                monitorsAfterClear = false;
+        check (monitorsAfterClear, "clear: the loop is gone and the input is monitored again");
     }
 
     // --- varispeed: same recorded tone, played back at 1x vs -12 semitones

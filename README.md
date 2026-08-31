@@ -1,8 +1,8 @@
 # Looptrack
 
-A 4-track tape machine plug-in. Record from input or play a loaded sample
-into a 1–4 bar loop, synced to host tempo so a tempo change truncates the
-loop rather than smearing it. Wow/flutter and cassette hiss are real tape
+A 4-track tape machine plug-in. Record from your input into a 1–4 bar loop,
+synced to host tempo so a tempo change truncates the loop rather than
+smearing it. Wow/flutter and cassette hiss are real tape
 character, not decoration — cents-correct pitch modulation, independently
 rated from their depth. A global varispeed knob resamples the whole loop for
 real pitch-and-speed-together tape behaviour. Each track carries an input
@@ -61,9 +61,11 @@ altogether — a plug-in you compile yourself is never quarantined.
   blends in tape-style drive above it) → the tape (record/loop) →
   wow/flutter → hiss → 3-band EQ → DJ filter → volume fader → pan → two
   sends into a shared lofi delay + 8-comb/4-allpass reverb bus.
-- The input stage (preamp, in-EQ) only shapes what goes *onto* tape — it
-  goes inert once a loop is playing back, since there's nothing left for an
-  input trim to act on.
+- **Input monitoring**: the tape owns the output only while it is actually
+  playing a loop back. Any other time — idle, armed, recording, or with PLAY
+  off — the input passes straight through, so what you are about to record
+  is always audible. The input stage (preamp, in-EQ, and its VU) greys out
+  exactly when the tape takes over.
 
 ## Web prototype
 
@@ -109,10 +111,9 @@ cmake --build build --target dsp_check panel_shot -j8
 ## Status
 
 - ✅ Single track: record/loop, tempo sync + truncation, varispeed,
-  wow/flutter, hiss, input EQ + preamp, 3-band EQ, DJ filter, shared lofi
-  delay/reverb bus.
+  wow/flutter, hiss, a boxed input stage (preamp + 2-band EQ + VU), 3-band
+  EQ, DJ filter, shared lofi delay/reverb bus.
 - ✅ The panel, in the plug-in and in the browser prototype.
-- 🚧 Sample import (`SRC: Sample` exists in the UI, not wired up yet).
 - 📋 Tracks 2–4 — the architecture (shared mod-LFO phase, prefixed parameter
   IDs, a mono-summed FX bus) is already built for four tracks; only the
   replication is left.

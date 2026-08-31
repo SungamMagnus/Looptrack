@@ -40,19 +40,14 @@ void LooptrackEditor::buildTrack()
     auto& apvts = looptrack.apvts;
     int y = trackY + 18;
 
-    // -- BARS / SRC selectors --
+    // -- BARS selector and the state lamps --
     auto& bars = add<SegmentedControl> (apvts, t1 (tape::track::bars), colour::steel);
     bars.setBounds (trackBodyX, y, 88, 20);
-    auto& src = add<SegmentedControl> (apvts, t1 (tape::track::source), colour::steel);
-    src.setBounds (trackBodyX + 104, y, 96, 20);
-    y += 20 + 10;
-
-    // -- lamps --
     recLamp = &add<Lamp> (colour::coral);
-    recLamp->setBounds (trackBodyX + trackInnerW - 24, y + 2, 9, 9);
+    recLamp->setBounds (trackBodyX + trackInnerW - 24, y + 6, 9, 9);
     playLamp = &add<Lamp> (colour::teal);
-    playLamp->setBounds (trackBodyX + trackInnerW - 11, y + 2, 9, 9);
-    y += 14;
+    playLamp->setBounds (trackBodyX + trackInnerW - 11, y + 6, 9, 9);
+    y += 20 + 10;
 
     // -- REC / PLAY / CLR --
     auto& rec = add<LatchButton> (apvts, t1 (tape::track::rec), "REC", colour::coral);
@@ -66,27 +61,40 @@ void LooptrackEditor::buildTrack()
     // -- loop strip --
     loopView = &add<LoopView> (looptrack);
     loopView->setBounds (trackBodyX, y, trackInnerW, 30);
-    y += 30 + 12;
-
-    // -- two knob columns: left is the input trim and what it feeds, right is
-    //    the high shelf, the filter and the sends --
-    const int colLeftX = trackBodyX + 20;
-    const int colRightX = trackBodyX + trackInnerW - 20 - cellW;
+    y += 30 + 14;
 
     auto place = [] (KnobCell& c, int cx, int cy) { c.setBounds (cx, cy, cellW, cellH); };
 
-    int ly = y;
+    // -- INPUT: everything that shapes the signal before it reaches the tape,
+    //    boxed with the meter that shows the level it will be recorded at --
+    const int inputBoxH = cellH + 32;
+    auto& inputBox = add<FrameBox> ("Input", colour::coral);
+    inputBox.setBounds (trackBodyX, y, trackInnerW, inputBoxH);
+
+    const int inW = cellW * 3;
+    const int inX = trackBodyX + (trackInnerW - inW) / 2;
     preampCell = &add<KnobCell> (apvts, t1 (tape::track::preamp), "Preamp", colour::coral);
-    place (*preampCell, colLeftX, ly); ly += cellH;
+    place (*preampCell, inX, y + 14);
     inLowCell = &add<KnobCell> (apvts, t1 (tape::track::inLow), "In Low", colour::coral, true);
-    place (*inLowCell, colLeftX, ly); ly += cellH;
+    place (*inLowCell, inX + cellW, y + 14);
+    inHighCell = &add<KnobCell> (apvts, t1 (tape::track::inHigh), "In High", colour::coral, true);
+    place (*inHighCell, inX + cellW * 2, y + 14);
+
+    inMeter = &add<Meter>();
+    inMeter->setBounds (trackBodyX + 16, y + inputBoxH - 15, trackInnerW - 32, 8);
+
+    y += inputBoxH + 14;
+
+    // -- the tape's own EQ on the left, filter and sends on the right --
+    const int colLeftX = trackBodyX + 20;
+    const int colRightX = trackBodyX + trackInnerW - 20 - cellW;
+
+    int ly = y;
     place (add<KnobCell> (apvts, t1 (tape::track::eqHigh), "High", colour::steel, true), colLeftX, ly); ly += cellH;
     place (add<KnobCell> (apvts, t1 (tape::track::eqMid), "Mid", colour::steel, true), colLeftX, ly); ly += cellH;
     place (add<KnobCell> (apvts, t1 (tape::track::eqLow), "Low", colour::steel, true), colLeftX, ly); ly += cellH;
 
     int ry = y;
-    inHighCell = &add<KnobCell> (apvts, t1 (tape::track::inHigh), "In High", colour::coral, true);
-    place (*inHighCell, colRightX, ry); ry += cellH;
     place (add<KnobCell> (apvts, t1 (tape::track::filter), "Filter", colour::steel, true), colRightX, ry); ry += cellH;
     place (add<KnobCell> (apvts, t1 (tape::track::sendDelay), "Dly Send", colour::steel), colRightX, ry); ry += cellH;
     place (add<KnobCell> (apvts, t1 (tape::track::sendReverb), "Verb Send", colour::steel), colRightX, ry); ry += cellH;
@@ -234,6 +242,8 @@ void LooptrackEditor::timerCallback()
         playLamp->setOn (state == tape::LoopState::Playing);
     if (meter != nullptr)
         meter->setLevel (looptrack.panelState.outLevel.load());
+    if (inMeter != nullptr)
+        inMeter->setLevel (looptrack.panelState.inLevel.load());
 
     const bool inputOff = ! looptrack.panelState.inputStageActive.load();
     if (preampCell != nullptr) preampCell->setInactive (inputOff);

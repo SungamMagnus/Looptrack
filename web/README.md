@@ -25,13 +25,12 @@ cd web && python3 -m http.server 8777
 ```
 
 Open <http://localhost:8777>, click **Enable Audio**, and allow microphone
-access. No mic (or access denied)? The **TONE** button on Track 1 injects a
-220Hz test tone at the same point a mic would connect, so recording and
-looping are still testable end to end.
+access. No mic (or access denied)? Append `?tone=1` to the URL to inject a
+220Hz test tone where a mic would connect, so recording and looping are
+still testable end to end.
 
 ## Known simplifications vs. the plugin
 
-- No sample import (`SRC: Sample` is present in the UI but not wired up).
 - The lofi delay skips true sample-and-hold rate reduction (bit-crushing via
   a `WaveShaperNode` curve gets most of the character); the reverb skips the
   two modulated comb lengths that fight metallic ringing in the plugin.

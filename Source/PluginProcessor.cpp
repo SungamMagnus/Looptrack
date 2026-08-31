@@ -20,7 +20,6 @@ LooptrackProcessor::LooptrackProcessor()
     revRetParam = apvts.getRawParameterValue (tape::global::revRet);
 
     t0.bars = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::bars));
-    t0.source = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::source));
     t0.rec = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::rec));
     t0.clear = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::clear));
     t0.play = apvts.getRawParameterValue (tape::trackParamId (0, tape::track::play));
@@ -91,11 +90,12 @@ void LooptrackProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::M
     auto* chR = buffer.getNumChannels() > 1 ? buffer.getWritePointer (1) : chL;
 
     // Input stage: 2-band shelf EQ then preamp/drive. It is a record-chain
-    // stage -- it shapes what goes onto the tape and what you monitor while
-    // getting a level, and goes inert once a loop is playing back, because by
-    // then the sound is already committed to tape and an input trim has
-    // nothing left to act on.
-    const bool inputStageActive = loop.getState() != tape::LoopState::Playing;
+    // stage -- it shapes what goes onto the tape and what you hear while
+    // getting a level. It only has something to act on while the input is
+    // actually reaching the output, which is any time the tape is not
+    // driving it.
+    const bool inputStageActive = ! loop.loopOwnsOutput (playing);
+    float inPeak = 0.0f;
     if (inputStageActive)
     {
         tape::InputStage::Params inputParams;
@@ -103,7 +103,15 @@ void LooptrackProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::M
         inputParams.highShelfDb = t0.inHigh->load();
         inputParams.preampDb = t0.preamp->load();
         inputStage.process (inputParams, chL, chR, numSamples);
+
+        // metered here: post-preamp and post-in-EQ, so the VU shows what is
+        // actually hitting the tape rather than what arrived at the plug-in
+        for (int i = 0; i < numSamples; ++i)
+            inPeak = juce::jmax (inPeak, std::abs (chL[i]), std::abs (chR[i]));
     }
+
+    const float previousIn = panelState.inLevel.load();
+    panelState.inLevel.store (juce::jmax (inPeak, previousIn * 0.85f));
 
     loop.process (transportInfo, loopBars, armRequested, clearRequested, playing, varispeedRatio,
                   chL, chR, chL, chR, numSamples, sampleRate);
@@ -169,8 +177,6 @@ void LooptrackProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::M
     panelState.recordedLen.store ((float) loop.getRecordedLength());
     panelState.loopLengthSamples.store ((float) juce::jmax (1.0, loopLenSamples));
     panelState.inputStageActive.store (inputStageActive);
-
-    juce::ignoreUnused (t0.source);
 }
 
 juce::AudioProcessorEditor* LooptrackProcessor::createEditor()

@@ -39,6 +39,14 @@ public:
 
     LoopState getState() const { return state; }
     int getRecordedLength() const { return recordedLen; }
+
+    /** True when the tape is driving the output, so the live input is muted.
+        Any other time the input is passed through and the input stage in
+        front of the recorder is doing something audible. */
+    bool loopOwnsOutput (bool playEnabled) const
+    {
+        return state == LoopState::Playing && playEnabled && recordedLen > 0;
+    }
     double getReadPosition() const { return readPos; }
     int getWritePosition() const { return writePos; }
 

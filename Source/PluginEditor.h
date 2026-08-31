@@ -48,6 +48,7 @@ private:
     panel::Lamp* recLamp = nullptr;
     panel::Lamp* playLamp = nullptr;
     panel::Meter* meter = nullptr;
+    panel::Meter* inMeter = nullptr;
     panel::KnobCell* preampCell = nullptr;
     panel::KnobCell* inLowCell = nullptr;
     panel::KnobCell* inHighCell = nullptr;

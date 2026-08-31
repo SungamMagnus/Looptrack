@@ -36,23 +36,20 @@ function buildTrack1 (engine) {
   frame.body.appendChild(body);
 
   const selRow = document.createElement('div');
-  selRow.className = 'lt-row';
+  selRow.style.cssText = 'display:flex;justify-content:space-between;align-items:flex-end';
   const barsSel = createSelector({ options: ['1', '2', '3', '4'], selected: 1, onChange: (i) => engine.setBars(i + 1) });
-  const srcSel = createSelector({ options: ['Input', 'Sample'], selected: 0, onChange: (i) => engine.setSource(i === 0 ? 'input' : 'sample') });
-  selRow.append(labeled('BARS', barsSel.el), labeled('SRC', srcSel.el));
+  selRow.append(labeled('BARS', barsSel.el));
 
-  const stateRow = document.createElement('div');
-  stateRow.style.cssText = 'display:flex;justify-content:space-between;align-items:center';
   const stateLabel = document.createElement('span');
   stateLabel.className = 'lt-state-label';
   stateLabel.textContent = 'IDLE';
-  stateLabel.style.color = 'var(--ink-45)';
+  stateLabel.style.cssText = 'color:var(--ink-45);padding:2px 0';
   const lampRow = document.createElement('div');
-  lampRow.style.cssText = 'display:flex;gap:5px;align-items:center';
+  lampRow.style.cssText = 'display:flex;gap:5px;align-items:center;padding-bottom:4px';
   const recLamp = createLamp({ color: '#ed8159' });
   const playLamp = createLamp({ color: '#52b0a4' });
   lampRow.append(recLamp.el, playLamp.el);
-  stateRow.append(stateLabel, lampRow);
+  selRow.append(lampRow);
 
   const latchRow = document.createElement('div');
   latchRow.style.cssText = 'display:flex;gap:5px';
@@ -66,29 +63,36 @@ function buildTrack1 (engine) {
 
   const loopView = createLoopView();
 
-  // Two columns, each stacked in signal order. Left: the input trim and
-  // what it feeds -- Preamp above In Low, with the track EQ directly under
-  // it (high at the top, so frequency runs up the column). Right: In High
-  // above the filter and the two sends.
+  // The input stage is boxed on its own with the meter that shows the level
+  // it will be recorded at -- everything here happens before the tape.
+  const inputFrame = createFrame({ title: 'INPUT', color: 'var(--coral)' });
+  const inputRow = document.createElement('div');
+  inputRow.style.cssText = 'display:flex;justify-content:center;gap:2px;padding:4px 0 0';
+  const preampK = createKnob({ label: 'Preamp', min: -24, max: 18, value: 0, format: db, color: '#ed8159', onChange: (v) => engine.setPreamp(v) });
+  const inLowK = createKnob({ label: 'In Low', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159', onChange: (v) => engine.setInLow(v) });
+  const inHighK = createKnob({ label: 'In High', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159', onChange: (v) => engine.setInHigh(v) });
+  inputRow.append(preampK.el, inLowK.el, inHighK.el);
+  const inMeter = createMeter();
+  inMeter.el.style.cssText += 'width:auto;margin:6px 10px 8px;';
+  inputFrame.body.append(inputRow, inMeter.el);
+
+  // The tape's own EQ on the left, filter and sends on the right.
   const knobCols = document.createElement('div');
   knobCols.style.cssText = 'display:flex;justify-content:space-around;gap:6px';
 
   const leftCol = document.createElement('div');
   leftCol.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:2px';
-  const preampK = createKnob({ label: 'Preamp', min: -24, max: 18, value: 0, format: db, color: '#ed8159', onChange: (v) => engine.setPreamp(v) });
-  const inLowK = createKnob({ label: 'In Low', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159', onChange: (v) => engine.setInLow(v) });
   const highK = createKnob({ label: 'High', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqHigh(v) });
   const midK = createKnob({ label: 'Mid', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqMid(v) });
   const lowK = createKnob({ label: 'Low', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setEqLow(v) });
-  leftCol.append(preampK.el, inLowK.el, highK.el, midK.el, lowK.el);
+  leftCol.append(highK.el, midK.el, lowK.el);
 
   const rightCol = document.createElement('div');
   rightCol.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:2px';
-  const inHighK = createKnob({ label: 'In High', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159', onChange: (v) => engine.setInHigh(v) });
   const filterK = createKnob({ label: 'Filter', min: -1, max: 1, value: 0, format: filterText, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setFilter(v) });
   const sendDlyK = createKnob({ label: 'Dly Send', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8', onChange: (v) => engine.setSendDelay(v) });
   const sendRevK = createKnob({ label: 'Verb Send', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8', onChange: (v) => engine.setSendReverb(v) });
-  rightCol.append(inHighK.el, filterK.el, sendDlyK.el, sendRevK.el);
+  rightCol.append(filterK.el, sendDlyK.el, sendRevK.el);
 
   knobCols.append(leftCol, rightCol);
 
@@ -99,7 +103,7 @@ function buildTrack1 (engine) {
   const volumeK = createKnob({ label: 'Volume', min: -60, max: 6, value: 0, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setVolume(v) });
   bottomRow.append(hissK.el, panK.el, volumeK.el);
 
-  body.append(selRow, stateRow, latchRow, loopView.el, knobCols, bottomRow);
+  body.append(selRow, stateLabel, latchRow, loopView.el, inputFrame.el, knobCols, bottomRow);
 
   engine.onStateChange(() => {
     const st = engine.state;
@@ -117,8 +121,13 @@ function buildTrack1 (engine) {
     inHighK.setDisabled(inputOff);
   });
 
+  const inData = new Float32Array(engine.inputAnalyser.fftSize);
   (function tick () {
     loopView.update(engine.getVizState());
+    engine.inputAnalyser.getFloatTimeDomainData(inData);
+    let inPeak = 0;
+    for (let i = 0; i < inData.length; i++) inPeak = Math.max(inPeak, Math.abs(inData[i]));
+    inMeter.setLevel(engine.isInputStageActive() ? inPeak : 0);
     requestAnimationFrame(tick);
   })();
 
