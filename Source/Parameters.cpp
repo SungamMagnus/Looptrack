@@ -7,7 +7,9 @@ juce::String dbText (float db, int decimalPlaces)
 {
     if (db <= -59.9f)
         return "OFF";
-    return juce::String (db, decimalPlaces) + " dB";
+    // an explicit + on boosts, and no "-0.0" for a value that rounds to zero
+    const float shown = std::abs (db) < 0.05f ? 0.0f : db;
+    return (shown >= 0.0f ? "+" : "") + juce::String (shown, decimalPlaces) + " dB";
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
@@ -52,12 +54,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::inLow), 1 },
             "Track " + juce::String (t + 1) + " In Low",
-            juce::NormalisableRange<float> (-12.0f, 12.0f, 0.01f), 0.0f, dbAttrs ("dB")));
+            juce::NormalisableRange<float> (-12.0f, 12.0f, 0.01f), 0.0f,
+            dbAttrs ("dB").withStringFromValueFunction (
+                [] (float v, int) { return dbText (v); })));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::inHigh), 1 },
             "Track " + juce::String (t + 1) + " In High",
-            juce::NormalisableRange<float> (-12.0f, 12.0f, 0.01f), 0.0f, dbAttrs ("dB")));
+            juce::NormalisableRange<float> (-12.0f, 12.0f, 0.01f), 0.0f,
+            dbAttrs ("dB").withStringFromValueFunction (
+                [] (float v, int) { return dbText (v); })));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::preamp), 1 },
@@ -76,7 +82,12 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::pan), 1 },
             "Track " + juce::String (t + 1) + " Pan",
-            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.001f), 0.0f));
+            juce::NormalisableRange<float> (-1.0f, 1.0f, 0.001f), 0.0f,
+            juce::AudioParameterFloatAttributes {}.withStringFromValueFunction (
+                [] (float v, int) {
+                    if (std::abs (v) < 0.01f) return juce::String ("C");
+                    return (v < 0.0f ? "L" : "R") + juce::String (juce::roundToInt (std::abs (v) * 100.0f));
+                })));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::wow), 1 },
@@ -110,17 +121,23 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::eqLow), 1 },
             "Track " + juce::String (t + 1) + " Low",
-            juce::NormalisableRange<float> (-18.0f, 18.0f, 0.01f), 0.0f, dbAttrs ("dB")));
+            juce::NormalisableRange<float> (-18.0f, 18.0f, 0.01f), 0.0f,
+            dbAttrs ("dB").withStringFromValueFunction (
+                [] (float v, int) { return dbText (v); })));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::eqMid), 1 },
             "Track " + juce::String (t + 1) + " Mid",
-            juce::NormalisableRange<float> (-18.0f, 18.0f, 0.01f), 0.0f, dbAttrs ("dB")));
+            juce::NormalisableRange<float> (-18.0f, 18.0f, 0.01f), 0.0f,
+            dbAttrs ("dB").withStringFromValueFunction (
+                [] (float v, int) { return dbText (v); })));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::eqHigh), 1 },
             "Track " + juce::String (t + 1) + " High",
-            juce::NormalisableRange<float> (-18.0f, 18.0f, 0.01f), 0.0f, dbAttrs ("dB")));
+            juce::NormalisableRange<float> (-18.0f, 18.0f, 0.01f), 0.0f,
+            dbAttrs ("dB").withStringFromValueFunction (
+                [] (float v, int) { return dbText (v); })));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::filter), 1 },
@@ -158,7 +175,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
         juce::NormalisableRange<float> (-12.0f, 12.0f, 0.01f), 0.0f,
         juce::AudioParameterFloatAttributes {}.withLabel ("st").withStringFromValueFunction (
             [] (float v, int) {
-                return juce::String (v, 1) + " st (" + juce::String (std::pow (2.0f, v / 12.0f), 2) + "x)";
+                const float st = std::abs (v) < 0.05f ? 0.0f : v;
+                return (st >= 0.0f ? "+" : "") + juce::String (st, 1)
+                       + " st (" + juce::String (std::pow (2.0f, st / 12.0f), 2) + "x)";
             })));
 
     params.push_back (std::make_unique<juce::AudioParameterFloat> (

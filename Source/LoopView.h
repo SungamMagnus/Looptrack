@@ -3,12 +3,13 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 
 #include "LoopRecorder.h"
+#include "Panel.h"
 #include "PluginProcessor.h"
 
-/** Shows the loop's length and playhead: a bar the width of the current
-    musical loop length, filled with what's actually been recorded, with a
-    moving head -- the record head while capturing, the playback head once
-    it's looping. Polls PanelState on a timer; the audio thread never touches
+/** The loop's length and playhead: a thin strip the width of the current
+    musical loop, filled with what's actually been recorded, with a moving
+    head -- the record head while capturing, the playback head once it's
+    looping. Polls PanelState on a timer; the audio thread never touches
     this class. */
 class LoopView final : public juce::Component, private juce::Timer
 {
@@ -20,10 +21,10 @@ public:
 
     void paint (juce::Graphics& g) override
     {
-        auto bounds = getLocalBounds().toFloat().reduced (2.0f);
+        auto bounds = getLocalBounds().toFloat();
 
         g.setColour (juce::Colour (0xff101010));
-        g.fillRoundedRectangle (bounds, 4.0f);
+        g.fillRect (bounds);
 
         const auto state = (tape::LoopState) panelState().state.load();
         const float loopLen = juce::jmax (1.0f, panelState().loopLengthSamples.load());
@@ -31,32 +32,40 @@ public:
         const float writePos = panelState().writePos.load();
         const float readPos = panelState().readPos.load();
 
-        // filled region: what's actually been captured, against the full loop length
-        const float filledSamples = state == tape::LoopState::Recording ? writePos : recordedLen;
-        if (filledSamples > 0.0f)
+        const bool recording = state == tape::LoopState::Recording;
+
+        // bar gridlines -- eight to a loop, so the strip reads as musical time
+        g.setColour (juce::Colours::white.withAlpha (0.07f));
+        for (int i = 1; i < 8; ++i)
         {
-            const float frac = juce::jlimit (0.0f, 1.0f, filledSamples / loopLen);
-            g.setColour (juce::Colour (state == tape::LoopState::Recording ? 0xff7a3535 : 0xff2f6478));
-            g.fillRoundedRectangle (bounds.withWidth (bounds.getWidth() * frac), 4.0f);
+            const float x = bounds.getWidth() * (float) i / 8.0f;
+            g.drawLine (x, bounds.getY(), x, bounds.getBottom(), 1.0f);
         }
 
-        // playhead
-        if (state == tape::LoopState::Playing || state == tape::LoopState::Recording)
+        // filled region: what's actually been captured, against the full loop
+        const float filled = recording ? writePos : recordedLen;
+        if (filled > 0.0f)
         {
-            const float pos = state == tape::LoopState::Recording ? writePos : readPos;
+            const float frac = juce::jlimit (0.0f, 1.0f, filled / loopLen);
+            g.setColour (juce::Colour (recording ? 0xff7a3535 : 0xff2f6478));
+            g.fillRect (bounds.withWidth (bounds.getWidth() * frac));
+        }
+
+        if (state == tape::LoopState::Playing || recording)
+        {
+            const float pos = recording ? writePos : readPos;
             const float frac = juce::jlimit (0.0f, 1.0f, pos / loopLen);
             const float x = bounds.getX() + bounds.getWidth() * frac;
-            g.setColour (state == tape::LoopState::Recording ? juce::Colour (0xffe06060)
-                                                               : juce::Colour (0xff60e0a8));
+            g.setColour (juce::Colour (recording ? 0xffe06060 : 0xff60e0a8));
             g.fillRect (juce::Rectangle<float> (x - 1.0f, bounds.getY(), 2.0f, bounds.getHeight()));
         }
 
-        g.setColour (juce::Colours::white.withAlpha (0.85f));
-        g.setFont (juce::Font (juce::FontOptions (13.0f, juce::Font::bold)));
-        g.drawText (stateLabel (state), bounds.reduced (6.0f), juce::Justification::topLeft);
+        g.setColour (juce::Colours::white.withAlpha (0.9f));
+        g.setFont (panel::monoFont (9.0f, true));
+        g.drawText (stateLabel (state), bounds.reduced (6.0f, 0.0f), juce::Justification::centredLeft);
 
-        g.setColour (juce::Colours::white.withAlpha (0.25f));
-        g.drawRoundedRectangle (bounds, 4.0f, 1.0f);
+        g.setColour (panel::colour::inkAlpha (0.38f));
+        g.drawRect (bounds, 1.0f);
     }
 
 private:
@@ -64,10 +73,10 @@ private:
     {
         switch (s)
         {
-            case tape::LoopState::Idle: return "IDLE";
-            case tape::LoopState::Armed: return "ARMED";
+            case tape::LoopState::Idle:      return "IDLE";
+            case tape::LoopState::Armed:     return "ARMED";
             case tape::LoopState::Recording: return "REC";
-            case tape::LoopState::Playing: return "PLAYING";
+            case tape::LoopState::Playing:   return "PLAYING";
         }
         return "";
     }

@@ -38,7 +38,8 @@ set(LOOPTRACK_SOURCES
     Source/TapeCharacter.cpp
     Source/ChannelStrip.cpp
     Source/LofiBus.cpp
-    Source/InputStage.cpp)
+    Source/InputStage.cpp
+    Source/Panel.cpp)
 
 juce_add_plugin(Looptrack
     COMPANY_NAME            "Sungam"

@@ -146,13 +146,20 @@ void LooptrackProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::M
     lofiBus.process (busParams, sendDelayPtr, sendReverbPtr, chL, chR, numSamples);
 
     outGain.setTargetValue (juce::Decibels::decibelsToGain (outParam->load()));
+    float peak = 0.0f;
     for (int i = 0; i < numSamples; ++i)
     {
         const float g = outGain.getNextValue();
         chL[i] *= g;
         if (chR != chL)
             chR[i] *= g;
+        peak = juce::jmax (peak, std::abs (chL[i]), std::abs (chR[i]));
     }
+
+    // decay the published peak rather than replacing it, so the meter falls
+    // smoothly instead of flickering between blocks
+    const float previous = panelState.outLevel.load();
+    panelState.outLevel.store (juce::jmax (peak, previous * 0.85f));
 
     const double loopQ = transportInfo.loopQuarters (loopBars);
     const double loopLenSamples = loopQ * (60.0 / juce::jmax (1.0, transportInfo.bpm)) * sampleRate;

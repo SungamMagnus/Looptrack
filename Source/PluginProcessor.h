@@ -21,6 +21,7 @@ struct PanelState
     std::atomic<float> recordedLen { 0.0f };   // samples captured, once a pass has finished
     std::atomic<float> loopLengthSamples { 1.0f }; // current musical loop length at host tempo
     std::atomic<bool> inputStageActive { true };   // false once a loop is playing back
+    std::atomic<float> outLevel { 0.0f };          // post-fader peak, for the meter
 };
 
 class LooptrackProcessor final : public juce::AudioProcessor

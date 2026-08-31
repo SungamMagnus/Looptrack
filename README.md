@@ -14,9 +14,8 @@ shared lofi delay and reverb bus.
 
 ![Looptrack panel](docs/readme-hero.png)
 
-*This is the web prototype's panel — the actual VST3/AU editor is still
-JUCE's generic parameter list while the real panel gets ported to C++. Try
-the prototype yourself: [`web/`](web/).*
+*The plug-in's own editor, rendered offscreen by `panel_shot`. The same
+panel runs in the browser — see [Web prototype](#web-prototype).*
 
 ## Install
 
@@ -112,10 +111,8 @@ cmake --build build --target dsp_check panel_shot -j8
 - ✅ Single track: record/loop, tempo sync + truncation, varispeed,
   wow/flutter, hiss, input EQ + preamp, 3-band EQ, DJ filter, shared lofi
   delay/reverb bus.
-- ✅ Web prototype of Track 1, in the real panel design.
+- ✅ The panel, in the plug-in and in the browser prototype.
 - 🚧 Sample import (`SRC: Sample` exists in the UI, not wired up yet).
-- 🚧 The real panel, ported to C++ — the plug-in still uses JUCE's generic
-  parameter list.
 - 📋 Tracks 2–4 — the architecture (shared mod-LFO phase, prefixed parameter
   IDs, a mono-summed FX bus) is already built for four tracks; only the
   replication is left.

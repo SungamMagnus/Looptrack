@@ -5,6 +5,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 
+#include "Panel.h"
 #include "PluginEditor.h"
 #include "PluginProcessor.h"
 
@@ -100,7 +101,7 @@ int main (int argc, char** argv)
     }
 
     std::unique_ptr<juce::AudioProcessorEditor> editor (proc.createEditor());
-    editor->setSize (520, 520);
+    editor->setSize (panel::metric::designW, panel::metric::designH);
 
     juce::Image img (juce::Image::ARGB, editor->getWidth() * 2, editor->getHeight() * 2, true);
     juce::Graphics g (img);
