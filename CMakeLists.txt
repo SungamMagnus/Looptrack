@@ -30,6 +30,13 @@ if(NOT EXISTS "${JUCE_DIR}/CMakeLists.txt")
 endif()
 add_subdirectory("${JUCE_DIR}" "${CMAKE_BINARY_DIR}/JUCE" EXCLUDE_FROM_ALL)
 
+# Nunito (SIL OFL 1.1, embeddable) -- the panel's typeface, baked in as C++
+# byte arrays so there's no runtime font file to go missing on someone else's
+# machine.
+juce_add_binary_data(LooptrackAssets SOURCES
+    Source/Assets/Nunito-Regular.ttf
+    Source/Assets/Nunito-Bold.ttf)
+
 set(LOOPTRACK_SOURCES
     Source/PluginProcessor.cpp
     Source/PluginEditor.cpp
@@ -71,7 +78,7 @@ target_compile_definitions(Looptrack PUBLIC
 target_include_directories(Looptrack PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 
 target_link_libraries(Looptrack
-    PRIVATE juce::juce_audio_utils
+    PRIVATE juce::juce_audio_utils LooptrackAssets
     PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
@@ -88,6 +95,6 @@ if(LOOPTRACK_TOOLS)
             JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0
             JUCE_STANDALONE_APPLICATION=1 JUCE_MODAL_LOOPS_PERMITTED=1)
         target_include_directories(${tool} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
-        target_link_libraries(${tool} PRIVATE juce::juce_audio_utils)
+        target_link_libraries(${tool} PRIVATE juce::juce_audio_utils LooptrackAssets)
     endforeach()
 endif()

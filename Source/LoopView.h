@@ -61,7 +61,7 @@ public:
         }
 
         g.setColour (juce::Colours::white.withAlpha (0.9f));
-        g.setFont (panel::monoFont (9.0f, true));
+        g.setFont (panel::panelFont (9.0f, true));
         g.drawText (stateLabel (state), bounds.reduced (6.0f, 0.0f), juce::Justification::centredLeft);
 
         g.setColour (panel::colour::inkAlpha (0.38f));

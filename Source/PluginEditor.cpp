@@ -188,13 +188,13 @@ void LooptrackEditor::paint (juce::Graphics& g)
 
     // header
     g.setColour (colour::inkAlpha (0.45f));
-    g.setFont (monoFont (9.0f, true));
+    g.setFont (panelFont (9.0f, true));
     g.drawText ("4-TRACK CASSETTE EMULATION - TRACK 1", juce::Rectangle<int> (pad, 20, designW - pad * 2, 14),
                 juce::Justification::centredRight);
 
     // section rules
     g.setColour (colour::coral);
-    g.setFont (monoFont (9.0f, true));
+    g.setFont (panelFont (9.0f, true));
     g.drawText ("TRACK 1", juce::Rectangle<int> (trackX + 6, trackY - 6, 80, 12), juce::Justification::centredLeft);
     g.setColour (colour::inkAlpha (0.22f));
     g.drawRect (juce::Rectangle<float> ((float) trackX, (float) trackY, (float) trackW,
@@ -205,23 +205,23 @@ void LooptrackEditor::paint (juce::Graphics& g)
                 (float) (globalX - gap), (float) (designH - pad), 1.0f);
 
     g.setColour (colour::inkAlpha (0.78f));
-    g.setFont (monoFont (11.0f, true));
+    g.setFont (panelFont (11.0f, true));
     g.drawText ("GLOBAL", juce::Rectangle<int> (globalX, trackY - 8, 120, 14), juce::Justification::centredLeft);
     g.setColour (colour::inkAlpha (0.18f));
     g.drawLine ((float) globalX, (float) (trackY + 8), (float) (globalX + globalW), (float) (trackY + 8), 1.0f);
 
     // wordmark
     g.setColour (colour::inkAlpha (0.85f));
-    g.setFont (monoFont (16.0f, true));
+    g.setFont (panelFont (16.0f, true));
     g.drawText ("LOOPTRACK", juce::Rectangle<int> (globalX, designH - pad - 34, globalW, 20),
                 juce::Justification::centredRight);
     g.setColour (colour::inkAlpha (0.45f));
-    g.setFont (monoFont (7.5f));
+    g.setFont (panelFont (7.5f));
     g.drawText ("TAPE MULTITRACK", juce::Rectangle<int> (globalX, designH - pad - 16, globalW, 10),
                 juce::Justification::centredRight);
 
     g.setColour (colour::inkAlpha (0.45f));
-    g.setFont (monoFont (7.0f));
+    g.setFont (panelFont (7.0f));
     g.drawText ("OUT LEVEL", juce::Rectangle<int> (globalX, outSectionY + 2, 100, 10),
                 juce::Justification::centredLeft);
 }

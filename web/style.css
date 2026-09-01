@@ -1,6 +1,20 @@
+/* Nunito (SIL OFL 1.1), self-hosted -- see assets/ for the license file. */
+@font-face {
+  font-family: "Nunito";
+  src: url("assets/Nunito-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("assets/Nunito-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
 /* Design tokens, verbatim from design/panel-sketch.html (the Sungam house
-   system). Component styling below is original -- the sketch's own
-   component JS is bundled/proprietary to the design tool and isn't reused. */
+   system) except --font-panel, which was --font-mono there -- this project
+   uses Nunito, not a monospace face, so the token is renamed to match. */
 :root {
   --paper: #f0ece2;
   --ink: #1a1a17;
@@ -25,7 +39,7 @@
   --amber: #c08d16;
   --lilac: #d3a7dc;
 
-  --font-mono: Menlo, Monaco, "DejaVu Sans Mono", "Courier New", monospace;
+  --font-panel: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --text-2xs: 7.5px;
   --text-xs: 8px;
@@ -50,7 +64,7 @@
 body {
   margin: 0;
   background: #dedad0;
-  font-family: var(--font-mono);
+  font-family: var(--font-panel);
   color: var(--ink);
 }
 
@@ -74,7 +88,7 @@ a:hover { color: var(--coral); }
 }
 
 .lt-topbar-tag {
-  font: 700 9px var(--font-mono);
+  font: 700 9px var(--font-panel);
   letter-spacing: .15em;
   color: var(--ink-45);
   text-transform: uppercase;
@@ -88,7 +102,7 @@ a:hover { color: var(--coral); }
 
 .lt-transport input[type="number"] {
   width: 48px;
-  font: 700 10px var(--font-mono);
+  font: 700 10px var(--font-panel);
   background: var(--paper);
   border: 1.2px solid var(--ink-32);
   color: var(--ink);
@@ -97,7 +111,7 @@ a:hover { color: var(--coral); }
 }
 
 .lt-transport button {
-  font: 700 9px var(--font-mono);
+  font: 700 9px var(--font-panel);
   letter-spacing: .06em;
   padding: 5px 10px;
   background: var(--paper);
@@ -131,7 +145,7 @@ a:hover { color: var(--coral); }
   left: 8px;
   background: var(--paper);
   padding: 0 5px;
-  font: 700 9px var(--font-mono);
+  font: 700 9px var(--font-panel);
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -170,7 +184,7 @@ a:hover { color: var(--coral); }
 }
 
 .lt-selector button {
-  font: 700 8.5px var(--font-mono);
+  font: 700 8.5px var(--font-panel);
   background: var(--paper);
   border: none;
   border-right: 1px solid var(--ink-18);
@@ -217,7 +231,7 @@ a:hover { color: var(--coral); }
 }
 
 .lt-state-label {
-  font: 700 8px var(--font-mono);
+  font: 700 8px var(--font-panel);
   letter-spacing: .05em;
 }
 
@@ -234,7 +248,7 @@ a:hover { color: var(--coral); }
 
 /* ---- Latch (toggle button) ---- */
 .lt-latch {
-  font: 700 7.5px var(--font-mono);
+  font: 700 7.5px var(--font-panel);
   letter-spacing: .05em;
   width: 42px;
   height: 17px;
@@ -270,7 +284,7 @@ a:hover { color: var(--coral); }
 }
 
 .lt-knob-value {
-  font: 700 7.5px var(--font-mono);
+  font: 700 7.5px var(--font-panel);
   color: var(--ink-70);
   min-height: 10px;
 }
@@ -316,7 +330,7 @@ a:hover { color: var(--coral); }
 
 /* ---- Wordmark ---- */
 .lt-wordmark {
-  font: 700 16px var(--font-mono);
+  font: 700 16px var(--font-panel);
   letter-spacing: .28em;
   color: var(--ink-85);
 }
@@ -339,7 +353,7 @@ a:hover { color: var(--coral); }
 .lt-global-heading {
   padding-bottom: 6px;
   border-bottom: 1px solid var(--ink-18);
-  font: 700 11px var(--font-mono);
+  font: 700 11px var(--font-panel);
   letter-spacing: .1em;
   color: var(--ink-78);
 }

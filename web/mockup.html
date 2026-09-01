@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Looptrack — proposed layout mockup</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="lt-app">
+  <div class="lt-body" id="ltBody" style="align-items:flex-start"></div>
+</div>
+<script type="module">
+import {
+  createKnob, createSelector, createLatch, createLamp, createTerminal,
+  createFrame, createMeter, createLoopView, createWordmark
+} from './components.js';
+
+const ltBody = document.getElementById('ltBody');
+
+// ---- static formatters (duplicated from app.js's local helpers -- app.js
+// itself is untouched) ----
+function db (v) { return v <= -59.9 ? 'OFF' : (v >= 0 ? '+' : '') + v.toFixed(1) + ' dB'; }
+function pct (v) { return Math.round(v * 100) + '%'; }
+function filterText (v) { return Math.abs(v) < 0.02 ? 'OFF' : (v < 0 ? 'LP' : 'HP'); }
+function ratioText (v) { return v.toFixed(2) + 'x'; }
+function msText (v) { return Math.round(v) + ' ms'; }
+function panText (v) { return v.toFixed(2); }
+function speedText (v) { return (v >= 0 ? '+' : '') + v.toFixed(1) + ' st (' + Math.pow(2, v / 12).toFixed(2) + 'x)'; }
+
+function labeled (text, el) {
+  const wrap = document.createElement('div');
+  wrap.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:1px';
+  const l = document.createElement('span');
+  l.className = 'lt-control-label';
+  l.textContent = text;
+  wrap.append(l, el);
+  return wrap;
+}
+
+// The canvas inside a knob's wrap is drawn at a fixed pixel size --
+// resizing its CSS box scales the drawing cleanly. Also nudges the
+// label/value font down a touch at small sizes so text doesn't wrap.
+function scaleKnob (knob, px) {
+  const canvas = knob.el.querySelector('canvas');
+  canvas.style.width = px + 'px';
+  canvas.style.height = px + 'px';
+  if (px < 40) {
+    const label = knob.el.querySelector('.lt-knob-label');
+    const value = knob.el.querySelector('.lt-knob-value');
+    if (label) label.style.fontSize = '6.5px';
+    if (value) value.style.fontSize = '6.5px';
+  } else if (px > 44) {
+    const label = knob.el.querySelector('.lt-knob-label');
+    const value = knob.el.querySelector('.lt-knob-value');
+    if (label) label.style.fontSize = '8.5px';
+    if (value) value.style.fontSize = '8.5px';
+  }
+}
+
+// ============================================================
+// TRACK STRIP -- narrowed to 236px (was 320px in the shipping panel).
+// ============================================================
+function buildTrackStrip () {
+  const frame = createFrame({ title: 'TRACK 1', color: 'var(--coral)' });
+  frame.el.style.width = '236px';
+  const body = document.createElement('div');
+  body.className = 'lt-track-body';
+  body.style.width = '208px';
+  frame.body.appendChild(body);
+
+  // Row 1: BARS selector + REC/PLAY/CLR on the same row, to its right.
+  const row1 = document.createElement('div');
+  row1.style.cssText = 'display:flex;align-items:flex-end;gap:10px;width:208px';
+
+  // Widened so all four bar-count segments show (was clipping the "4").
+  // The buttons' default padding wants more than 78px for 4 digits, so
+  // trim their padding and let them share the row evenly.
+  const barsSel = createSelector({ options: ['1', '2', '3', '4'], selected: 1 });
+  barsSel.el.style.width = '78px';
+  barsSel.el.querySelectorAll('button').forEach(b => {
+    b.style.padding = '4px 2px';
+    b.style.flex = '1';
+    b.style.textAlign = 'center';
+  });
+  const barsWrap = labeled('BARS', barsSel.el);
+  barsWrap.style.width = '78px';
+
+  // Transport buttons give back the width the selector needed.
+  const latchRow = document.createElement('div');
+  latchRow.style.cssText = 'display:flex;gap:3px;width:120px';
+  const recLatch = createLatch({ label: 'REC', color: '#ed8159' });
+  const playLatch = createLatch({ label: 'PLAY', color: '#52b0a4', on: true });
+  const clrLatch = createLatch({ label: 'CLR', color: '#4f7ea8' });
+  [recLatch, playLatch, clrLatch].forEach(l => { l.el.style.width = '38px'; });
+  latchRow.append(recLatch.el, playLatch.el, clrLatch.el);
+
+  row1.append(barsWrap, latchRow);
+
+  // Row 2: loop view, 208px wide x 30px tall, with two LED lamps at its
+  // right end (a new detail proposed for this layout).
+  const loopView = createLoopView();
+  loopView.el.style.width = '208px';
+  loopView.el.style.height = '30px';
+  loopView.update({ state: 'PLAYING', filledFrac: 1.0, headFrac: 0.42 });
+
+  const lampRow = document.createElement('div');
+  lampRow.style.cssText = 'position:absolute;right:6px;top:50%;transform:translateY(-50%);display:flex;gap:5px;z-index:2';
+  const recLamp = createLamp({ color: '#ed8159' });
+  const playLamp = createLamp({ color: '#52b0a4' });
+  recLamp.setOn(false);
+  playLamp.setOn(true);
+  lampRow.append(recLamp.el, playLamp.el);
+  loopView.el.style.position = 'relative';
+  loopView.el.appendChild(lampRow);
+
+  // INPUT box
+  const inputFrame = createFrame({ title: 'INPUT', color: 'var(--coral)' });
+  inputFrame.el.style.width = '208px';
+
+  // Single row, three smaller knobs: Preamp, In Low, In High.
+  const inRow = document.createElement('div');
+  inRow.style.cssText = 'display:flex;justify-content:center;gap:0;padding-top:4px;width:198px;margin:0 auto';
+  const preampK = createKnob({ label: 'Preamp', min: -24, max: 18, value: 6, format: db, color: '#ed8159' });
+  const inLowK = createKnob({ label: 'In Low', min: -12, max: 12, value: 0, format: db, bipolar: true, color: '#ed8159' });
+  const inHighK = createKnob({ label: 'In High', min: -12, max: 12, value: 2, format: db, bipolar: true, color: '#ed8159' });
+  [preampK, inLowK, inHighK].forEach(k => { scaleKnob(k, 34); k.el.style.width = '66px'; });
+  inRow.append(preampK.el, inLowK.el, inHighK.el);
+
+  const inMeter = createMeter();
+  inMeter.el.style.cssText += 'width:176px;margin:8px auto 10px;';
+  inMeter.setLevel(0.55);
+
+  inputFrame.body.append(inRow, inMeter.el);
+
+  // Tape EQ (left) / Filter + sends (right) -- scaled up to 60px to fill
+  // the slack a sparse 44px two-column block left in the 208px inner
+  // width and the taller track frame.
+  const knobCols = document.createElement('div');
+  knobCols.style.cssText = 'display:flex;justify-content:center;gap:0;width:192px;margin:0 auto';
+
+  const leftCol = document.createElement('div');
+  leftCol.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:4px;width:96px';
+  const highK = createKnob({ label: 'High', min: -18, max: 18, value: -2, format: db, bipolar: true, color: '#4f7ea8' });
+  const midK = createKnob({ label: 'Mid', min: -18, max: 18, value: 0, format: db, bipolar: true, color: '#4f7ea8' });
+  const lowK = createKnob({ label: 'Low', min: -18, max: 18, value: 3, format: db, bipolar: true, color: '#4f7ea8' });
+  leftCol.append(highK.el, midK.el, lowK.el);
+
+  const rightCol = document.createElement('div');
+  rightCol.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:4px;width:96px';
+  const filterK = createKnob({ label: 'Filter', min: -1, max: 1, value: 0, format: filterText, bipolar: true, color: '#4f7ea8' });
+  const sendDlyK = createKnob({ label: 'Dly Send', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8' });
+  const sendRevK = createKnob({ label: 'Verb Send', min: -60, max: 0, value: -60, format: db, color: '#4f7ea8' });
+  rightCol.append(filterK.el, sendDlyK.el, sendRevK.el);
+
+  [highK, midK, lowK, filterK, sendDlyK, sendRevK].forEach(k => {
+    scaleKnob(k, 60);
+    k.el.style.width = '96px';
+    k.el.style.minHeight = '82px';
+    k.el.style.justifyContent = 'center';
+  });
+
+  knobCols.append(leftCol, rightCol);
+
+  // Bottom row: Pan / Volume (Hiss removed -- it lives in GLOBAL now) --
+  // also scaled to 60px, cells widened to match the columns above.
+  const bottomRow = document.createElement('div');
+  bottomRow.style.cssText = 'display:flex;justify-content:center;gap:0;padding-top:6px;border-top:1px solid var(--ink-13);width:192px;margin:0 auto';
+  const panK = createKnob({ label: 'Pan', min: -1, max: 1, value: 0, format: panText, bipolar: true, color: '#4f7ea8' });
+  const volumeK = createKnob({ label: 'Volume', min: -60, max: 6, value: 0, format: db, bipolar: true, color: '#4f7ea8' });
+  [panK, volumeK].forEach(k => {
+    scaleKnob(k, 60);
+    k.el.style.width = '96px';
+    k.el.style.minHeight = '82px';
+    k.el.style.justifyContent = 'center';
+  });
+  bottomRow.append(panK.el, volumeK.el);
+
+  body.append(row1, loopView.el, inputFrame.el, knobCols, bottomRow);
+  return frame.el;
+}
+
+// ============================================================
+// GLOBAL COLUMN -- 272px (3 x 84px section-columns + 2 x 10px gaps),
+// narrower and shorter than the shipping 340px wide/stacked-rows layout.
+// TAPE CHARACTER / DELAY / REVERB are now vertical knob stacks sitting
+// side by side, with a master area (Varispeed, Output, out meter/jacks,
+// wordmark) below spanning the full width.
+// ============================================================
+function buildSectionColumn ({ title, knobs }) {
+  const frame = createFrame({ title, color: 'var(--teal)' });
+  frame.el.style.width = '84px';
+  // "TAPE CHARACTER" doesn't fit on one line at 84px wide -- shrink the
+  // title text/letter-spacing rather than let it wrap onto the knobs.
+  const titleEl = frame.el.querySelector('.lt-frame-title');
+  titleEl.style.fontSize = '7px';
+  titleEl.style.letterSpacing = '.02em';
+  titleEl.style.whiteSpace = 'nowrap';
+  titleEl.style.left = '5px';
+  titleEl.style.padding = '0 3px';
+  const col = document.createElement('div');
+  col.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:6px;padding-top:8px;width:84px';
+  knobs.forEach(k => col.appendChild(k.el));
+  frame.body.appendChild(col);
+  return frame.el;
+}
+
+function buildGlobal () {
+  const wrap = document.createElement('div');
+  wrap.className = 'lt-global';
+  wrap.style.width = '272px';
+
+  const heading = document.createElement('div');
+  heading.className = 'lt-global-heading';
+  heading.textContent = 'GLOBAL';
+
+  const sectionsRow = document.createElement('div');
+  sectionsRow.style.cssText = 'display:flex;align-items:flex-start;gap:10px;width:272px';
+
+  const wowK = createKnob({ label: 'Wow', min: 0, max: 1, value: 0.3, format: pct, color: '#52b0a4' });
+  const wowRateK = createKnob({ label: 'Wow Rate', min: 0.25, max: 4, value: 1, format: ratioText, color: '#52b0a4' });
+  const flutterK = createKnob({ label: 'Flutter', min: 0, max: 1, value: 0.25, format: pct, color: '#52b0a4' });
+  const flutterRateK = createKnob({ label: 'Flut Rate', min: 0.25, max: 4, value: 1, format: ratioText, color: '#52b0a4' });
+  const hissK = createKnob({ label: 'Hiss', min: 0, max: 1, value: 0.25, format: pct, color: '#52b0a4' });
+  const charCol = buildSectionColumn({ title: 'TAPE CHARACTER', knobs: [wowK, wowRateK, flutterK, flutterRateK, hissK] });
+
+  const dlyTimeK = createKnob({ label: 'Time', min: 10, max: 2000, value: 250, format: msText, color: '#52b0a4' });
+  const dlyFbK = createKnob({ label: 'Fb', min: 0, max: 0.95, value: 0.45, format: pct, color: '#52b0a4' });
+  const dlyToneK = createKnob({ label: 'Tone', min: 0, max: 1, value: 0.5, format: pct, color: '#52b0a4' });
+  const dlyRetK = createKnob({ label: 'Return', min: -60, max: 6, value: 0, format: db, bipolar: true, color: '#52b0a4' });
+  const dlyCol = buildSectionColumn({ title: 'DELAY', knobs: [dlyTimeK, dlyFbK, dlyToneK, dlyRetK] });
+
+  const revSizeK = createKnob({ label: 'Size', min: 0, max: 1, value: 0.55, format: pct, color: '#52b0a4' });
+  const revDampK = createKnob({ label: 'Damp', min: 0, max: 1, value: 0.5, format: pct, color: '#52b0a4' });
+  const revRetK = createKnob({ label: 'Return', min: -60, max: 6, value: 0, format: db, bipolar: true, color: '#52b0a4' });
+  const revCol = buildSectionColumn({ title: 'REVERB', knobs: [revSizeK, revDampK, revRetK] });
+
+  sectionsRow.append(charCol, dlyCol, revCol);
+
+  // Master area: Varispeed (scaled up) on the left, Output on the right.
+  const masterRow = document.createElement('div');
+  masterRow.style.cssText = 'display:flex;align-items:center;justify-content:space-between;width:272px;padding-top:6px';
+  const speedK = createKnob({ label: 'Varispeed', min: -12, max: 12, value: 0, format: speedText, bipolar: true, color: '#ed8159' });
+  scaleKnob(speedK, 56);
+  const outK = createKnob({ label: 'Output', min: -60, max: 6, value: 1.5, format: db, bipolar: true, color: '#4f7ea8' });
+  masterRow.append(speedK.el, outK.el);
+
+  const outLevelWrap = document.createElement('div');
+  outLevelWrap.style.cssText = 'width:272px;padding-top:4px';
+  const meterLabel = document.createElement('span');
+  meterLabel.className = 'lt-control-label';
+  meterLabel.textContent = 'OUT LEVEL';
+  meterLabel.style.cssText = 'text-align:left;display:block;margin-bottom:4px';
+  const meter = createMeter();
+  meter.el.style.width = '272px';
+  meter.setLevel(0.35);
+  const termRow = document.createElement('div');
+  termRow.style.cssText = 'display:flex;gap:10px;margin-top:6px';
+  termRow.append(createTerminal('OUT L'), createTerminal('OUT R'));
+  outLevelWrap.append(meterLabel, meter.el, termRow);
+
+  const wordmark = createWordmark('LOOPTRACK');
+  wordmark.style.cssText = 'margin-top:6px;padding-top:8px;width:272px;text-align:right';
+
+  wrap.append(heading, sectionsRow, masterRow, outLevelWrap, wordmark);
+  return wrap;
+}
+
+ltBody.appendChild(buildTrackStrip());
+const divider = document.createElement('div');
+divider.className = 'lt-divider';
+ltBody.appendChild(divider);
+ltBody.appendChild(buildGlobal());
+</script>
+</body>
+</html>

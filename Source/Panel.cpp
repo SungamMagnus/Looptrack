@@ -1,12 +1,34 @@
 #include "Panel.h"
 
+#include "BinaryData.h"
+
 namespace panel
 {
 
-juce::Font monoFont (float height, bool bold)
+namespace
 {
-    return juce::Font (juce::FontOptions (juce::Font::getDefaultMonospacedFontName(), height,
-                                          bold ? juce::Font::bold : juce::Font::plain));
+    /** Regular and Bold are separate embedded files, not one variable font --
+        JUCE's Font::bold on a single weight just skews the strokes, which
+        looks wrong next to a face that has a real bold. Loaded once and kept:
+        Typeface::createSystemTypefaceFor parses the font on every call. */
+    juce::Typeface::Ptr regularTypeface()
+    {
+        static juce::Typeface::Ptr t = juce::Typeface::createSystemTypefaceFor (
+            BinaryData::NunitoRegular_ttf, (size_t) BinaryData::NunitoRegular_ttfSize);
+        return t;
+    }
+
+    juce::Typeface::Ptr boldTypeface()
+    {
+        static juce::Typeface::Ptr t = juce::Typeface::createSystemTypefaceFor (
+            BinaryData::NunitoBold_ttf, (size_t) BinaryData::NunitoBold_ttfSize);
+        return t;
+    }
+}
+
+juce::Font panelFont (float height, bool bold)
+{
+    return juce::Font (juce::FontOptions (height).withTypeface (bold ? boldTypeface() : regularTypeface()));
 }
 
 // ---------------------------------------------------------------- knob
@@ -89,11 +111,11 @@ void KnobCell::paint (juce::Graphics& g)
     const float alpha = inactive ? 0.3f : 1.0f;
 
     g.setColour (colour::inkAlpha (0.55f * alpha));
-    g.setFont (monoFont (8.5f));
+    g.setFont (panelFont (8.5f));
     g.drawText (name, getLocalBounds().removeFromTop (11), juce::Justification::centred);
 
     g.setColour (colour::inkAlpha (0.70f * alpha));
-    g.setFont (monoFont (8.5f, true));
+    g.setFont (panelFont (8.5f, true));
     g.drawText (valueText, getLocalBounds().removeFromBottom (12), juce::Justification::centred);
 }
 
@@ -173,7 +195,7 @@ void SegmentedControl::paint (juce::Graphics& g)
         }
 
         g.setColour (isOn ? colour::paper : colour::inkAlpha (0.62f));
-        g.setFont (monoFont (8.5f, true));
+        g.setFont (panelFont (8.5f, true));
         g.drawText (choices[i], seg, juce::Justification::centred);
 
         if (i > 0)
@@ -234,7 +256,7 @@ void LatchButton::paint (juce::Graphics& g)
     g.drawRect (bounds, 1.2f);
 
     g.setColour (state ? juce::Colours::white : colour::inkAlpha (0.62f));
-    g.setFont (monoFont (7.5f, true));
+    g.setFont (panelFont (7.5f, true));
     g.drawText (text, bounds, juce::Justification::centred);
 }
 
@@ -309,14 +331,18 @@ void FrameBox::paint (juce::Graphics& g)
     g.setColour (colour::inkAlpha (0.22f));
     g.drawRect (bounds, 1.2f);
 
-    g.setFont (monoFont (9.0f, true));
-    const int textW = (int) juce::GlyphArrangement::getStringWidth (g.getCurrentFont(), title) + 10;
+    g.setFont (panelFont (9.0f, true));
+    const juce::String upper = title.toUpperCase();
+    // measure what's actually drawn, not the mixed-case source string -- a
+    // proportional face's capitals run wider than its lowercase, so the two
+    // can disagree (a monospace face never surfaced this, same width either way)
+    const int textW = (int) juce::GlyphArrangement::getStringWidth (g.getCurrentFont(), upper) + 10;
     const juce::Rectangle<int> label (10, 0, textW, 12);
 
     g.setColour (colour::paper);
     g.fillRect (label);
     g.setColour (colour);
-    g.drawText (title.toUpperCase(), label, juce::Justification::centred);
+    g.drawText (upper, label, juce::Justification::centred);
 }
 
 void Terminal::paint (juce::Graphics& g)
@@ -330,7 +356,7 @@ void Terminal::paint (juce::Graphics& g)
     g.drawEllipse (dot, 1.0f);
 
     g.setColour (colour::inkAlpha (0.45f));
-    g.setFont (monoFont (6.5f));
+    g.setFont (panelFont (6.5f));
     g.drawText (label, bounds, juce::Justification::centredTop);
 }
 

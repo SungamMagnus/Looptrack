@@ -44,7 +44,10 @@ namespace metric
     constexpr float startDeg = 201.4f; // clockwise from 12 o'clock
 }
 
-juce::Font monoFont (float height, bool bold = false);
+/** The panel's typeface: Nunito, embedded (SIL OFL 1.1). Matches
+    web/style.css's --font-panel token, so the plug-in and the browser
+    prototype render in the same face. */
+juce::Font panelFont (float height, bool bold = false);
 
 /** Flat rotary: a background arc over the full sweep, a value arc, and a
     pointer. Bipolar knobs grow their arc from noon instead of from the
