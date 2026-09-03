@@ -63,9 +63,9 @@ int main (int argc, char** argv)
 
     /* A working patch: some character dialed in so every part of the panel
        has something to show. */
-    setValue (proc, tape::trackParamId (0, tape::track::wow), 0.5f);
-    setValue (proc, tape::trackParamId (0, tape::track::flutter), 0.4f);
-    setValue (proc, tape::trackParamId (0, tape::track::hiss), 0.3f);
+    setValue (proc, tape::global::wow, 0.5f);
+    setValue (proc, tape::global::flutter, 0.4f);
+    setValue (proc, tape::global::hiss, 0.3f);
     setValue (proc, tape::trackParamId (0, tape::track::eqLow), 3.0f);
     setValue (proc, tape::trackParamId (0, tape::track::eqHigh), -2.0f);
     setValue (proc, tape::trackParamId (0, tape::track::preamp), 6.0f);

@@ -8,16 +8,25 @@
 namespace tape
 {
 
-constexpr int kNumTracks = 1; // grows to 4 once the single track is proven out
+constexpr int kNumTracks = 4;
 
 namespace pid
 {
     constexpr const char* out = "out";
+    constexpr const char* limiterOn = "limiter.on";
 }
 
 namespace global
 {
     constexpr const char* speed    = "speed"; // varispeed, semitones. id kept for preset compatibility
+    // wow/flutter/hiss: one shared tape transport, so the tape character is
+    // a global property, not a per-track one -- ids kept from their
+    // original per-track home ("t1.wow" etc.) for preset compatibility
+    constexpr const char* wow      = "t1.wow";
+    constexpr const char* wowRate  = "t1.wowrate";
+    constexpr const char* flutter  = "t1.flutter";
+    constexpr const char* flutterRate = "t1.flutrate";
+    constexpr const char* hiss     = "t1.hiss";
     constexpr const char* dlyTime  = "dly.ms";
     constexpr const char* dlyFb    = "dly.fb";
     constexpr const char* dlyTone  = "dly.tone";
@@ -39,16 +48,13 @@ namespace track
     constexpr const char* rec      = "rec";
     constexpr const char* clear    = "clear";
     constexpr const char* play     = "play";
+    constexpr const char* mute     = "mute";
+    constexpr const char* solo     = "solo";
     constexpr const char* inLow    = "inlo";    // input-stage 2-band shelf, before the preamp
     constexpr const char* inHigh   = "inhi";
     constexpr const char* preamp   = "preamp";  // input trim, before the tape -- drives above 0dB
     constexpr const char* volume   = "volume";  // output fader, after the tape -- post-filter, pre-send
     constexpr const char* pan      = "pan";
-    constexpr const char* wow      = "wow";
-    constexpr const char* wowRate  = "wowrate";
-    constexpr const char* flutter  = "flutter";
-    constexpr const char* flutterRate = "flutrate";
-    constexpr const char* hiss     = "hiss";
     constexpr const char* eqLow    = "eqlo";
     constexpr const char* eqMid    = "eqmid";
     constexpr const char* eqHigh   = "eqhi";

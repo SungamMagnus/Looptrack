@@ -14,7 +14,7 @@
 class LoopView final : public juce::Component, private juce::Timer
 {
 public:
-    explicit LoopView (LooptrackProcessor& p) : processor (p)
+    explicit LoopView (LooptrackProcessor& p, int track = 0) : processor (p), trackIndex (track)
     {
         startTimerHz (30);
     }
@@ -81,9 +81,10 @@ private:
         return "";
     }
 
-    const PanelState& panelState() const { return processor.panelState; }
+    const TrackPanelState& panelState() const { return processor.panelState.tracks[(size_t) trackIndex]; }
 
     void timerCallback() override { repaint(); }
 
     LooptrackProcessor& processor;
+    int trackIndex;
 };

@@ -311,7 +311,9 @@ void Meter::paint (juce::Graphics& g)
     g.setColour (colour::inkAlpha (0.13f));
     g.fillRect (bounds);
     g.setColour (colour::steel);
-    g.fillRect (bounds.withWidth (bounds.getWidth() * juce::jlimit (0.0f, 1.0f, level)));
+    const float frac = juce::jlimit (0.0f, 1.0f, level);
+    g.fillRect (vertical ? bounds.withTop (bounds.getBottom() - bounds.getHeight() * frac)
+                         : bounds.withWidth (bounds.getWidth() * frac));
     g.setColour (colour::inkAlpha (0.32f));
     g.drawRect (bounds, 1.0f);
 }
@@ -331,7 +333,7 @@ void FrameBox::paint (juce::Graphics& g)
     g.setColour (colour::inkAlpha (0.22f));
     g.drawRect (bounds, 1.2f);
 
-    g.setFont (panelFont (9.0f, true));
+    g.setFont (panelFont (titleFontSize, true));
     const juce::String upper = title.toUpperCase();
     // measure what's actually drawn, not the mixed-case source string -- a
     // proportional face's capitals run wider than its lowercase, so the two
@@ -343,21 +345,6 @@ void FrameBox::paint (juce::Graphics& g)
     g.fillRect (label);
     g.setColour (colour);
     g.drawText (upper, label, juce::Justification::centred);
-}
-
-void Terminal::paint (juce::Graphics& g)
-{
-    auto bounds = getLocalBounds();
-    const auto dot = bounds.removeFromTop (14).withSizeKeepingCentre (14, 14).toFloat();
-
-    g.setColour (juce::Colour (0xff222222));
-    g.fillEllipse (dot);
-    g.setColour (colour::inkAlpha (0.45f));
-    g.drawEllipse (dot, 1.0f);
-
-    g.setColour (colour::inkAlpha (0.45f));
-    g.setFont (panelFont (6.5f));
-    g.drawText (label, bounds, juce::Justification::centredTop);
 }
 
 } // namespace panel

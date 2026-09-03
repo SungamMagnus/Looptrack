@@ -1,5 +1,6 @@
 #pragma once
 
+#include <array>
 #include <memory>
 #include <vector>
 
@@ -22,7 +23,9 @@ public:
     void resized() override;
 
 private:
-    void buildTrack();
+    static constexpr int kNumTracks = panel::metric::numTracks;
+
+    void buildTrack (int trackIndex, int columnX);
     void buildGlobal();
     void timerCallback() override;
 
@@ -43,17 +46,18 @@ private:
         return ref;
     }
 
-    // referenced after construction, so held as raw observers into `owned`
-    LoopView* loopView = nullptr;
-    panel::Lamp* recLamp = nullptr;
-    panel::Lamp* playLamp = nullptr;
-    panel::Meter* meter = nullptr;
-    panel::Meter* inMeter = nullptr;
-    panel::KnobCell* preampCell = nullptr;
-    panel::KnobCell* inLowCell = nullptr;
-    panel::KnobCell* inHighCell = nullptr;
+    // referenced after construction, so held as raw observers into `owned`,
+    // one slot per track
+    std::array<LoopView*, kNumTracks> loopView {};
+    std::array<panel::Lamp*, kNumTracks> recLamp {};
+    std::array<panel::Lamp*, kNumTracks> playLamp {};
+    std::array<panel::Meter*, kNumTracks> inMeter {};
+    std::array<panel::KnobCell*, kNumTracks> preampCell {};
+    std::array<panel::KnobCell*, kNumTracks> inLowCell {};
+    std::array<panel::KnobCell*, kNumTracks> inHighCell {};
 
-    int outSectionY = 0; // set during layout, so paint() can label the meter
+    panel::Meter* meter = nullptr;       // master output meter -- global, not per-track
+    panel::Lamp* limitLamp = nullptr;    // lit while the output limiter is actively reducing gain
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LooptrackEditor)
 };

@@ -72,16 +72,20 @@ public:
         return t;
     }
 
-    /** Samples from t.ppqPosition to the next loop boundary, for a loop of
-        loopQ quarter-notes. Always in (0, loop-length-in-samples]. */
-    static double samplesToBoundary (const TransportInfo& t, double loopQ, double sampleRate)
+    /** Samples from t.ppqPosition to a specific target position in musical
+        time. Used with a target anchored to when recording started (not an
+        absolute bar-1 grid), so the loop always measures exactly one
+        loopQ-length pass from record-start regardless of what beat the
+        transport happened to be on when the user hit play -- a tempo change
+        mid-pass still truncates/leaves-silence like a real tape, since the
+        target stays fixed in musical time and only the sample-distance to
+        it moves. Clamped to 0 rather than negative -- floating-point noise
+        right at the target should read as "now", not "a whole pass away". */
+    static double samplesToTarget (const TransportInfo& t, double targetPpq, double sampleRate)
     {
         const double quartersPerSample = t.bpm / (60.0 * sampleRate);
-        double phase = std::fmod (t.ppqPosition, loopQ);
-        if (phase < 0.0)
-            phase += loopQ;
-        const double remaining = (loopQ - phase) / quartersPerSample;
-        return remaining <= 0.0 ? loopQ / quartersPerSample : remaining;
+        const double remaining = (targetPpq - t.ppqPosition) / quartersPerSample;
+        return remaining <= 0.0 ? 0.0 : remaining;
     }
 
 private:

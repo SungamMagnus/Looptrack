@@ -46,6 +46,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
             juce::ParameterID { trackParamId (t, track::clear), 1 },
             "Track " + juce::String (t + 1) + " Clear", false));
 
+        params.push_back (std::make_unique<juce::AudioParameterBool> (
+            juce::ParameterID { trackParamId (t, track::mute), 1 },
+            "Track " + juce::String (t + 1) + " Mute", false));
+
+        params.push_back (std::make_unique<juce::AudioParameterBool> (
+            juce::ParameterID { trackParamId (t, track::solo), 1 },
+            "Track " + juce::String (t + 1) + " Solo", false));
+
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::inLow), 1 },
             "Track " + juce::String (t + 1) + " In Low",
@@ -83,35 +91,6 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
                     if (std::abs (v) < 0.01f) return juce::String ("C");
                     return (v < 0.0f ? "L" : "R") + juce::String (juce::roundToInt (std::abs (v) * 100.0f));
                 })));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { trackParamId (t, track::wow), 1 },
-            "Track " + juce::String (t + 1) + " Wow Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.30f, pctAttrs()));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { trackParamId (t, track::wowRate), 1 },
-            "Track " + juce::String (t + 1) + " Wow Rate",
-            juce::NormalisableRange<float> (0.25f, 4.0f, 0.01f, 0.5f), 1.0f,
-            juce::AudioParameterFloatAttributes {}.withLabel ("x").withStringFromValueFunction (
-                [] (float v, int) { return juce::String (v, 2) + "x"; })));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { trackParamId (t, track::flutter), 1 },
-            "Track " + juce::String (t + 1) + " Flutter Depth",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.25f, pctAttrs()));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { trackParamId (t, track::flutterRate), 1 },
-            "Track " + juce::String (t + 1) + " Flutter Rate",
-            juce::NormalisableRange<float> (0.25f, 4.0f, 0.01f, 0.5f), 1.0f,
-            juce::AudioParameterFloatAttributes {}.withLabel ("x").withStringFromValueFunction (
-                [] (float v, int) { return juce::String (v, 2) + "x"; })));
-
-        params.push_back (std::make_unique<juce::AudioParameterFloat> (
-            juce::ParameterID { trackParamId (t, track::hiss), 1 },
-            "Track " + juce::String (t + 1) + " Hiss",
-            juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.25f, pctAttrs()));
 
         params.push_back (std::make_unique<juce::AudioParameterFloat> (
             juce::ParameterID { trackParamId (t, track::eqLow), 1 },
@@ -165,6 +144,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
         dbAttrs ("dB").withStringFromValueFunction (
             [] (float v, int) { return dbText (v); })));
 
+    params.push_back (std::make_unique<juce::AudioParameterBool> (
+        juce::ParameterID { pid::limiterOn, 1 }, "Output Limiter", false));
+
     params.push_back (std::make_unique<juce::AudioParameterFloat> (
         juce::ParameterID { global::speed, 1 }, "Varispeed",
         juce::NormalisableRange<float> (-12.0f, 12.0f, 0.01f), 0.0f,
@@ -174,6 +156,30 @@ juce::AudioProcessorValueTreeState::ParameterLayout createLayout()
                 return (st >= 0.0f ? "+" : "") + juce::String (st, 1)
                        + " st (" + juce::String (std::pow (2.0f, st / 12.0f), 2) + "x)";
             })));
+
+    params.push_back (std::make_unique<juce::AudioParameterFloat> (
+        juce::ParameterID { global::wow, 1 }, "Wow Depth",
+        juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.30f, pctAttrs()));
+
+    params.push_back (std::make_unique<juce::AudioParameterFloat> (
+        juce::ParameterID { global::wowRate, 1 }, "Wow Rate",
+        juce::NormalisableRange<float> (0.25f, 4.0f, 0.01f, 0.5f), 1.0f,
+        juce::AudioParameterFloatAttributes {}.withLabel ("x").withStringFromValueFunction (
+            [] (float v, int) { return juce::String (v, 2) + "x"; })));
+
+    params.push_back (std::make_unique<juce::AudioParameterFloat> (
+        juce::ParameterID { global::flutter, 1 }, "Flutter Depth",
+        juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.25f, pctAttrs()));
+
+    params.push_back (std::make_unique<juce::AudioParameterFloat> (
+        juce::ParameterID { global::flutterRate, 1 }, "Flutter Rate",
+        juce::NormalisableRange<float> (0.25f, 4.0f, 0.01f, 0.5f), 1.0f,
+        juce::AudioParameterFloatAttributes {}.withLabel ("x").withStringFromValueFunction (
+            [] (float v, int) { return juce::String (v, 2) + "x"; })));
+
+    params.push_back (std::make_unique<juce::AudioParameterFloat> (
+        juce::ParameterID { global::hiss, 1 }, "Hiss",
+        juce::NormalisableRange<float> (0.0f, 1.0f, 0.001f), 0.25f, pctAttrs()));
 
     params.push_back (std::make_unique<juce::AudioParameterFloat> (
         juce::ParameterID { global::dlyTime, 1 }, "Delay Time",

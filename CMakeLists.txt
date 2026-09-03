@@ -17,7 +17,7 @@ if(APPLE)
     endif()
 endif()
 
-project(LooptrackVST VERSION 0.1.0 LANGUAGES C CXX)
+project(LooptrackVST VERSION 0.4.0 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -46,6 +46,7 @@ set(LOOPTRACK_SOURCES
     Source/ChannelStrip.cpp
     Source/LofiBus.cpp
     Source/InputStage.cpp
+    Source/Limiter.cpp
     Source/Panel.cpp)
 
 juce_add_plugin(Looptrack

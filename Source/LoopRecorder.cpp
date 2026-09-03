@@ -26,6 +26,7 @@ void LoopRecorder::reset()
     prevArm = false;
     prevClear = false;
     prevTransportPlaying = false;
+    nextBoundaryPpq = 0.0;
 }
 
 void LoopRecorder::clear()
@@ -35,6 +36,7 @@ void LoopRecorder::clear()
     recordedLen = 0;
     readPos = 0.0;
     crossfading = false;
+    nextBoundaryPpq = 0.0;
     buffer.clear();
 }
 
@@ -47,40 +49,71 @@ void LoopRecorder::process (const TransportInfo& transport, int loopBars, bool a
         clear();
     prevClear = clearRequested;
 
-    if (armRequested && ! prevArm)
+    const double loopQ = transport.loopQuarters (loopBars);
+
+    // REC is a plain on/off latch, not a momentary pulse -- one click turns
+    // it on, the next turns it off. So "start" has to react to the rising
+    // edge and "stop early" to the falling edge; reacting to only one (as
+    // this used to) means the other click does nothing.
+    if (armRequested && ! prevArm && (state == LoopState::Idle || state == LoopState::Playing))
     {
-        if (state == LoopState::Idle || state == LoopState::Playing)
-            state = LoopState::Armed;
-        else if (state == LoopState::Armed)
-            state = LoopState::Idle; // cancel before the boundary lands
+        if (transport.isPlaying)
+        {
+            // the transport is already rolling -- start capturing right
+            // now instead of waiting for the next bar line, and measure
+            // this pass's one loopQ from this instant
+            state = LoopState::Recording;
+            writePos = 0;
+            nextBoundaryPpq = transport.ppqPosition + loopQ;
+        }
+        else
+        {
+            state = LoopState::Armed; // wait for playback to start
+        }
+    }
+    else if (! armRequested && prevArm)
+    {
+        if (state == LoopState::Armed)
+            state = LoopState::Idle; // cancel before playback starts
         else if (state == LoopState::Recording)
         {
             recordedLen = writePos;
             state = LoopState::Playing; // early punch-out, keep what's written
             startWrap();
+            // nextBoundaryPpq is left as-is: the pass just cut short still
+            // wraps at the bar boundary it was already counting down to,
+            // so playback keeps filling the full bar count with silence
+            // after the short material, instead of shrinking the loop to
+            // match what got captured.
         }
     }
     prevArm = armRequested;
 
-    // Arming while the host transport is stopped shouldn't wait for a bar
+    // Arming while the transport is stopped shouldn't wait for a bar
     // boundary that can't happen until it starts -- begin recording the
-    // instant playback does.
+    // instant playback does, measuring this pass's one loopQ from that
+    // moment. Also keeps the loop grid itself alive across the whole time
+    // the transport rolls (regardless of state), so a later "arm while
+    // already playing" always has a fresh nextBoundaryPpq relative to
+    // *this* play-start to base its own immediate start on.
     const bool playStartEdge = transport.isPlaying && ! prevTransportPlaying;
     prevTransportPlaying = transport.isPlaying;
-    if (state == LoopState::Armed && playStartEdge)
+    if (playStartEdge)
     {
-        state = LoopState::Recording;
-        writePos = 0;
+        nextBoundaryPpq = transport.ppqPosition + loopQ;
+        if (state == LoopState::Armed)
+        {
+            state = LoopState::Recording;
+            writePos = 0;
+        }
     }
-
-    const double loopQ = transport.loopQuarters (loopBars);
 
     int splitAt = numSamples;
     bool crossesBoundary = false;
 
-    if (transport.isPlaying)
+    if (transport.isPlaying && state != LoopState::Idle)
     {
-        const double boundarySamples = Transport::samplesToBoundary (transport, loopQ, sampleRate);
+        const double boundarySamples = Transport::samplesToTarget (transport, nextBoundaryPpq, sampleRate);
         if (boundarySamples < (double) numSamples)
         {
             splitAt = juce::jlimit (0, numSamples, (int) std::llround (boundarySamples));
@@ -96,7 +129,7 @@ void LoopRecorder::process (const TransportInfo& transport, int loopBars, bool a
 
     if (crossesBoundary)
     {
-        onBoundary();
+        onBoundary (loopQ);
         const int remaining = numSamples - splitAt;
         if (remaining > 0)
             renderRange (inL + splitAt, inR + splitAt, outL + splitAt, outR + splitAt,
@@ -104,21 +137,24 @@ void LoopRecorder::process (const TransportInfo& transport, int loopBars, bool a
     }
 }
 
-void LoopRecorder::onBoundary()
+void LoopRecorder::onBoundary (double loopQ)
 {
     switch (state)
     {
         case LoopState::Armed:
             state = LoopState::Recording;
             writePos = 0;
+            nextBoundaryPpq += loopQ;
             break;
         case LoopState::Recording:
             recordedLen = writePos;
             state = LoopState::Playing;
             startWrap();
+            nextBoundaryPpq += loopQ;
             break;
         case LoopState::Playing:
             startWrap();
+            nextBoundaryPpq += loopQ;
             break;
         case LoopState::Idle:
             break;

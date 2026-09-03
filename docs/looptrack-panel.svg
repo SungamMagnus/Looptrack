@@ -1,0 +1,654 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="983" height="565" viewBox="0 0 983 565">
+<rect x="0" y="0" width="983" height="565" fill="#dedad0"/>
+<rect x="8" y="8" width="967" height="549" fill="#f0ece2" stroke="rgba(26,26,23,0.45)" stroke-width="1.4"/>
+<rect x="24" y="46" width="150" height="495" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="30" y="40" width="16" height="12" fill="#f0ece2"/>
+<text x="38" y="49" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#ed8159" text-anchor="middle">1</text>
+<g id="t1.bars">
+<text x="42.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">1</text>
+<rect x="53.00" y="60" width="21.00" height="16" fill="#1a1a17"/>
+<text x="63.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="#f0ece2" text-anchor="middle">2</text>
+<line x1="53.00" y1="60" x2="53.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<text x="84.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">3</text>
+<line x1="74.00" y1="60" x2="74.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<text x="105.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">4</text>
+<line x1="95.00" y1="60" x2="95.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<rect x="32" y="60" width="84" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+</g>
+<g id="t1.clr">
+<rect x="122" y="60" width="44" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="144.00" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">CLR</text>
+</g>
+<g id="t1.rec">
+<rect x="32" y="82" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="64.00" y="93.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">REC</text>
+</g>
+<g id="t1.play">
+<rect x="102" y="82" width="64" height="16" fill="#52b0a4"/>
+<rect x="102" y="82" width="64" height="16" fill="none" stroke="#52b0a4" stroke-width="1.2"/>
+<text x="134.00" y="93.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="#ffffff" text-anchor="middle">PLAY</text>
+</g>
+<g id="t1.mute">
+<rect x="32" y="102" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="64.00" y="113.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">MUTE</text>
+</g>
+<g id="t1.solo">
+<rect x="102" y="102" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="134.00" y="113.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">SOLO</text>
+</g>
+<g id="t1.loop">
+<rect x="32" y="126" width="134" height="22" fill="#101010"/>
+<line x1="48.75" y1="126" x2="48.75" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="65.50" y1="126" x2="65.50" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="82.25" y1="126" x2="82.25" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="99.00" y1="126" x2="99.00" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="115.75" y1="126" x2="115.75" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="132.50" y1="126" x2="132.50" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="149.25" y1="126" x2="149.25" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<rect x="32" y="126" width="134.00" height="22" fill="#2f6478"/>
+<rect x="87.28" y="126" width="2" height="22" fill="#60e0a8"/>
+<text x="38" y="140.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8" font-weight="700" letter-spacing="0.4" fill="rgba(255,255,255,0.9)">PLAYING</text>
+<rect x="32" y="126" width="134" height="22" fill="none" stroke="rgba(26,26,23,0.38)" stroke-width="1"/>
+</g>
+<g id="t1.recLamp">
+<circle cx="148.5" cy="136.5" r="3.5" fill="rgba(26,26,23,0.13)" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t1.playLamp">
+<circle cx="158.5" cy="136.5" r="3.5" fill="#52b0a4" stroke="#52b0a4" stroke-width="1"/>
+</g>
+<g id="t1.inputBox">
+<rect x="32" y="158" width="134" height="80" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="42" y="152" width="31.7" height="12" fill="#f0ece2"/>
+<text x="57.85" y="161.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.0" font-weight="700" letter-spacing="0.3" fill="#ed8159" text-anchor="middle">INPUT</text>
+</g>
+<g id="t1.preamp">
+<text x="55.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Preamp</text>
+<path d="M 51.90,207.91 L 50.84,207.41 L 49.85,206.77 L 48.97,205.99 L 48.20,205.10 L 47.56,204.11 L 47.07,203.05 L 46.72,201.93 L 46.53,200.76 L 46.51,199.59 L 46.65,198.42 L 46.95,197.28 L 47.40,196.20 L 47.99,195.19 L 48.73,194.27 L 49.58,193.46 L 50.53,192.77 L 51.57,192.22 L 52.68,191.82 L 53.83,191.58 L 55.00,191.50 L 56.17,191.58 L 57.32,191.82 L 58.43,192.22 L 59.47,192.77 L 60.42,193.46 L 61.27,194.27 L 62.01,195.19 L 62.60,196.20 L 63.05,197.28 L 63.35,198.42 L 63.49,199.59 L 63.47,200.76 L 63.28,201.93 L 62.93,203.05 L 62.44,204.11 L 61.80,205.10 L 61.03,205.99 L 60.15,206.77 L 59.16,207.41 L 58.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 51.90,207.91 L 51.13,207.57 L 50.40,207.15 L 49.72,206.66 L 49.09,206.11 L 48.52,205.50 L 48.00,204.83 L 47.56,204.11 L 47.19,203.36 L 46.90,202.57 L 46.68,201.76 L 46.55,200.93 L 46.50,200.09 L 46.53,199.25 L 46.65,198.42 L 46.84,197.61 L 47.12,196.81 L 47.47,196.05 L 47.90,195.33 L 48.40,194.65 L 48.96,194.02 L 49.58,193.46 L 50.25,192.95 L 50.97,192.52 L 51.73,192.16 L 52.52,191.87 L 53.33,191.67 L 54.16,191.54 L 55.00,191.50 L 55.84,191.54 L 56.67,191.67 L 57.48,191.87 L 58.27,192.16 L 59.03,192.52 L 59.75,192.95 L 60.42,193.46 L 61.04,194.02 L 61.60,194.65 L 62.10,195.33 L 62.53,196.05 L 62.88,196.81" fill="none" stroke="#ed8159" stroke-width="3" stroke-linecap="round"/>
+<line x1="57.78" y1="198.87" x2="63.53" y2="196.55" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="55.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+6.0 dB</text>
+</g>
+<g id="t1.inlow">
+<text x="99.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">In Low</text>
+<path d="M 95.90,207.91 L 94.84,207.41 L 93.85,206.77 L 92.97,205.99 L 92.20,205.10 L 91.56,204.11 L 91.07,203.05 L 90.72,201.93 L 90.53,200.76 L 90.51,199.59 L 90.65,198.42 L 90.95,197.28 L 91.40,196.20 L 91.99,195.19 L 92.73,194.27 L 93.58,193.46 L 94.53,192.77 L 95.57,192.22 L 96.68,191.82 L 97.83,191.58 L 99.00,191.50 L 100.17,191.58 L 101.32,191.82 L 102.43,192.22 L 103.47,192.77 L 104.42,193.46 L 105.27,194.27 L 106.01,195.19 L 106.60,196.20 L 107.05,197.28 L 107.35,198.42 L 107.49,199.59 L 107.47,200.76 L 107.28,201.93 L 106.93,203.05 L 106.44,204.11 L 105.80,205.10 L 105.03,205.99 L 104.15,206.77 L 103.16,207.41 L 102.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="99.00" y1="197.00" x2="99.00" y2="190.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="99.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t1.inhigh">
+<text x="143.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">In High</text>
+<path d="M 139.90,207.91 L 138.84,207.41 L 137.85,206.77 L 136.97,205.99 L 136.20,205.10 L 135.56,204.11 L 135.07,203.05 L 134.72,201.93 L 134.53,200.76 L 134.51,199.59 L 134.65,198.42 L 134.95,197.28 L 135.40,196.20 L 135.99,195.19 L 136.73,194.27 L 137.58,193.46 L 138.53,192.77 L 139.57,192.22 L 140.68,191.82 L 141.83,191.58 L 143.00,191.50 L 144.17,191.58 L 145.32,191.82 L 146.43,192.22 L 147.47,192.77 L 148.42,193.46 L 149.27,194.27 L 150.01,195.19 L 150.60,196.20 L 151.05,197.28 L 151.35,198.42 L 151.49,199.59 L 151.47,200.76 L 151.28,201.93 L 150.93,203.05 L 150.44,204.11 L 149.80,205.10 L 149.03,205.99 L 148.15,206.77 L 147.16,207.41 L 146.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="143.00" y1="197.00" x2="143.00" y2="190.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="143.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t1.inMeter">
+<rect x="40" y="226" width="118" height="6" fill="rgba(26,26,23,0.13)"/>
+<rect x="40" y="226" width="47.20" height="6" fill="#4f7ea8"/>
+<rect x="40" y="226" width="118" height="6" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t1.eqHigh">
+<text x="77.00" y="254.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">High</text>
+<path d="M 73.90,278.91 L 72.84,278.41 L 71.85,277.77 L 70.97,276.99 L 70.20,276.10 L 69.56,275.11 L 69.07,274.05 L 68.72,272.93 L 68.53,271.76 L 68.51,270.59 L 68.65,269.42 L 68.95,268.28 L 69.40,267.20 L 69.99,266.19 L 70.73,265.27 L 71.58,264.46 L 72.53,263.77 L 73.57,263.22 L 74.68,262.82 L 75.83,262.58 L 77.00,262.50 L 78.17,262.58 L 79.32,262.82 L 80.43,263.22 L 81.47,263.77 L 82.42,264.46 L 83.27,265.27 L 84.01,266.19 L 84.60,267.20 L 85.05,268.28 L 85.35,269.42 L 85.49,270.59 L 85.47,271.76 L 85.28,272.93 L 84.93,274.05 L 84.44,275.11 L 83.80,276.10 L 83.03,276.99 L 82.15,277.77 L 81.16,278.41 L 80.10,278.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 74.43,262.90 L 74.49,262.88 L 74.55,262.86 L 74.61,262.84 L 74.68,262.82 L 74.74,262.81 L 74.80,262.79 L 74.87,262.77 L 74.93,262.76 L 74.99,262.74 L 75.06,262.73 L 75.12,262.71 L 75.18,262.70 L 75.25,262.68 L 75.31,262.67 L 75.38,262.66 L 75.44,262.64 L 75.50,262.63 L 75.57,262.62 L 75.63,262.61 L 75.70,262.60 L 75.76,262.59 L 75.83,262.58 L 75.89,262.57 L 75.96,262.56 L 76.02,262.56 L 76.09,262.55 L 76.15,262.54 L 76.22,262.54 L 76.28,262.53 L 76.35,262.53 L 76.41,262.52 L 76.48,262.52 L 76.54,262.51 L 76.61,262.51 L 76.67,262.51 L 76.74,262.50 L 76.80,262.50 L 76.87,262.50 L 76.93,262.50 L 77.00,262.50" fill="none" stroke="#4f7ea8" stroke-width="3" stroke-linecap="round"/>
+<line x1="76.09" y1="268.14" x2="74.21" y2="262.23" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="77.00" y="289.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">-2.0 dB</text>
+</g>
+<g id="t1.eqMid">
+<text x="77.00" y="300.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Mid</text>
+<path d="M 73.90,324.91 L 72.84,324.41 L 71.85,323.77 L 70.97,322.99 L 70.20,322.10 L 69.56,321.11 L 69.07,320.05 L 68.72,318.93 L 68.53,317.76 L 68.51,316.59 L 68.65,315.42 L 68.95,314.28 L 69.40,313.20 L 69.99,312.19 L 70.73,311.27 L 71.58,310.46 L 72.53,309.77 L 73.57,309.22 L 74.68,308.82 L 75.83,308.58 L 77.00,308.50 L 78.17,308.58 L 79.32,308.82 L 80.43,309.22 L 81.47,309.77 L 82.42,310.46 L 83.27,311.27 L 84.01,312.19 L 84.60,313.20 L 85.05,314.28 L 85.35,315.42 L 85.49,316.59 L 85.47,317.76 L 85.28,318.93 L 84.93,320.05 L 84.44,321.11 L 83.80,322.10 L 83.03,322.99 L 82.15,323.77 L 81.16,324.41 L 80.10,324.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="77.00" y1="314.00" x2="77.00" y2="307.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="77.00" y="335.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t1.eqLow">
+<text x="77.00" y="346.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Low</text>
+<path d="M 73.90,370.91 L 72.84,370.41 L 71.85,369.77 L 70.97,368.99 L 70.20,368.10 L 69.56,367.11 L 69.07,366.05 L 68.72,364.93 L 68.53,363.76 L 68.51,362.59 L 68.65,361.42 L 68.95,360.28 L 69.40,359.20 L 69.99,358.19 L 70.73,357.27 L 71.58,356.46 L 72.53,355.77 L 73.57,355.22 L 74.68,354.82 L 75.83,354.58 L 77.00,354.50 L 78.17,354.58 L 79.32,354.82 L 80.43,355.22 L 81.47,355.77 L 82.42,356.46 L 83.27,357.27 L 84.01,358.19 L 84.60,359.20 L 85.05,360.28 L 85.35,361.42 L 85.49,362.59 L 85.47,363.76 L 85.28,364.93 L 84.93,366.05 L 84.44,367.11 L 83.80,368.10 L 83.03,368.99 L 82.15,369.77 L 81.16,370.41 L 80.10,370.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 77.00,354.50 L 77.10,354.50 L 77.20,354.50 L 77.29,354.51 L 77.39,354.51 L 77.49,354.51 L 77.59,354.52 L 77.69,354.53 L 77.78,354.54 L 77.88,354.55 L 77.98,354.56 L 78.08,354.57 L 78.17,354.58 L 78.27,354.60 L 78.37,354.61 L 78.46,354.63 L 78.56,354.64 L 78.66,354.66 L 78.75,354.68 L 78.85,354.70 L 78.94,354.73 L 79.04,354.75 L 79.13,354.77 L 79.23,354.80 L 79.32,354.82 L 79.42,354.85 L 79.51,354.88 L 79.60,354.91 L 79.70,354.94 L 79.79,354.97 L 79.88,355.00 L 79.97,355.04 L 80.07,355.07 L 80.16,355.11 L 80.25,355.15 L 80.34,355.18 L 80.43,355.22 L 80.52,355.26 L 80.61,355.30 L 80.70,355.35 L 80.78,355.39" fill="none" stroke="#4f7ea8" stroke-width="3" stroke-linecap="round"/>
+<line x1="78.34" y1="360.31" x2="81.10" y2="354.76" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="77.00" y="381.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+3.0 dB</text>
+</g>
+<g id="t1.filter">
+<text x="121.00" y="254.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Filter</text>
+<path d="M 117.90,278.91 L 116.84,278.41 L 115.85,277.77 L 114.97,276.99 L 114.20,276.10 L 113.56,275.11 L 113.07,274.05 L 112.72,272.93 L 112.53,271.76 L 112.51,270.59 L 112.65,269.42 L 112.95,268.28 L 113.40,267.20 L 113.99,266.19 L 114.73,265.27 L 115.58,264.46 L 116.53,263.77 L 117.57,263.22 L 118.68,262.82 L 119.83,262.58 L 121.00,262.50 L 122.17,262.58 L 123.32,262.82 L 124.43,263.22 L 125.47,263.77 L 126.42,264.46 L 127.27,265.27 L 128.01,266.19 L 128.60,267.20 L 129.05,268.28 L 129.35,269.42 L 129.49,270.59 L 129.47,271.76 L 129.28,272.93 L 128.93,274.05 L 128.44,275.11 L 127.80,276.10 L 127.03,276.99 L 126.15,277.77 L 125.16,278.41 L 124.10,278.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="121.00" y1="268.00" x2="121.00" y2="261.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="121.00" y="289.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t1.dlySnd">
+<text x="121.00" y="300.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Dly Snd</text>
+<path d="M 117.90,324.91 L 116.84,324.41 L 115.85,323.77 L 114.97,322.99 L 114.20,322.10 L 113.56,321.11 L 113.07,320.05 L 112.72,318.93 L 112.53,317.76 L 112.51,316.59 L 112.65,315.42 L 112.95,314.28 L 113.40,313.20 L 113.99,312.19 L 114.73,311.27 L 115.58,310.46 L 116.53,309.77 L 117.57,309.22 L 118.68,308.82 L 119.83,308.58 L 121.00,308.50 L 122.17,308.58 L 123.32,308.82 L 124.43,309.22 L 125.47,309.77 L 126.42,310.46 L 127.27,311.27 L 128.01,312.19 L 128.60,313.20 L 129.05,314.28 L 129.35,315.42 L 129.49,316.59 L 129.47,317.76 L 129.28,318.93 L 128.93,320.05 L 128.44,321.11 L 127.80,322.10 L 127.03,322.99 L 126.15,323.77 L 125.16,324.41 L 124.10,324.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="119.91" y1="319.79" x2="117.64" y2="325.57" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="121.00" y="335.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t1.vrbSnd">
+<text x="121.00" y="346.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Vrb Snd</text>
+<path d="M 117.90,370.91 L 116.84,370.41 L 115.85,369.77 L 114.97,368.99 L 114.20,368.10 L 113.56,367.11 L 113.07,366.05 L 112.72,364.93 L 112.53,363.76 L 112.51,362.59 L 112.65,361.42 L 112.95,360.28 L 113.40,359.20 L 113.99,358.19 L 114.73,357.27 L 115.58,356.46 L 116.53,355.77 L 117.57,355.22 L 118.68,354.82 L 119.83,354.58 L 121.00,354.50 L 122.17,354.58 L 123.32,354.82 L 124.43,355.22 L 125.47,355.77 L 126.42,356.46 L 127.27,357.27 L 128.01,358.19 L 128.60,359.20 L 129.05,360.28 L 129.35,361.42 L 129.49,362.59 L 129.47,363.76 L 129.28,364.93 L 128.93,366.05 L 128.44,367.11 L 127.80,368.10 L 127.03,368.99 L 126.15,369.77 L 125.16,370.41 L 124.10,370.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="119.91" y1="365.79" x2="117.64" y2="371.57" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="121.00" y="381.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t1.pan">
+<text x="99.00" y="398.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Pan</text>
+<path d="M 95.90,422.91 L 94.84,422.41 L 93.85,421.77 L 92.97,420.99 L 92.20,420.10 L 91.56,419.11 L 91.07,418.05 L 90.72,416.93 L 90.53,415.76 L 90.51,414.59 L 90.65,413.42 L 90.95,412.28 L 91.40,411.20 L 91.99,410.19 L 92.73,409.27 L 93.58,408.46 L 94.53,407.77 L 95.57,407.22 L 96.68,406.82 L 97.83,406.58 L 99.00,406.50 L 100.17,406.58 L 101.32,406.82 L 102.43,407.22 L 103.47,407.77 L 104.42,408.46 L 105.27,409.27 L 106.01,410.19 L 106.60,411.20 L 107.05,412.28 L 107.35,413.42 L 107.49,414.59 L 107.47,415.76 L 107.28,416.93 L 106.93,418.05 L 106.44,419.11 L 105.80,420.10 L 105.03,420.99 L 104.15,421.77 L 103.16,422.41 L 102.10,422.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="99.00" y1="412.00" x2="99.00" y2="405.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="99.00" y="433.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">C</text>
+</g>
+<g id="t1.volume">
+<text x="99.00" y="450.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Volume</text>
+<path d="M 92.25,494.22 L 89.94,493.13 L 87.80,491.72 L 85.88,490.04 L 84.20,488.10 L 82.81,485.95 L 81.73,483.64 L 80.98,481.19 L 80.57,478.66 L 80.52,476.11 L 80.82,473.57 L 81.47,471.09 L 82.45,468.73 L 83.75,466.52 L 85.34,464.52 L 87.20,462.76 L 89.27,461.26 L 91.54,460.07 L 93.94,459.20 L 96.45,458.68 L 99.00,458.50 L 101.55,458.68 L 104.06,459.20 L 106.46,460.07 L 108.73,461.26 L 110.80,462.76 L 112.66,464.52 L 114.25,466.52 L 115.55,468.73 L 116.53,471.09 L 117.18,473.57 L 117.48,476.11 L 117.43,478.66 L 117.02,481.19 L 116.27,483.64 L 115.19,485.95 L 113.80,488.10 L 112.12,490.04 L 110.20,491.72 L 108.06,493.13 L 105.75,494.22" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 99.00,458.50 L 100.05,458.53 L 101.09,458.62 L 102.13,458.77 L 103.15,458.97 L 104.17,459.24 L 105.16,459.56 L 106.14,459.93 L 107.10,460.37 L 108.02,460.85 L 108.92,461.39 L 109.79,461.97 L 110.62,462.61 L 111.42,463.29 L 112.18,464.01 L 112.89,464.78 L 113.56,465.59 L 114.18,466.43 L 114.76,467.30 L 115.28,468.21 L 115.75,469.15 L 116.17,470.11 L 116.53,471.09 L 116.84,472.09 L 117.09,473.11 L 117.28,474.14 L 117.41,475.18 L 117.48,476.22 L 117.50,477.27 L 117.45,478.32 L 117.35,479.36 L 117.19,480.39 L 116.97,481.42 L 116.69,482.43 L 116.35,483.42 L 115.96,484.39 L 115.51,485.34 L 115.02,486.26 L 114.47,487.15 L 113.87,488.01 L 113.22,488.83" fill="none" stroke="#4f7ea8" stroke-width="3" stroke-linecap="round"/>
+<line x1="103.61" y1="480.84" x2="113.14" y2="488.77" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="99.00" y="509.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<rect x="184" y="46" width="150" height="495" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="190" y="40" width="16" height="12" fill="#f0ece2"/>
+<text x="198" y="49" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#ed8159" text-anchor="middle">2</text>
+<g id="t2.bars">
+<text x="202.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">1</text>
+<rect x="213.00" y="60" width="21.00" height="16" fill="#1a1a17"/>
+<text x="223.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="#f0ece2" text-anchor="middle">2</text>
+<line x1="213.00" y1="60" x2="213.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<text x="244.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">3</text>
+<line x1="234.00" y1="60" x2="234.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<text x="265.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">4</text>
+<line x1="255.00" y1="60" x2="255.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<rect x="192" y="60" width="84" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+</g>
+<g id="t2.clr">
+<rect x="282" y="60" width="44" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="304.00" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">CLR</text>
+</g>
+<g id="t2.rec">
+<rect x="192" y="82" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="224.00" y="93.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">REC</text>
+</g>
+<g id="t2.play">
+<rect x="262" y="82" width="64" height="16" fill="#52b0a4"/>
+<rect x="262" y="82" width="64" height="16" fill="none" stroke="#52b0a4" stroke-width="1.2"/>
+<text x="294.00" y="93.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="#ffffff" text-anchor="middle">PLAY</text>
+</g>
+<g id="t2.mute">
+<rect x="192" y="102" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="224.00" y="113.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">MUTE</text>
+</g>
+<g id="t2.solo">
+<rect x="262" y="102" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="294.00" y="113.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">SOLO</text>
+</g>
+<g id="t2.loop">
+<rect x="192" y="126" width="134" height="22" fill="#101010"/>
+<line x1="208.75" y1="126" x2="208.75" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="225.50" y1="126" x2="225.50" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="242.25" y1="126" x2="242.25" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="259.00" y1="126" x2="259.00" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="275.75" y1="126" x2="275.75" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="292.50" y1="126" x2="292.50" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="309.25" y1="126" x2="309.25" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<text x="198" y="140.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8" font-weight="700" letter-spacing="0.4" fill="rgba(255,255,255,0.9)">IDLE</text>
+<rect x="192" y="126" width="134" height="22" fill="none" stroke="rgba(26,26,23,0.38)" stroke-width="1"/>
+</g>
+<g id="t2.recLamp">
+<circle cx="308.5" cy="136.5" r="3.5" fill="rgba(26,26,23,0.13)" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t2.playLamp">
+<circle cx="318.5" cy="136.5" r="3.5" fill="rgba(26,26,23,0.13)" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t2.inputBox">
+<rect x="192" y="158" width="134" height="80" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="202" y="152" width="31.7" height="12" fill="#f0ece2"/>
+<text x="217.85" y="161.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.0" font-weight="700" letter-spacing="0.3" fill="#ed8159" text-anchor="middle">INPUT</text>
+</g>
+<g id="t2.preamp">
+<text x="215.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Preamp</text>
+<path d="M 211.90,207.91 L 210.84,207.41 L 209.85,206.77 L 208.97,205.99 L 208.20,205.10 L 207.56,204.11 L 207.07,203.05 L 206.72,201.93 L 206.53,200.76 L 206.51,199.59 L 206.65,198.42 L 206.95,197.28 L 207.40,196.20 L 207.99,195.19 L 208.73,194.27 L 209.58,193.46 L 210.53,192.77 L 211.57,192.22 L 212.68,191.82 L 213.83,191.58 L 215.00,191.50 L 216.17,191.58 L 217.32,191.82 L 218.43,192.22 L 219.47,192.77 L 220.42,193.46 L 221.27,194.27 L 222.01,195.19 L 222.60,196.20 L 223.05,197.28 L 223.35,198.42 L 223.49,199.59 L 223.47,200.76 L 223.28,201.93 L 222.93,203.05 L 222.44,204.11 L 221.80,205.10 L 221.03,205.99 L 220.15,206.77 L 219.16,207.41 L 218.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 211.90,207.91 L 211.28,207.64 L 210.69,207.33 L 210.13,206.96 L 209.59,206.56 L 209.09,206.11 L 208.63,205.62 L 208.20,205.10 L 207.82,204.55 L 207.48,203.97 L 207.19,203.36 L 206.95,202.73 L 206.76,202.09 L 206.62,201.43 L 206.53,200.76 L 206.50,200.09 L 206.52,199.42 L 206.59,198.75 L 206.72,198.09 L 206.89,197.44 L 207.12,196.81 L 207.40,196.20 L 207.72,195.61 L 208.09,195.05 L 208.50,194.52 L 208.96,194.02 L 209.45,193.56 L 209.97,193.15 L 210.53,192.77 L 211.12,192.44 L 211.73,192.16 L 212.36,191.92 L 213.00,191.74 L 213.66,191.61 L 214.33,191.53 L 215.00,191.50 L 215.67,191.53 L 216.34,191.61 L 217.00,191.74 L 217.64,191.92 L 218.27,192.16" fill="none" stroke="#ed8159" stroke-width="3" stroke-linecap="round"/>
+<line x1="216.16" y1="197.23" x2="218.54" y2="191.51" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="215.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t2.inlow">
+<text x="259.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">In Low</text>
+<path d="M 255.90,207.91 L 254.84,207.41 L 253.85,206.77 L 252.97,205.99 L 252.20,205.10 L 251.56,204.11 L 251.07,203.05 L 250.72,201.93 L 250.53,200.76 L 250.51,199.59 L 250.65,198.42 L 250.95,197.28 L 251.40,196.20 L 251.99,195.19 L 252.73,194.27 L 253.58,193.46 L 254.53,192.77 L 255.57,192.22 L 256.68,191.82 L 257.83,191.58 L 259.00,191.50 L 260.17,191.58 L 261.32,191.82 L 262.43,192.22 L 263.47,192.77 L 264.42,193.46 L 265.27,194.27 L 266.01,195.19 L 266.60,196.20 L 267.05,197.28 L 267.35,198.42 L 267.49,199.59 L 267.47,200.76 L 267.28,201.93 L 266.93,203.05 L 266.44,204.11 L 265.80,205.10 L 265.03,205.99 L 264.15,206.77 L 263.16,207.41 L 262.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="259.00" y1="197.00" x2="259.00" y2="190.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="259.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t2.inhigh">
+<text x="303.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">In High</text>
+<path d="M 299.90,207.91 L 298.84,207.41 L 297.85,206.77 L 296.97,205.99 L 296.20,205.10 L 295.56,204.11 L 295.07,203.05 L 294.72,201.93 L 294.53,200.76 L 294.51,199.59 L 294.65,198.42 L 294.95,197.28 L 295.40,196.20 L 295.99,195.19 L 296.73,194.27 L 297.58,193.46 L 298.53,192.77 L 299.57,192.22 L 300.68,191.82 L 301.83,191.58 L 303.00,191.50 L 304.17,191.58 L 305.32,191.82 L 306.43,192.22 L 307.47,192.77 L 308.42,193.46 L 309.27,194.27 L 310.01,195.19 L 310.60,196.20 L 311.05,197.28 L 311.35,198.42 L 311.49,199.59 L 311.47,200.76 L 311.28,201.93 L 310.93,203.05 L 310.44,204.11 L 309.80,205.10 L 309.03,205.99 L 308.15,206.77 L 307.16,207.41 L 306.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="303.00" y1="197.00" x2="303.00" y2="190.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="303.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t2.inMeter">
+<rect x="200" y="226" width="118" height="6" fill="rgba(26,26,23,0.13)"/>
+<rect x="200" y="226" width="47.20" height="6" fill="#4f7ea8"/>
+<rect x="200" y="226" width="118" height="6" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t2.eqHigh">
+<text x="237.00" y="254.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">High</text>
+<path d="M 233.90,278.91 L 232.84,278.41 L 231.85,277.77 L 230.97,276.99 L 230.20,276.10 L 229.56,275.11 L 229.07,274.05 L 228.72,272.93 L 228.53,271.76 L 228.51,270.59 L 228.65,269.42 L 228.95,268.28 L 229.40,267.20 L 229.99,266.19 L 230.73,265.27 L 231.58,264.46 L 232.53,263.77 L 233.57,263.22 L 234.68,262.82 L 235.83,262.58 L 237.00,262.50 L 238.17,262.58 L 239.32,262.82 L 240.43,263.22 L 241.47,263.77 L 242.42,264.46 L 243.27,265.27 L 244.01,266.19 L 244.60,267.20 L 245.05,268.28 L 245.35,269.42 L 245.49,270.59 L 245.47,271.76 L 245.28,272.93 L 244.93,274.05 L 244.44,275.11 L 243.80,276.10 L 243.03,276.99 L 242.15,277.77 L 241.16,278.41 L 240.10,278.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="237.00" y1="268.00" x2="237.00" y2="261.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="237.00" y="289.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t2.eqMid">
+<text x="237.00" y="300.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Mid</text>
+<path d="M 233.90,324.91 L 232.84,324.41 L 231.85,323.77 L 230.97,322.99 L 230.20,322.10 L 229.56,321.11 L 229.07,320.05 L 228.72,318.93 L 228.53,317.76 L 228.51,316.59 L 228.65,315.42 L 228.95,314.28 L 229.40,313.20 L 229.99,312.19 L 230.73,311.27 L 231.58,310.46 L 232.53,309.77 L 233.57,309.22 L 234.68,308.82 L 235.83,308.58 L 237.00,308.50 L 238.17,308.58 L 239.32,308.82 L 240.43,309.22 L 241.47,309.77 L 242.42,310.46 L 243.27,311.27 L 244.01,312.19 L 244.60,313.20 L 245.05,314.28 L 245.35,315.42 L 245.49,316.59 L 245.47,317.76 L 245.28,318.93 L 244.93,320.05 L 244.44,321.11 L 243.80,322.10 L 243.03,322.99 L 242.15,323.77 L 241.16,324.41 L 240.10,324.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="237.00" y1="314.00" x2="237.00" y2="307.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="237.00" y="335.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t2.eqLow">
+<text x="237.00" y="346.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Low</text>
+<path d="M 233.90,370.91 L 232.84,370.41 L 231.85,369.77 L 230.97,368.99 L 230.20,368.10 L 229.56,367.11 L 229.07,366.05 L 228.72,364.93 L 228.53,363.76 L 228.51,362.59 L 228.65,361.42 L 228.95,360.28 L 229.40,359.20 L 229.99,358.19 L 230.73,357.27 L 231.58,356.46 L 232.53,355.77 L 233.57,355.22 L 234.68,354.82 L 235.83,354.58 L 237.00,354.50 L 238.17,354.58 L 239.32,354.82 L 240.43,355.22 L 241.47,355.77 L 242.42,356.46 L 243.27,357.27 L 244.01,358.19 L 244.60,359.20 L 245.05,360.28 L 245.35,361.42 L 245.49,362.59 L 245.47,363.76 L 245.28,364.93 L 244.93,366.05 L 244.44,367.11 L 243.80,368.10 L 243.03,368.99 L 242.15,369.77 L 241.16,370.41 L 240.10,370.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="237.00" y1="360.00" x2="237.00" y2="353.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="237.00" y="381.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t2.filter">
+<text x="281.00" y="254.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Filter</text>
+<path d="M 277.90,278.91 L 276.84,278.41 L 275.85,277.77 L 274.97,276.99 L 274.20,276.10 L 273.56,275.11 L 273.07,274.05 L 272.72,272.93 L 272.53,271.76 L 272.51,270.59 L 272.65,269.42 L 272.95,268.28 L 273.40,267.20 L 273.99,266.19 L 274.73,265.27 L 275.58,264.46 L 276.53,263.77 L 277.57,263.22 L 278.68,262.82 L 279.83,262.58 L 281.00,262.50 L 282.17,262.58 L 283.32,262.82 L 284.43,263.22 L 285.47,263.77 L 286.42,264.46 L 287.27,265.27 L 288.01,266.19 L 288.60,267.20 L 289.05,268.28 L 289.35,269.42 L 289.49,270.59 L 289.47,271.76 L 289.28,272.93 L 288.93,274.05 L 288.44,275.11 L 287.80,276.10 L 287.03,276.99 L 286.15,277.77 L 285.16,278.41 L 284.10,278.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="281.00" y1="268.00" x2="281.00" y2="261.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="281.00" y="289.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t2.dlySnd">
+<text x="281.00" y="300.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Dly Snd</text>
+<path d="M 277.90,324.91 L 276.84,324.41 L 275.85,323.77 L 274.97,322.99 L 274.20,322.10 L 273.56,321.11 L 273.07,320.05 L 272.72,318.93 L 272.53,317.76 L 272.51,316.59 L 272.65,315.42 L 272.95,314.28 L 273.40,313.20 L 273.99,312.19 L 274.73,311.27 L 275.58,310.46 L 276.53,309.77 L 277.57,309.22 L 278.68,308.82 L 279.83,308.58 L 281.00,308.50 L 282.17,308.58 L 283.32,308.82 L 284.43,309.22 L 285.47,309.77 L 286.42,310.46 L 287.27,311.27 L 288.01,312.19 L 288.60,313.20 L 289.05,314.28 L 289.35,315.42 L 289.49,316.59 L 289.47,317.76 L 289.28,318.93 L 288.93,320.05 L 288.44,321.11 L 287.80,322.10 L 287.03,322.99 L 286.15,323.77 L 285.16,324.41 L 284.10,324.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="279.91" y1="319.79" x2="277.64" y2="325.57" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="281.00" y="335.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t2.vrbSnd">
+<text x="281.00" y="346.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Vrb Snd</text>
+<path d="M 277.90,370.91 L 276.84,370.41 L 275.85,369.77 L 274.97,368.99 L 274.20,368.10 L 273.56,367.11 L 273.07,366.05 L 272.72,364.93 L 272.53,363.76 L 272.51,362.59 L 272.65,361.42 L 272.95,360.28 L 273.40,359.20 L 273.99,358.19 L 274.73,357.27 L 275.58,356.46 L 276.53,355.77 L 277.57,355.22 L 278.68,354.82 L 279.83,354.58 L 281.00,354.50 L 282.17,354.58 L 283.32,354.82 L 284.43,355.22 L 285.47,355.77 L 286.42,356.46 L 287.27,357.27 L 288.01,358.19 L 288.60,359.20 L 289.05,360.28 L 289.35,361.42 L 289.49,362.59 L 289.47,363.76 L 289.28,364.93 L 288.93,366.05 L 288.44,367.11 L 287.80,368.10 L 287.03,368.99 L 286.15,369.77 L 285.16,370.41 L 284.10,370.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="279.91" y1="365.79" x2="277.64" y2="371.57" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="281.00" y="381.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t2.pan">
+<text x="259.00" y="398.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Pan</text>
+<path d="M 255.90,422.91 L 254.84,422.41 L 253.85,421.77 L 252.97,420.99 L 252.20,420.10 L 251.56,419.11 L 251.07,418.05 L 250.72,416.93 L 250.53,415.76 L 250.51,414.59 L 250.65,413.42 L 250.95,412.28 L 251.40,411.20 L 251.99,410.19 L 252.73,409.27 L 253.58,408.46 L 254.53,407.77 L 255.57,407.22 L 256.68,406.82 L 257.83,406.58 L 259.00,406.50 L 260.17,406.58 L 261.32,406.82 L 262.43,407.22 L 263.47,407.77 L 264.42,408.46 L 265.27,409.27 L 266.01,410.19 L 266.60,411.20 L 267.05,412.28 L 267.35,413.42 L 267.49,414.59 L 267.47,415.76 L 267.28,416.93 L 266.93,418.05 L 266.44,419.11 L 265.80,420.10 L 265.03,420.99 L 264.15,421.77 L 263.16,422.41 L 262.10,422.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="259.00" y1="412.00" x2="259.00" y2="405.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="259.00" y="433.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">C</text>
+</g>
+<g id="t2.volume">
+<text x="259.00" y="450.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Volume</text>
+<path d="M 252.25,494.22 L 249.94,493.13 L 247.80,491.72 L 245.88,490.04 L 244.20,488.10 L 242.81,485.95 L 241.73,483.64 L 240.98,481.19 L 240.57,478.66 L 240.52,476.11 L 240.82,473.57 L 241.47,471.09 L 242.45,468.73 L 243.75,466.52 L 245.34,464.52 L 247.20,462.76 L 249.27,461.26 L 251.54,460.07 L 253.94,459.20 L 256.45,458.68 L 259.00,458.50 L 261.55,458.68 L 264.06,459.20 L 266.46,460.07 L 268.73,461.26 L 270.80,462.76 L 272.66,464.52 L 274.25,466.52 L 275.55,468.73 L 276.53,471.09 L 277.18,473.57 L 277.48,476.11 L 277.43,478.66 L 277.02,481.19 L 276.27,483.64 L 275.19,485.95 L 273.80,488.10 L 272.12,490.04 L 270.20,491.72 L 268.06,493.13 L 265.75,494.22" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 259.00,458.50 L 260.05,458.53 L 261.09,458.62 L 262.13,458.77 L 263.15,458.97 L 264.17,459.24 L 265.16,459.56 L 266.14,459.93 L 267.10,460.37 L 268.02,460.85 L 268.92,461.39 L 269.79,461.97 L 270.62,462.61 L 271.42,463.29 L 272.18,464.01 L 272.89,464.78 L 273.56,465.59 L 274.18,466.43 L 274.76,467.30 L 275.28,468.21 L 275.75,469.15 L 276.17,470.11 L 276.53,471.09 L 276.84,472.09 L 277.09,473.11 L 277.28,474.14 L 277.41,475.18 L 277.48,476.22 L 277.50,477.27 L 277.45,478.32 L 277.35,479.36 L 277.19,480.39 L 276.97,481.42 L 276.69,482.43 L 276.35,483.42 L 275.96,484.39 L 275.51,485.34 L 275.02,486.26 L 274.47,487.15 L 273.87,488.01 L 273.22,488.83" fill="none" stroke="#4f7ea8" stroke-width="3" stroke-linecap="round"/>
+<line x1="263.61" y1="480.84" x2="273.14" y2="488.77" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="259.00" y="509.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<rect x="344" y="46" width="150" height="495" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="350" y="40" width="16" height="12" fill="#f0ece2"/>
+<text x="358" y="49" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#ed8159" text-anchor="middle">3</text>
+<g id="t3.bars">
+<text x="362.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">1</text>
+<rect x="373.00" y="60" width="21.00" height="16" fill="#1a1a17"/>
+<text x="383.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="#f0ece2" text-anchor="middle">2</text>
+<line x1="373.00" y1="60" x2="373.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<text x="404.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">3</text>
+<line x1="394.00" y1="60" x2="394.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<text x="425.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">4</text>
+<line x1="415.00" y1="60" x2="415.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<rect x="352" y="60" width="84" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+</g>
+<g id="t3.clr">
+<rect x="442" y="60" width="44" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="464.00" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">CLR</text>
+</g>
+<g id="t3.rec">
+<rect x="352" y="82" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="384.00" y="93.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">REC</text>
+</g>
+<g id="t3.play">
+<rect x="422" y="82" width="64" height="16" fill="#52b0a4"/>
+<rect x="422" y="82" width="64" height="16" fill="none" stroke="#52b0a4" stroke-width="1.2"/>
+<text x="454.00" y="93.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="#ffffff" text-anchor="middle">PLAY</text>
+</g>
+<g id="t3.mute">
+<rect x="352" y="102" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="384.00" y="113.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">MUTE</text>
+</g>
+<g id="t3.solo">
+<rect x="422" y="102" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="454.00" y="113.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">SOLO</text>
+</g>
+<g id="t3.loop">
+<rect x="352" y="126" width="134" height="22" fill="#101010"/>
+<line x1="368.75" y1="126" x2="368.75" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="385.50" y1="126" x2="385.50" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="402.25" y1="126" x2="402.25" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="419.00" y1="126" x2="419.00" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="435.75" y1="126" x2="435.75" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="452.50" y1="126" x2="452.50" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="469.25" y1="126" x2="469.25" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<text x="358" y="140.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8" font-weight="700" letter-spacing="0.4" fill="rgba(255,255,255,0.9)">IDLE</text>
+<rect x="352" y="126" width="134" height="22" fill="none" stroke="rgba(26,26,23,0.38)" stroke-width="1"/>
+</g>
+<g id="t3.recLamp">
+<circle cx="468.5" cy="136.5" r="3.5" fill="rgba(26,26,23,0.13)" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t3.playLamp">
+<circle cx="478.5" cy="136.5" r="3.5" fill="rgba(26,26,23,0.13)" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t3.inputBox">
+<rect x="352" y="158" width="134" height="80" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="362" y="152" width="31.7" height="12" fill="#f0ece2"/>
+<text x="377.85" y="161.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.0" font-weight="700" letter-spacing="0.3" fill="#ed8159" text-anchor="middle">INPUT</text>
+</g>
+<g id="t3.preamp">
+<text x="375.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Preamp</text>
+<path d="M 371.90,207.91 L 370.84,207.41 L 369.85,206.77 L 368.97,205.99 L 368.20,205.10 L 367.56,204.11 L 367.07,203.05 L 366.72,201.93 L 366.53,200.76 L 366.51,199.59 L 366.65,198.42 L 366.95,197.28 L 367.40,196.20 L 367.99,195.19 L 368.73,194.27 L 369.58,193.46 L 370.53,192.77 L 371.57,192.22 L 372.68,191.82 L 373.83,191.58 L 375.00,191.50 L 376.17,191.58 L 377.32,191.82 L 378.43,192.22 L 379.47,192.77 L 380.42,193.46 L 381.27,194.27 L 382.01,195.19 L 382.60,196.20 L 383.05,197.28 L 383.35,198.42 L 383.49,199.59 L 383.47,200.76 L 383.28,201.93 L 382.93,203.05 L 382.44,204.11 L 381.80,205.10 L 381.03,205.99 L 380.15,206.77 L 379.16,207.41 L 378.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 371.90,207.91 L 371.28,207.64 L 370.69,207.33 L 370.13,206.96 L 369.59,206.56 L 369.09,206.11 L 368.63,205.62 L 368.20,205.10 L 367.82,204.55 L 367.48,203.97 L 367.19,203.36 L 366.95,202.73 L 366.76,202.09 L 366.62,201.43 L 366.53,200.76 L 366.50,200.09 L 366.52,199.42 L 366.59,198.75 L 366.72,198.09 L 366.89,197.44 L 367.12,196.81 L 367.40,196.20 L 367.72,195.61 L 368.09,195.05 L 368.50,194.52 L 368.96,194.02 L 369.45,193.56 L 369.97,193.15 L 370.53,192.77 L 371.12,192.44 L 371.73,192.16 L 372.36,191.92 L 373.00,191.74 L 373.66,191.61 L 374.33,191.53 L 375.00,191.50 L 375.67,191.53 L 376.34,191.61 L 377.00,191.74 L 377.64,191.92 L 378.27,192.16" fill="none" stroke="#ed8159" stroke-width="3" stroke-linecap="round"/>
+<line x1="376.16" y1="197.23" x2="378.54" y2="191.51" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="375.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t3.inlow">
+<text x="419.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">In Low</text>
+<path d="M 415.90,207.91 L 414.84,207.41 L 413.85,206.77 L 412.97,205.99 L 412.20,205.10 L 411.56,204.11 L 411.07,203.05 L 410.72,201.93 L 410.53,200.76 L 410.51,199.59 L 410.65,198.42 L 410.95,197.28 L 411.40,196.20 L 411.99,195.19 L 412.73,194.27 L 413.58,193.46 L 414.53,192.77 L 415.57,192.22 L 416.68,191.82 L 417.83,191.58 L 419.00,191.50 L 420.17,191.58 L 421.32,191.82 L 422.43,192.22 L 423.47,192.77 L 424.42,193.46 L 425.27,194.27 L 426.01,195.19 L 426.60,196.20 L 427.05,197.28 L 427.35,198.42 L 427.49,199.59 L 427.47,200.76 L 427.28,201.93 L 426.93,203.05 L 426.44,204.11 L 425.80,205.10 L 425.03,205.99 L 424.15,206.77 L 423.16,207.41 L 422.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="419.00" y1="197.00" x2="419.00" y2="190.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="419.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t3.inhigh">
+<text x="463.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">In High</text>
+<path d="M 459.90,207.91 L 458.84,207.41 L 457.85,206.77 L 456.97,205.99 L 456.20,205.10 L 455.56,204.11 L 455.07,203.05 L 454.72,201.93 L 454.53,200.76 L 454.51,199.59 L 454.65,198.42 L 454.95,197.28 L 455.40,196.20 L 455.99,195.19 L 456.73,194.27 L 457.58,193.46 L 458.53,192.77 L 459.57,192.22 L 460.68,191.82 L 461.83,191.58 L 463.00,191.50 L 464.17,191.58 L 465.32,191.82 L 466.43,192.22 L 467.47,192.77 L 468.42,193.46 L 469.27,194.27 L 470.01,195.19 L 470.60,196.20 L 471.05,197.28 L 471.35,198.42 L 471.49,199.59 L 471.47,200.76 L 471.28,201.93 L 470.93,203.05 L 470.44,204.11 L 469.80,205.10 L 469.03,205.99 L 468.15,206.77 L 467.16,207.41 L 466.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="463.00" y1="197.00" x2="463.00" y2="190.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="463.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t3.inMeter">
+<rect x="360" y="226" width="118" height="6" fill="rgba(26,26,23,0.13)"/>
+<rect x="360" y="226" width="47.20" height="6" fill="#4f7ea8"/>
+<rect x="360" y="226" width="118" height="6" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t3.eqHigh">
+<text x="397.00" y="254.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">High</text>
+<path d="M 393.90,278.91 L 392.84,278.41 L 391.85,277.77 L 390.97,276.99 L 390.20,276.10 L 389.56,275.11 L 389.07,274.05 L 388.72,272.93 L 388.53,271.76 L 388.51,270.59 L 388.65,269.42 L 388.95,268.28 L 389.40,267.20 L 389.99,266.19 L 390.73,265.27 L 391.58,264.46 L 392.53,263.77 L 393.57,263.22 L 394.68,262.82 L 395.83,262.58 L 397.00,262.50 L 398.17,262.58 L 399.32,262.82 L 400.43,263.22 L 401.47,263.77 L 402.42,264.46 L 403.27,265.27 L 404.01,266.19 L 404.60,267.20 L 405.05,268.28 L 405.35,269.42 L 405.49,270.59 L 405.47,271.76 L 405.28,272.93 L 404.93,274.05 L 404.44,275.11 L 403.80,276.10 L 403.03,276.99 L 402.15,277.77 L 401.16,278.41 L 400.10,278.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="397.00" y1="268.00" x2="397.00" y2="261.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="397.00" y="289.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t3.eqMid">
+<text x="397.00" y="300.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Mid</text>
+<path d="M 393.90,324.91 L 392.84,324.41 L 391.85,323.77 L 390.97,322.99 L 390.20,322.10 L 389.56,321.11 L 389.07,320.05 L 388.72,318.93 L 388.53,317.76 L 388.51,316.59 L 388.65,315.42 L 388.95,314.28 L 389.40,313.20 L 389.99,312.19 L 390.73,311.27 L 391.58,310.46 L 392.53,309.77 L 393.57,309.22 L 394.68,308.82 L 395.83,308.58 L 397.00,308.50 L 398.17,308.58 L 399.32,308.82 L 400.43,309.22 L 401.47,309.77 L 402.42,310.46 L 403.27,311.27 L 404.01,312.19 L 404.60,313.20 L 405.05,314.28 L 405.35,315.42 L 405.49,316.59 L 405.47,317.76 L 405.28,318.93 L 404.93,320.05 L 404.44,321.11 L 403.80,322.10 L 403.03,322.99 L 402.15,323.77 L 401.16,324.41 L 400.10,324.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="397.00" y1="314.00" x2="397.00" y2="307.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="397.00" y="335.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t3.eqLow">
+<text x="397.00" y="346.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Low</text>
+<path d="M 393.90,370.91 L 392.84,370.41 L 391.85,369.77 L 390.97,368.99 L 390.20,368.10 L 389.56,367.11 L 389.07,366.05 L 388.72,364.93 L 388.53,363.76 L 388.51,362.59 L 388.65,361.42 L 388.95,360.28 L 389.40,359.20 L 389.99,358.19 L 390.73,357.27 L 391.58,356.46 L 392.53,355.77 L 393.57,355.22 L 394.68,354.82 L 395.83,354.58 L 397.00,354.50 L 398.17,354.58 L 399.32,354.82 L 400.43,355.22 L 401.47,355.77 L 402.42,356.46 L 403.27,357.27 L 404.01,358.19 L 404.60,359.20 L 405.05,360.28 L 405.35,361.42 L 405.49,362.59 L 405.47,363.76 L 405.28,364.93 L 404.93,366.05 L 404.44,367.11 L 403.80,368.10 L 403.03,368.99 L 402.15,369.77 L 401.16,370.41 L 400.10,370.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="397.00" y1="360.00" x2="397.00" y2="353.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="397.00" y="381.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t3.filter">
+<text x="441.00" y="254.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Filter</text>
+<path d="M 437.90,278.91 L 436.84,278.41 L 435.85,277.77 L 434.97,276.99 L 434.20,276.10 L 433.56,275.11 L 433.07,274.05 L 432.72,272.93 L 432.53,271.76 L 432.51,270.59 L 432.65,269.42 L 432.95,268.28 L 433.40,267.20 L 433.99,266.19 L 434.73,265.27 L 435.58,264.46 L 436.53,263.77 L 437.57,263.22 L 438.68,262.82 L 439.83,262.58 L 441.00,262.50 L 442.17,262.58 L 443.32,262.82 L 444.43,263.22 L 445.47,263.77 L 446.42,264.46 L 447.27,265.27 L 448.01,266.19 L 448.60,267.20 L 449.05,268.28 L 449.35,269.42 L 449.49,270.59 L 449.47,271.76 L 449.28,272.93 L 448.93,274.05 L 448.44,275.11 L 447.80,276.10 L 447.03,276.99 L 446.15,277.77 L 445.16,278.41 L 444.10,278.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="441.00" y1="268.00" x2="441.00" y2="261.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="441.00" y="289.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t3.dlySnd">
+<text x="441.00" y="300.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Dly Snd</text>
+<path d="M 437.90,324.91 L 436.84,324.41 L 435.85,323.77 L 434.97,322.99 L 434.20,322.10 L 433.56,321.11 L 433.07,320.05 L 432.72,318.93 L 432.53,317.76 L 432.51,316.59 L 432.65,315.42 L 432.95,314.28 L 433.40,313.20 L 433.99,312.19 L 434.73,311.27 L 435.58,310.46 L 436.53,309.77 L 437.57,309.22 L 438.68,308.82 L 439.83,308.58 L 441.00,308.50 L 442.17,308.58 L 443.32,308.82 L 444.43,309.22 L 445.47,309.77 L 446.42,310.46 L 447.27,311.27 L 448.01,312.19 L 448.60,313.20 L 449.05,314.28 L 449.35,315.42 L 449.49,316.59 L 449.47,317.76 L 449.28,318.93 L 448.93,320.05 L 448.44,321.11 L 447.80,322.10 L 447.03,322.99 L 446.15,323.77 L 445.16,324.41 L 444.10,324.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="439.91" y1="319.79" x2="437.64" y2="325.57" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="441.00" y="335.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t3.vrbSnd">
+<text x="441.00" y="346.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Vrb Snd</text>
+<path d="M 437.90,370.91 L 436.84,370.41 L 435.85,369.77 L 434.97,368.99 L 434.20,368.10 L 433.56,367.11 L 433.07,366.05 L 432.72,364.93 L 432.53,363.76 L 432.51,362.59 L 432.65,361.42 L 432.95,360.28 L 433.40,359.20 L 433.99,358.19 L 434.73,357.27 L 435.58,356.46 L 436.53,355.77 L 437.57,355.22 L 438.68,354.82 L 439.83,354.58 L 441.00,354.50 L 442.17,354.58 L 443.32,354.82 L 444.43,355.22 L 445.47,355.77 L 446.42,356.46 L 447.27,357.27 L 448.01,358.19 L 448.60,359.20 L 449.05,360.28 L 449.35,361.42 L 449.49,362.59 L 449.47,363.76 L 449.28,364.93 L 448.93,366.05 L 448.44,367.11 L 447.80,368.10 L 447.03,368.99 L 446.15,369.77 L 445.16,370.41 L 444.10,370.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="439.91" y1="365.79" x2="437.64" y2="371.57" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="441.00" y="381.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t3.pan">
+<text x="419.00" y="398.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Pan</text>
+<path d="M 415.90,422.91 L 414.84,422.41 L 413.85,421.77 L 412.97,420.99 L 412.20,420.10 L 411.56,419.11 L 411.07,418.05 L 410.72,416.93 L 410.53,415.76 L 410.51,414.59 L 410.65,413.42 L 410.95,412.28 L 411.40,411.20 L 411.99,410.19 L 412.73,409.27 L 413.58,408.46 L 414.53,407.77 L 415.57,407.22 L 416.68,406.82 L 417.83,406.58 L 419.00,406.50 L 420.17,406.58 L 421.32,406.82 L 422.43,407.22 L 423.47,407.77 L 424.42,408.46 L 425.27,409.27 L 426.01,410.19 L 426.60,411.20 L 427.05,412.28 L 427.35,413.42 L 427.49,414.59 L 427.47,415.76 L 427.28,416.93 L 426.93,418.05 L 426.44,419.11 L 425.80,420.10 L 425.03,420.99 L 424.15,421.77 L 423.16,422.41 L 422.10,422.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="419.00" y1="412.00" x2="419.00" y2="405.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="419.00" y="433.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">C</text>
+</g>
+<g id="t3.volume">
+<text x="419.00" y="450.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Volume</text>
+<path d="M 412.25,494.22 L 409.94,493.13 L 407.80,491.72 L 405.88,490.04 L 404.20,488.10 L 402.81,485.95 L 401.73,483.64 L 400.98,481.19 L 400.57,478.66 L 400.52,476.11 L 400.82,473.57 L 401.47,471.09 L 402.45,468.73 L 403.75,466.52 L 405.34,464.52 L 407.20,462.76 L 409.27,461.26 L 411.54,460.07 L 413.94,459.20 L 416.45,458.68 L 419.00,458.50 L 421.55,458.68 L 424.06,459.20 L 426.46,460.07 L 428.73,461.26 L 430.80,462.76 L 432.66,464.52 L 434.25,466.52 L 435.55,468.73 L 436.53,471.09 L 437.18,473.57 L 437.48,476.11 L 437.43,478.66 L 437.02,481.19 L 436.27,483.64 L 435.19,485.95 L 433.80,488.10 L 432.12,490.04 L 430.20,491.72 L 428.06,493.13 L 425.75,494.22" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 419.00,458.50 L 420.05,458.53 L 421.09,458.62 L 422.13,458.77 L 423.15,458.97 L 424.17,459.24 L 425.16,459.56 L 426.14,459.93 L 427.10,460.37 L 428.02,460.85 L 428.92,461.39 L 429.79,461.97 L 430.62,462.61 L 431.42,463.29 L 432.18,464.01 L 432.89,464.78 L 433.56,465.59 L 434.18,466.43 L 434.76,467.30 L 435.28,468.21 L 435.75,469.15 L 436.17,470.11 L 436.53,471.09 L 436.84,472.09 L 437.09,473.11 L 437.28,474.14 L 437.41,475.18 L 437.48,476.22 L 437.50,477.27 L 437.45,478.32 L 437.35,479.36 L 437.19,480.39 L 436.97,481.42 L 436.69,482.43 L 436.35,483.42 L 435.96,484.39 L 435.51,485.34 L 435.02,486.26 L 434.47,487.15 L 433.87,488.01 L 433.22,488.83" fill="none" stroke="#4f7ea8" stroke-width="3" stroke-linecap="round"/>
+<line x1="423.61" y1="480.84" x2="433.14" y2="488.77" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="419.00" y="509.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<rect x="504" y="46" width="150" height="495" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="510" y="40" width="16" height="12" fill="#f0ece2"/>
+<text x="518" y="49" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="9" font-weight="700" fill="#ed8159" text-anchor="middle">4</text>
+<g id="t4.bars">
+<text x="522.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">1</text>
+<rect x="533.00" y="60" width="21.00" height="16" fill="#1a1a17"/>
+<text x="543.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="#f0ece2" text-anchor="middle">2</text>
+<line x1="533.00" y1="60" x2="533.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<text x="564.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">3</text>
+<line x1="554.00" y1="60" x2="554.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<text x="585.50" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.62)" text-anchor="middle">4</text>
+<line x1="575.00" y1="60" x2="575.00" y2="76" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<rect x="512" y="60" width="84" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+</g>
+<g id="t4.clr">
+<rect x="602" y="60" width="44" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="624.00" y="71.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">CLR</text>
+</g>
+<g id="t4.rec">
+<rect x="512" y="82" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="544.00" y="93.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">REC</text>
+</g>
+<g id="t4.play">
+<rect x="582" y="82" width="64" height="16" fill="#52b0a4"/>
+<rect x="582" y="82" width="64" height="16" fill="none" stroke="#52b0a4" stroke-width="1.2"/>
+<text x="614.00" y="93.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="#ffffff" text-anchor="middle">PLAY</text>
+</g>
+<g id="t4.mute">
+<rect x="512" y="102" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="544.00" y="113.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">MUTE</text>
+</g>
+<g id="t4.solo">
+<rect x="582" y="102" width="64" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="614.00" y="113.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">SOLO</text>
+</g>
+<g id="t4.loop">
+<rect x="512" y="126" width="134" height="22" fill="#101010"/>
+<line x1="528.75" y1="126" x2="528.75" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="545.50" y1="126" x2="545.50" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="562.25" y1="126" x2="562.25" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="579.00" y1="126" x2="579.00" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="595.75" y1="126" x2="595.75" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="612.50" y1="126" x2="612.50" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<line x1="629.25" y1="126" x2="629.25" y2="148" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+<text x="518" y="140.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8" font-weight="700" letter-spacing="0.4" fill="rgba(255,255,255,0.9)">IDLE</text>
+<rect x="512" y="126" width="134" height="22" fill="none" stroke="rgba(26,26,23,0.38)" stroke-width="1"/>
+</g>
+<g id="t4.recLamp">
+<circle cx="628.5" cy="136.5" r="3.5" fill="rgba(26,26,23,0.13)" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t4.playLamp">
+<circle cx="638.5" cy="136.5" r="3.5" fill="rgba(26,26,23,0.13)" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t4.inputBox">
+<rect x="512" y="158" width="134" height="80" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="522" y="152" width="31.7" height="12" fill="#f0ece2"/>
+<text x="537.85" y="161.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.0" font-weight="700" letter-spacing="0.3" fill="#ed8159" text-anchor="middle">INPUT</text>
+</g>
+<g id="t4.preamp">
+<text x="535.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Preamp</text>
+<path d="M 531.90,207.91 L 530.84,207.41 L 529.85,206.77 L 528.97,205.99 L 528.20,205.10 L 527.56,204.11 L 527.07,203.05 L 526.72,201.93 L 526.53,200.76 L 526.51,199.59 L 526.65,198.42 L 526.95,197.28 L 527.40,196.20 L 527.99,195.19 L 528.73,194.27 L 529.58,193.46 L 530.53,192.77 L 531.57,192.22 L 532.68,191.82 L 533.83,191.58 L 535.00,191.50 L 536.17,191.58 L 537.32,191.82 L 538.43,192.22 L 539.47,192.77 L 540.42,193.46 L 541.27,194.27 L 542.01,195.19 L 542.60,196.20 L 543.05,197.28 L 543.35,198.42 L 543.49,199.59 L 543.47,200.76 L 543.28,201.93 L 542.93,203.05 L 542.44,204.11 L 541.80,205.10 L 541.03,205.99 L 540.15,206.77 L 539.16,207.41 L 538.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 531.90,207.91 L 531.28,207.64 L 530.69,207.33 L 530.13,206.96 L 529.59,206.56 L 529.09,206.11 L 528.63,205.62 L 528.20,205.10 L 527.82,204.55 L 527.48,203.97 L 527.19,203.36 L 526.95,202.73 L 526.76,202.09 L 526.62,201.43 L 526.53,200.76 L 526.50,200.09 L 526.52,199.42 L 526.59,198.75 L 526.72,198.09 L 526.89,197.44 L 527.12,196.81 L 527.40,196.20 L 527.72,195.61 L 528.09,195.05 L 528.50,194.52 L 528.96,194.02 L 529.45,193.56 L 529.97,193.15 L 530.53,192.77 L 531.12,192.44 L 531.73,192.16 L 532.36,191.92 L 533.00,191.74 L 533.66,191.61 L 534.33,191.53 L 535.00,191.50 L 535.67,191.53 L 536.34,191.61 L 537.00,191.74 L 537.64,191.92 L 538.27,192.16" fill="none" stroke="#ed8159" stroke-width="3" stroke-linecap="round"/>
+<line x1="536.16" y1="197.23" x2="538.54" y2="191.51" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="535.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t4.inlow">
+<text x="579.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">In Low</text>
+<path d="M 575.90,207.91 L 574.84,207.41 L 573.85,206.77 L 572.97,205.99 L 572.20,205.10 L 571.56,204.11 L 571.07,203.05 L 570.72,201.93 L 570.53,200.76 L 570.51,199.59 L 570.65,198.42 L 570.95,197.28 L 571.40,196.20 L 571.99,195.19 L 572.73,194.27 L 573.58,193.46 L 574.53,192.77 L 575.57,192.22 L 576.68,191.82 L 577.83,191.58 L 579.00,191.50 L 580.17,191.58 L 581.32,191.82 L 582.43,192.22 L 583.47,192.77 L 584.42,193.46 L 585.27,194.27 L 586.01,195.19 L 586.60,196.20 L 587.05,197.28 L 587.35,198.42 L 587.49,199.59 L 587.47,200.76 L 587.28,201.93 L 586.93,203.05 L 586.44,204.11 L 585.80,205.10 L 585.03,205.99 L 584.15,206.77 L 583.16,207.41 L 582.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="579.00" y1="197.00" x2="579.00" y2="190.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="579.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t4.inhigh">
+<text x="623.00" y="183.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">In High</text>
+<path d="M 619.90,207.91 L 618.84,207.41 L 617.85,206.77 L 616.97,205.99 L 616.20,205.10 L 615.56,204.11 L 615.07,203.05 L 614.72,201.93 L 614.53,200.76 L 614.51,199.59 L 614.65,198.42 L 614.95,197.28 L 615.40,196.20 L 615.99,195.19 L 616.73,194.27 L 617.58,193.46 L 618.53,192.77 L 619.57,192.22 L 620.68,191.82 L 621.83,191.58 L 623.00,191.50 L 624.17,191.58 L 625.32,191.82 L 626.43,192.22 L 627.47,192.77 L 628.42,193.46 L 629.27,194.27 L 630.01,195.19 L 630.60,196.20 L 631.05,197.28 L 631.35,198.42 L 631.49,199.59 L 631.47,200.76 L 631.28,201.93 L 630.93,203.05 L 630.44,204.11 L 629.80,205.10 L 629.03,205.99 L 628.15,206.77 L 627.16,207.41 L 626.10,207.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="623.00" y1="197.00" x2="623.00" y2="190.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="623.00" y="218.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t4.inMeter">
+<rect x="520" y="226" width="118" height="6" fill="rgba(26,26,23,0.13)"/>
+<rect x="520" y="226" width="47.20" height="6" fill="#4f7ea8"/>
+<rect x="520" y="226" width="118" height="6" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+</g>
+<g id="t4.eqHigh">
+<text x="557.00" y="254.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">High</text>
+<path d="M 553.90,278.91 L 552.84,278.41 L 551.85,277.77 L 550.97,276.99 L 550.20,276.10 L 549.56,275.11 L 549.07,274.05 L 548.72,272.93 L 548.53,271.76 L 548.51,270.59 L 548.65,269.42 L 548.95,268.28 L 549.40,267.20 L 549.99,266.19 L 550.73,265.27 L 551.58,264.46 L 552.53,263.77 L 553.57,263.22 L 554.68,262.82 L 555.83,262.58 L 557.00,262.50 L 558.17,262.58 L 559.32,262.82 L 560.43,263.22 L 561.47,263.77 L 562.42,264.46 L 563.27,265.27 L 564.01,266.19 L 564.60,267.20 L 565.05,268.28 L 565.35,269.42 L 565.49,270.59 L 565.47,271.76 L 565.28,272.93 L 564.93,274.05 L 564.44,275.11 L 563.80,276.10 L 563.03,276.99 L 562.15,277.77 L 561.16,278.41 L 560.10,278.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="557.00" y1="268.00" x2="557.00" y2="261.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="557.00" y="289.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t4.eqMid">
+<text x="557.00" y="300.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Mid</text>
+<path d="M 553.90,324.91 L 552.84,324.41 L 551.85,323.77 L 550.97,322.99 L 550.20,322.10 L 549.56,321.11 L 549.07,320.05 L 548.72,318.93 L 548.53,317.76 L 548.51,316.59 L 548.65,315.42 L 548.95,314.28 L 549.40,313.20 L 549.99,312.19 L 550.73,311.27 L 551.58,310.46 L 552.53,309.77 L 553.57,309.22 L 554.68,308.82 L 555.83,308.58 L 557.00,308.50 L 558.17,308.58 L 559.32,308.82 L 560.43,309.22 L 561.47,309.77 L 562.42,310.46 L 563.27,311.27 L 564.01,312.19 L 564.60,313.20 L 565.05,314.28 L 565.35,315.42 L 565.49,316.59 L 565.47,317.76 L 565.28,318.93 L 564.93,320.05 L 564.44,321.11 L 563.80,322.10 L 563.03,322.99 L 562.15,323.77 L 561.16,324.41 L 560.10,324.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="557.00" y1="314.00" x2="557.00" y2="307.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="557.00" y="335.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t4.eqLow">
+<text x="557.00" y="346.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Low</text>
+<path d="M 553.90,370.91 L 552.84,370.41 L 551.85,369.77 L 550.97,368.99 L 550.20,368.10 L 549.56,367.11 L 549.07,366.05 L 548.72,364.93 L 548.53,363.76 L 548.51,362.59 L 548.65,361.42 L 548.95,360.28 L 549.40,359.20 L 549.99,358.19 L 550.73,357.27 L 551.58,356.46 L 552.53,355.77 L 553.57,355.22 L 554.68,354.82 L 555.83,354.58 L 557.00,354.50 L 558.17,354.58 L 559.32,354.82 L 560.43,355.22 L 561.47,355.77 L 562.42,356.46 L 563.27,357.27 L 564.01,358.19 L 564.60,359.20 L 565.05,360.28 L 565.35,361.42 L 565.49,362.59 L 565.47,363.76 L 565.28,364.93 L 564.93,366.05 L 564.44,367.11 L 563.80,368.10 L 563.03,368.99 L 562.15,369.77 L 561.16,370.41 L 560.10,370.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="557.00" y1="360.00" x2="557.00" y2="353.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="557.00" y="381.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="t4.filter">
+<text x="601.00" y="254.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Filter</text>
+<path d="M 597.90,278.91 L 596.84,278.41 L 595.85,277.77 L 594.97,276.99 L 594.20,276.10 L 593.56,275.11 L 593.07,274.05 L 592.72,272.93 L 592.53,271.76 L 592.51,270.59 L 592.65,269.42 L 592.95,268.28 L 593.40,267.20 L 593.99,266.19 L 594.73,265.27 L 595.58,264.46 L 596.53,263.77 L 597.57,263.22 L 598.68,262.82 L 599.83,262.58 L 601.00,262.50 L 602.17,262.58 L 603.32,262.82 L 604.43,263.22 L 605.47,263.77 L 606.42,264.46 L 607.27,265.27 L 608.01,266.19 L 608.60,267.20 L 609.05,268.28 L 609.35,269.42 L 609.49,270.59 L 609.47,271.76 L 609.28,272.93 L 608.93,274.05 L 608.44,275.11 L 607.80,276.10 L 607.03,276.99 L 606.15,277.77 L 605.16,278.41 L 604.10,278.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="601.00" y1="268.00" x2="601.00" y2="261.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="601.00" y="289.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t4.dlySnd">
+<text x="601.00" y="300.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Dly Snd</text>
+<path d="M 597.90,324.91 L 596.84,324.41 L 595.85,323.77 L 594.97,322.99 L 594.20,322.10 L 593.56,321.11 L 593.07,320.05 L 592.72,318.93 L 592.53,317.76 L 592.51,316.59 L 592.65,315.42 L 592.95,314.28 L 593.40,313.20 L 593.99,312.19 L 594.73,311.27 L 595.58,310.46 L 596.53,309.77 L 597.57,309.22 L 598.68,308.82 L 599.83,308.58 L 601.00,308.50 L 602.17,308.58 L 603.32,308.82 L 604.43,309.22 L 605.47,309.77 L 606.42,310.46 L 607.27,311.27 L 608.01,312.19 L 608.60,313.20 L 609.05,314.28 L 609.35,315.42 L 609.49,316.59 L 609.47,317.76 L 609.28,318.93 L 608.93,320.05 L 608.44,321.11 L 607.80,322.10 L 607.03,322.99 L 606.15,323.77 L 605.16,324.41 L 604.10,324.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="599.91" y1="319.79" x2="597.64" y2="325.57" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="601.00" y="335.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t4.vrbSnd">
+<text x="601.00" y="346.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Vrb Snd</text>
+<path d="M 597.90,370.91 L 596.84,370.41 L 595.85,369.77 L 594.97,368.99 L 594.20,368.10 L 593.56,367.11 L 593.07,366.05 L 592.72,364.93 L 592.53,363.76 L 592.51,362.59 L 592.65,361.42 L 592.95,360.28 L 593.40,359.20 L 593.99,358.19 L 594.73,357.27 L 595.58,356.46 L 596.53,355.77 L 597.57,355.22 L 598.68,354.82 L 599.83,354.58 L 601.00,354.50 L 602.17,354.58 L 603.32,354.82 L 604.43,355.22 L 605.47,355.77 L 606.42,356.46 L 607.27,357.27 L 608.01,358.19 L 608.60,359.20 L 609.05,360.28 L 609.35,361.42 L 609.49,362.59 L 609.47,363.76 L 609.28,364.93 L 608.93,366.05 L 608.44,367.11 L 607.80,368.10 L 607.03,368.99 L 606.15,369.77 L 605.16,370.41 L 604.10,370.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="599.91" y1="365.79" x2="597.64" y2="371.57" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="601.00" y="381.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">OFF</text>
+</g>
+<g id="t4.pan">
+<text x="579.00" y="398.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Pan</text>
+<path d="M 575.90,422.91 L 574.84,422.41 L 573.85,421.77 L 572.97,420.99 L 572.20,420.10 L 571.56,419.11 L 571.07,418.05 L 570.72,416.93 L 570.53,415.76 L 570.51,414.59 L 570.65,413.42 L 570.95,412.28 L 571.40,411.20 L 571.99,410.19 L 572.73,409.27 L 573.58,408.46 L 574.53,407.77 L 575.57,407.22 L 576.68,406.82 L 577.83,406.58 L 579.00,406.50 L 580.17,406.58 L 581.32,406.82 L 582.43,407.22 L 583.47,407.77 L 584.42,408.46 L 585.27,409.27 L 586.01,410.19 L 586.60,411.20 L 587.05,412.28 L 587.35,413.42 L 587.49,414.59 L 587.47,415.76 L 587.28,416.93 L 586.93,418.05 L 586.44,419.11 L 585.80,420.10 L 585.03,420.99 L 584.15,421.77 L 583.16,422.41 L 582.10,422.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="579.00" y1="412.00" x2="579.00" y2="405.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="579.00" y="433.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">C</text>
+</g>
+<g id="t4.volume">
+<text x="579.00" y="450.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Volume</text>
+<path d="M 572.25,494.22 L 569.94,493.13 L 567.80,491.72 L 565.88,490.04 L 564.20,488.10 L 562.81,485.95 L 561.73,483.64 L 560.98,481.19 L 560.57,478.66 L 560.52,476.11 L 560.82,473.57 L 561.47,471.09 L 562.45,468.73 L 563.75,466.52 L 565.34,464.52 L 567.20,462.76 L 569.27,461.26 L 571.54,460.07 L 573.94,459.20 L 576.45,458.68 L 579.00,458.50 L 581.55,458.68 L 584.06,459.20 L 586.46,460.07 L 588.73,461.26 L 590.80,462.76 L 592.66,464.52 L 594.25,466.52 L 595.55,468.73 L 596.53,471.09 L 597.18,473.57 L 597.48,476.11 L 597.43,478.66 L 597.02,481.19 L 596.27,483.64 L 595.19,485.95 L 593.80,488.10 L 592.12,490.04 L 590.20,491.72 L 588.06,493.13 L 585.75,494.22" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 579.00,458.50 L 580.05,458.53 L 581.09,458.62 L 582.13,458.77 L 583.15,458.97 L 584.17,459.24 L 585.16,459.56 L 586.14,459.93 L 587.10,460.37 L 588.02,460.85 L 588.92,461.39 L 589.79,461.97 L 590.62,462.61 L 591.42,463.29 L 592.18,464.01 L 592.89,464.78 L 593.56,465.59 L 594.18,466.43 L 594.76,467.30 L 595.28,468.21 L 595.75,469.15 L 596.17,470.11 L 596.53,471.09 L 596.84,472.09 L 597.09,473.11 L 597.28,474.14 L 597.41,475.18 L 597.48,476.22 L 597.50,477.27 L 597.45,478.32 L 597.35,479.36 L 597.19,480.39 L 596.97,481.42 L 596.69,482.43 L 596.35,483.42 L 595.96,484.39 L 595.51,485.34 L 595.02,486.26 L 594.47,487.15 L 593.87,488.01 L 593.22,488.83" fill="none" stroke="#4f7ea8" stroke-width="3" stroke-linecap="round"/>
+<line x1="583.61" y1="480.84" x2="593.14" y2="488.77" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="579.00" y="509.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<line x1="671" y1="46" x2="671" y2="541" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<text x="687" y="44" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="11" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.78)">GLOBAL</text>
+<line x1="687" y1="54" x2="959" y2="54" stroke="rgba(26,26,23,0.18)" stroke-width="1"/>
+<g id="global.tapeCharacter">
+<rect x="687" y="62" width="84" height="268" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="697" y="56" width="70.8" height="12" fill="#f0ece2"/>
+<text x="732.38" y="65.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.0" font-weight="700" letter-spacing="0.3" fill="#52b0a4" text-anchor="middle">TAPE CHARACTER</text>
+</g>
+<g id="global.wow">
+<text x="729.00" y="84.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Wow</text>
+<path d="M 725.90,108.91 L 724.84,108.41 L 723.85,107.77 L 722.97,106.99 L 722.20,106.10 L 721.56,105.11 L 721.07,104.05 L 720.72,102.93 L 720.53,101.76 L 720.51,100.59 L 720.65,99.42 L 720.95,98.28 L 721.40,97.20 L 721.99,96.19 L 722.73,95.27 L 723.58,94.46 L 724.53,93.77 L 725.57,93.22 L 726.68,92.82 L 727.83,92.58 L 729.00,92.50 L 730.17,92.58 L 731.32,92.82 L 732.43,93.22 L 733.47,93.77 L 734.42,94.46 L 735.27,95.27 L 736.01,96.19 L 736.60,97.20 L 737.05,98.28 L 737.35,99.42 L 737.49,100.59 L 737.47,101.76 L 737.28,102.93 L 736.93,104.05 L 736.44,105.11 L 735.80,106.10 L 735.03,106.99 L 734.15,107.77 L 733.16,108.41 L 732.10,108.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 725.90,108.91 L 725.36,108.68 L 724.84,108.41 L 724.33,108.10 L 723.85,107.77 L 723.40,107.39 L 722.97,106.99 L 722.57,106.56 L 722.20,106.10 L 721.86,105.62 L 721.56,105.11 L 721.30,104.59 L 721.07,104.05 L 720.87,103.49 L 720.72,102.93 L 720.61,102.35 L 720.53,101.76 L 720.50,101.18 L 720.51,100.59 L 720.56,100.00 L 720.65,99.42 L 720.78,98.85 L 720.95,98.28 L 721.15,97.73 L 721.40,97.20 L 721.68,96.68 L 721.99,96.19 L 722.34,95.71 L 722.73,95.27 L 723.14,94.85 L 723.58,94.46 L 724.04,94.10 L 724.53,93.77 L 725.04,93.48 L 725.57,93.22 L 726.12,93.00 L 726.68,92.82 L 727.25,92.68 L 727.83,92.58 L 728.41,92.52 L 729.00,92.50" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="729.00" y1="98.00" x2="729.00" y2="91.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="729.00" y="119.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">50%</text>
+</g>
+<g id="global.wowRate">
+<text x="729.00" y="134.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Wow Rate</text>
+<path d="M 725.90,158.91 L 724.84,158.41 L 723.85,157.77 L 722.97,156.99 L 722.20,156.10 L 721.56,155.11 L 721.07,154.05 L 720.72,152.93 L 720.53,151.76 L 720.51,150.59 L 720.65,149.42 L 720.95,148.28 L 721.40,147.20 L 721.99,146.19 L 722.73,145.27 L 723.58,144.46 L 724.53,143.77 L 725.57,143.22 L 726.68,142.82 L 727.83,142.58 L 729.00,142.50 L 730.17,142.58 L 731.32,142.82 L 732.43,143.22 L 733.47,143.77 L 734.42,144.46 L 735.27,145.27 L 736.01,146.19 L 736.60,147.20 L 737.05,148.28 L 737.35,149.42 L 737.49,150.59 L 737.47,151.76 L 737.28,152.93 L 736.93,154.05 L 736.44,155.11 L 735.80,156.10 L 735.03,156.99 L 734.15,157.77 L 733.16,158.41 L 732.10,158.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 725.90,158.91 L 725.68,158.83 L 725.47,158.73 L 725.25,158.63 L 725.04,158.52 L 724.84,158.41 L 724.63,158.29 L 724.43,158.17 L 724.24,158.04 L 724.04,157.90 L 723.85,157.77 L 723.67,157.62 L 723.49,157.47 L 723.31,157.31 L 723.14,157.16 L 722.97,156.99 L 722.81,156.82 L 722.65,156.65 L 722.49,156.47 L 722.34,156.29 L 722.20,156.10 L 722.06,155.91 L 721.93,155.72 L 721.80,155.52 L 721.68,155.32 L 721.56,155.11 L 721.45,154.91 L 721.35,154.70 L 721.25,154.48 L 721.15,154.27 L 721.07,154.05 L 720.98,153.83 L 720.91,153.61 L 720.84,153.38 L 720.78,153.15 L 720.72,152.93 L 720.67,152.70 L 720.63,152.46 L 720.59,152.23 L 720.56,152.00 L 720.53,151.76" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="726.01" y1="151.27" x2="719.84" y2="151.83" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="729.00" y="169.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">1.00x</text>
+</g>
+<g id="global.flutter">
+<text x="729.00" y="184.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Flutter</text>
+<path d="M 725.90,208.91 L 724.84,208.41 L 723.85,207.77 L 722.97,206.99 L 722.20,206.10 L 721.56,205.11 L 721.07,204.05 L 720.72,202.93 L 720.53,201.76 L 720.51,200.59 L 720.65,199.42 L 720.95,198.28 L 721.40,197.20 L 721.99,196.19 L 722.73,195.27 L 723.58,194.46 L 724.53,193.77 L 725.57,193.22 L 726.68,192.82 L 727.83,192.58 L 729.00,192.50 L 730.17,192.58 L 731.32,192.82 L 732.43,193.22 L 733.47,193.77 L 734.42,194.46 L 735.27,195.27 L 736.01,196.19 L 736.60,197.20 L 737.05,198.28 L 737.35,199.42 L 737.49,200.59 L 737.47,201.76 L 737.28,202.93 L 736.93,204.05 L 736.44,205.11 L 735.80,206.10 L 735.03,206.99 L 734.15,207.77 L 733.16,208.41 L 732.10,208.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 725.90,208.91 L 725.47,208.73 L 725.04,208.52 L 724.63,208.29 L 724.24,208.04 L 723.85,207.77 L 723.49,207.47 L 723.14,207.16 L 722.81,206.82 L 722.49,206.47 L 722.20,206.10 L 721.93,205.72 L 721.68,205.32 L 721.45,204.91 L 721.25,204.48 L 721.07,204.05 L 720.91,203.61 L 720.78,203.15 L 720.67,202.70 L 720.59,202.23 L 720.53,201.76 L 720.51,201.29 L 720.50,200.82 L 720.52,200.35 L 720.57,199.89 L 720.65,199.42 L 720.75,198.96 L 720.87,198.51 L 721.02,198.06 L 721.20,197.63 L 721.40,197.20 L 721.62,196.78 L 721.86,196.38 L 722.13,195.99 L 722.42,195.62 L 722.73,195.27 L 723.05,194.93 L 723.40,194.61 L 723.76,194.31 L 724.14,194.03 L 724.53,193.77" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="727.42" y1="198.45" x2="724.16" y2="193.17" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="729.00" y="219.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">40%</text>
+</g>
+<g id="global.flutterRate">
+<text x="729.00" y="234.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Flut Rate</text>
+<path d="M 725.90,258.91 L 724.84,258.41 L 723.85,257.77 L 722.97,256.99 L 722.20,256.10 L 721.56,255.11 L 721.07,254.05 L 720.72,252.93 L 720.53,251.76 L 720.51,250.59 L 720.65,249.42 L 720.95,248.28 L 721.40,247.20 L 721.99,246.19 L 722.73,245.27 L 723.58,244.46 L 724.53,243.77 L 725.57,243.22 L 726.68,242.82 L 727.83,242.58 L 729.00,242.50 L 730.17,242.58 L 731.32,242.82 L 732.43,243.22 L 733.47,243.77 L 734.42,244.46 L 735.27,245.27 L 736.01,246.19 L 736.60,247.20 L 737.05,248.28 L 737.35,249.42 L 737.49,250.59 L 737.47,251.76 L 737.28,252.93 L 736.93,254.05 L 736.44,255.11 L 735.80,256.10 L 735.03,256.99 L 734.15,257.77 L 733.16,258.41 L 732.10,258.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 725.90,258.91 L 725.68,258.83 L 725.47,258.73 L 725.25,258.63 L 725.04,258.52 L 724.84,258.41 L 724.63,258.29 L 724.43,258.17 L 724.24,258.04 L 724.04,257.90 L 723.85,257.77 L 723.67,257.62 L 723.49,257.47 L 723.31,257.31 L 723.14,257.16 L 722.97,256.99 L 722.81,256.82 L 722.65,256.65 L 722.49,256.47 L 722.34,256.29 L 722.20,256.10 L 722.06,255.91 L 721.93,255.72 L 721.80,255.52 L 721.68,255.32 L 721.56,255.11 L 721.45,254.91 L 721.35,254.70 L 721.25,254.48 L 721.15,254.27 L 721.07,254.05 L 720.98,253.83 L 720.91,253.61 L 720.84,253.38 L 720.78,253.15 L 720.72,252.93 L 720.67,252.70 L 720.63,252.46 L 720.59,252.23 L 720.56,252.00 L 720.53,251.76" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="726.01" y1="251.27" x2="719.84" y2="251.83" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="729.00" y="269.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">1.00x</text>
+</g>
+<g id="global.hiss">
+<text x="729.00" y="284.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Hiss</text>
+<path d="M 725.90,308.91 L 724.84,308.41 L 723.85,307.77 L 722.97,306.99 L 722.20,306.10 L 721.56,305.11 L 721.07,304.05 L 720.72,302.93 L 720.53,301.76 L 720.51,300.59 L 720.65,299.42 L 720.95,298.28 L 721.40,297.20 L 721.99,296.19 L 722.73,295.27 L 723.58,294.46 L 724.53,293.77 L 725.57,293.22 L 726.68,292.82 L 727.83,292.58 L 729.00,292.50 L 730.17,292.58 L 731.32,292.82 L 732.43,293.22 L 733.47,293.77 L 734.42,294.46 L 735.27,295.27 L 736.01,296.19 L 736.60,297.20 L 737.05,298.28 L 737.35,299.42 L 737.49,300.59 L 737.47,301.76 L 737.28,302.93 L 736.93,304.05 L 736.44,305.11 L 735.80,306.10 L 735.03,306.99 L 734.15,307.77 L 733.16,308.41 L 732.10,308.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 725.90,308.91 L 725.57,308.78 L 725.25,308.63 L 724.94,308.47 L 724.63,308.29 L 724.33,308.10 L 724.04,307.90 L 723.76,307.69 L 723.49,307.47 L 723.22,307.24 L 722.97,306.99 L 722.73,306.73 L 722.49,306.47 L 722.27,306.19 L 722.06,305.91 L 721.86,305.62 L 721.68,305.32 L 721.51,305.01 L 721.35,304.70 L 721.20,304.38 L 721.07,304.05 L 720.95,303.72 L 720.84,303.38 L 720.75,303.04 L 720.67,302.70 L 720.61,302.35 L 720.56,302.00 L 720.52,301.65 L 720.51,301.29 L 720.50,300.94 L 720.51,300.59 L 720.53,300.24 L 720.57,299.89 L 720.63,299.54 L 720.69,299.19 L 720.78,298.85 L 720.87,298.51 L 720.98,298.17 L 721.11,297.84 L 721.25,297.52 L 721.40,297.20" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="726.32" y1="299.66" x2="720.77" y2="296.89" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="729.00" y="319.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">30%</text>
+</g>
+<g id="global.delay">
+<rect x="781" y="62" width="84" height="218" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="791" y="56" width="31.7" height="12" fill="#f0ece2"/>
+<text x="806.85" y="65.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.0" font-weight="700" letter-spacing="0.3" fill="#52b0a4" text-anchor="middle">DELAY</text>
+</g>
+<g id="global.dlyTime">
+<text x="823.00" y="84.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Time</text>
+<path d="M 819.90,108.91 L 818.84,108.41 L 817.85,107.77 L 816.97,106.99 L 816.20,106.10 L 815.56,105.11 L 815.07,104.05 L 814.72,102.93 L 814.53,101.76 L 814.51,100.59 L 814.65,99.42 L 814.95,98.28 L 815.40,97.20 L 815.99,96.19 L 816.73,95.27 L 817.58,94.46 L 818.53,93.77 L 819.57,93.22 L 820.68,92.82 L 821.83,92.58 L 823.00,92.50 L 824.17,92.58 L 825.32,92.82 L 826.43,93.22 L 827.47,93.77 L 828.42,94.46 L 829.27,95.27 L 830.01,96.19 L 830.60,97.20 L 831.05,98.28 L 831.35,99.42 L 831.49,100.59 L 831.47,101.76 L 831.28,102.93 L 830.93,104.05 L 830.44,105.11 L 829.80,106.10 L 829.03,106.99 L 828.15,107.77 L 827.16,108.41 L 826.10,108.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 819.90,108.91 L 819.73,108.85 L 819.57,108.78 L 819.41,108.71 L 819.25,108.63 L 819.10,108.55 L 818.94,108.47 L 818.79,108.38 L 818.63,108.29 L 818.48,108.20 L 818.33,108.10 L 818.19,108.01 L 818.04,107.90 L 817.90,107.80 L 817.76,107.69 L 817.62,107.58 L 817.49,107.47 L 817.35,107.35 L 817.22,107.24 L 817.10,107.11 L 816.97,106.99 L 816.85,106.86 L 816.73,106.73 L 816.61,106.60 L 816.49,106.47 L 816.38,106.33 L 816.27,106.19 L 816.17,106.05 L 816.06,105.91 L 815.96,105.77 L 815.86,105.62 L 815.77,105.47 L 815.68,105.32 L 815.59,105.17 L 815.51,105.01 L 815.42,104.85 L 815.35,104.70 L 815.27,104.54 L 815.20,104.38 L 815.13,104.21 L 815.07,104.05" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="820.20" y1="102.08" x2="814.41" y2="104.30" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="823.00" y="119.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">250 ms</text>
+</g>
+<g id="global.dlyFb">
+<text x="823.00" y="134.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Fb</text>
+<path d="M 819.90,158.91 L 818.84,158.41 L 817.85,157.77 L 816.97,156.99 L 816.20,156.10 L 815.56,155.11 L 815.07,154.05 L 814.72,152.93 L 814.53,151.76 L 814.51,150.59 L 814.65,149.42 L 814.95,148.28 L 815.40,147.20 L 815.99,146.19 L 816.73,145.27 L 817.58,144.46 L 818.53,143.77 L 819.57,143.22 L 820.68,142.82 L 821.83,142.58 L 823.00,142.50 L 824.17,142.58 L 825.32,142.82 L 826.43,143.22 L 827.47,143.77 L 828.42,144.46 L 829.27,145.27 L 830.01,146.19 L 830.60,147.20 L 831.05,148.28 L 831.35,149.42 L 831.49,150.59 L 831.47,151.76 L 831.28,152.93 L 830.93,154.05 L 830.44,155.11 L 829.80,156.10 L 829.03,156.99 L 828.15,157.77 L 827.16,158.41 L 826.10,158.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 819.90,158.91 L 819.41,158.71 L 818.94,158.47 L 818.48,158.20 L 818.04,157.90 L 817.62,157.58 L 817.22,157.24 L 816.85,156.86 L 816.49,156.47 L 816.17,156.05 L 815.86,155.62 L 815.59,155.17 L 815.35,154.70 L 815.13,154.21 L 814.95,153.72 L 814.79,153.21 L 814.67,152.70 L 814.58,152.17 L 814.52,151.65 L 814.50,151.12 L 814.51,150.59 L 814.55,150.06 L 814.63,149.54 L 814.73,149.02 L 814.87,148.51 L 815.04,148.01 L 815.25,147.52 L 815.48,147.04 L 815.74,146.58 L 816.03,146.14 L 816.34,145.71 L 816.69,145.31 L 817.05,144.93 L 817.44,144.57 L 817.85,144.24 L 818.28,143.93 L 818.73,143.65 L 819.20,143.40 L 819.68,143.18 L 820.17,142.98 L 820.68,142.82" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="822.18" y1="148.11" x2="820.49" y2="142.15" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="823.00" y="169.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">45%</text>
+</g>
+<g id="global.dlyTone">
+<text x="823.00" y="184.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Tone</text>
+<path d="M 819.90,208.91 L 818.84,208.41 L 817.85,207.77 L 816.97,206.99 L 816.20,206.10 L 815.56,205.11 L 815.07,204.05 L 814.72,202.93 L 814.53,201.76 L 814.51,200.59 L 814.65,199.42 L 814.95,198.28 L 815.40,197.20 L 815.99,196.19 L 816.73,195.27 L 817.58,194.46 L 818.53,193.77 L 819.57,193.22 L 820.68,192.82 L 821.83,192.58 L 823.00,192.50 L 824.17,192.58 L 825.32,192.82 L 826.43,193.22 L 827.47,193.77 L 828.42,194.46 L 829.27,195.27 L 830.01,196.19 L 830.60,197.20 L 831.05,198.28 L 831.35,199.42 L 831.49,200.59 L 831.47,201.76 L 831.28,202.93 L 830.93,204.05 L 830.44,205.11 L 829.80,206.10 L 829.03,206.99 L 828.15,207.77 L 827.16,208.41 L 826.10,208.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 819.90,208.91 L 819.36,208.68 L 818.84,208.41 L 818.33,208.10 L 817.85,207.77 L 817.40,207.39 L 816.97,206.99 L 816.57,206.56 L 816.20,206.10 L 815.86,205.62 L 815.56,205.11 L 815.30,204.59 L 815.07,204.05 L 814.87,203.49 L 814.72,202.93 L 814.61,202.35 L 814.53,201.76 L 814.50,201.18 L 814.51,200.59 L 814.56,200.00 L 814.65,199.42 L 814.78,198.85 L 814.95,198.28 L 815.15,197.73 L 815.40,197.20 L 815.68,196.68 L 815.99,196.19 L 816.34,195.71 L 816.73,195.27 L 817.14,194.85 L 817.58,194.46 L 818.04,194.10 L 818.53,193.77 L 819.04,193.48 L 819.57,193.22 L 820.12,193.00 L 820.68,192.82 L 821.25,192.68 L 821.83,192.58 L 822.41,192.52 L 823.00,192.50" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="823.00" y1="198.00" x2="823.00" y2="191.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="823.00" y="219.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">50%</text>
+</g>
+<g id="global.dlyReturn">
+<text x="823.00" y="234.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Return</text>
+<path d="M 819.90,258.91 L 818.84,258.41 L 817.85,257.77 L 816.97,256.99 L 816.20,256.10 L 815.56,255.11 L 815.07,254.05 L 814.72,252.93 L 814.53,251.76 L 814.51,250.59 L 814.65,249.42 L 814.95,248.28 L 815.40,247.20 L 815.99,246.19 L 816.73,245.27 L 817.58,244.46 L 818.53,243.77 L 819.57,243.22 L 820.68,242.82 L 821.83,242.58 L 823.00,242.50 L 824.17,242.58 L 825.32,242.82 L 826.43,243.22 L 827.47,243.77 L 828.42,244.46 L 829.27,245.27 L 830.01,246.19 L 830.60,247.20 L 831.05,248.28 L 831.35,249.42 L 831.49,250.59 L 831.47,251.76 L 831.28,252.93 L 830.93,254.05 L 830.44,255.11 L 829.80,256.10 L 829.03,256.99 L 828.15,257.77 L 827.16,258.41 L 826.10,258.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="823.00" y1="248.00" x2="823.00" y2="241.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="823.00" y="269.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="global.reverb">
+<rect x="875" y="62" width="84" height="168" fill="none" stroke="rgba(26,26,23,0.22)" stroke-width="1.2"/>
+<rect x="885" y="56" width="36.0" height="12" fill="#f0ece2"/>
+<text x="903.02" y="65.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.0" font-weight="700" letter-spacing="0.3" fill="#52b0a4" text-anchor="middle">REVERB</text>
+</g>
+<g id="global.revSize">
+<text x="917.00" y="84.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Size</text>
+<path d="M 913.90,108.91 L 912.84,108.41 L 911.85,107.77 L 910.97,106.99 L 910.20,106.10 L 909.56,105.11 L 909.07,104.05 L 908.72,102.93 L 908.53,101.76 L 908.51,100.59 L 908.65,99.42 L 908.95,98.28 L 909.40,97.20 L 909.99,96.19 L 910.73,95.27 L 911.58,94.46 L 912.53,93.77 L 913.57,93.22 L 914.68,92.82 L 915.83,92.58 L 917.00,92.50 L 918.17,92.58 L 919.32,92.82 L 920.43,93.22 L 921.47,93.77 L 922.42,94.46 L 923.27,95.27 L 924.01,96.19 L 924.60,97.20 L 925.05,98.28 L 925.35,99.42 L 925.49,100.59 L 925.47,101.76 L 925.28,102.93 L 924.93,104.05 L 924.44,105.11 L 923.80,106.10 L 923.03,106.99 L 922.15,107.77 L 921.16,108.41 L 920.10,108.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 913.90,108.91 L 913.31,108.66 L 912.73,108.35 L 912.19,108.01 L 911.67,107.62 L 911.18,107.20 L 910.73,106.73 L 910.31,106.24 L 909.93,105.72 L 909.59,105.17 L 909.30,104.59 L 909.04,103.99 L 908.84,103.38 L 908.68,102.75 L 908.57,102.12 L 908.51,101.47 L 908.50,100.82 L 908.54,100.18 L 908.63,99.54 L 908.76,98.91 L 908.95,98.28 L 909.18,97.68 L 909.45,97.09 L 909.77,96.53 L 910.13,95.99 L 910.53,95.49 L 910.97,95.01 L 911.44,94.57 L 911.95,94.17 L 912.48,93.80 L 913.04,93.48 L 913.63,93.20 L 914.23,92.96 L 914.85,92.78 L 915.48,92.64 L 916.12,92.55 L 916.76,92.50 L 917.41,92.51 L 918.06,92.57 L 918.69,92.67 L 919.32,92.82" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="917.82" y1="98.11" x2="919.51" y2="92.15" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="917.00" y="119.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">55%</text>
+</g>
+<g id="global.revDamp">
+<text x="917.00" y="134.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Damp</text>
+<path d="M 913.90,158.91 L 912.84,158.41 L 911.85,157.77 L 910.97,156.99 L 910.20,156.10 L 909.56,155.11 L 909.07,154.05 L 908.72,152.93 L 908.53,151.76 L 908.51,150.59 L 908.65,149.42 L 908.95,148.28 L 909.40,147.20 L 909.99,146.19 L 910.73,145.27 L 911.58,144.46 L 912.53,143.77 L 913.57,143.22 L 914.68,142.82 L 915.83,142.58 L 917.00,142.50 L 918.17,142.58 L 919.32,142.82 L 920.43,143.22 L 921.47,143.77 L 922.42,144.46 L 923.27,145.27 L 924.01,146.19 L 924.60,147.20 L 925.05,148.28 L 925.35,149.42 L 925.49,150.59 L 925.47,151.76 L 925.28,152.93 L 924.93,154.05 L 924.44,155.11 L 923.80,156.10 L 923.03,156.99 L 922.15,157.77 L 921.16,158.41 L 920.10,158.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<path d="M 913.90,158.91 L 913.36,158.68 L 912.84,158.41 L 912.33,158.10 L 911.85,157.77 L 911.40,157.39 L 910.97,156.99 L 910.57,156.56 L 910.20,156.10 L 909.86,155.62 L 909.56,155.11 L 909.30,154.59 L 909.07,154.05 L 908.87,153.49 L 908.72,152.93 L 908.61,152.35 L 908.53,151.76 L 908.50,151.18 L 908.51,150.59 L 908.56,150.00 L 908.65,149.42 L 908.78,148.85 L 908.95,148.28 L 909.15,147.73 L 909.40,147.20 L 909.68,146.68 L 909.99,146.19 L 910.34,145.71 L 910.73,145.27 L 911.14,144.85 L 911.58,144.46 L 912.04,144.10 L 912.53,143.77 L 913.04,143.48 L 913.57,143.22 L 914.12,143.00 L 914.68,142.82 L 915.25,142.68 L 915.83,142.58 L 916.41,142.52 L 917.00,142.50" fill="none" stroke="#52b0a4" stroke-width="3" stroke-linecap="round"/>
+<line x1="917.00" y1="148.00" x2="917.00" y2="141.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="917.00" y="169.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">50%</text>
+</g>
+<g id="global.revReturn">
+<text x="917.00" y="184.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Return</text>
+<path d="M 913.90,208.91 L 912.84,208.41 L 911.85,207.77 L 910.97,206.99 L 910.20,206.10 L 909.56,205.11 L 909.07,204.05 L 908.72,202.93 L 908.53,201.76 L 908.51,200.59 L 908.65,199.42 L 908.95,198.28 L 909.40,197.20 L 909.99,196.19 L 910.73,195.27 L 911.58,194.46 L 912.53,193.77 L 913.57,193.22 L 914.68,192.82 L 915.83,192.58 L 917.00,192.50 L 918.17,192.58 L 919.32,192.82 L 920.43,193.22 L 921.47,193.77 L 922.42,194.46 L 923.27,195.27 L 924.01,196.19 L 924.60,197.20 L 925.05,198.28 L 925.35,199.42 L 925.49,200.59 L 925.47,201.76 L 925.28,202.93 L 924.93,204.05 L 924.44,205.11 L 923.80,206.10 L 923.03,206.99 L 922.15,207.77 L 921.16,208.41 L 920.10,208.91" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="917.00" y1="198.00" x2="917.00" y2="191.80" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="917.00" y="219.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<g id="global.varispeed">
+<text x="823.00" y="348.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Varispeed</text>
+<path d="M 816.25,392.22 L 813.94,391.13 L 811.80,389.72 L 809.88,388.04 L 808.20,386.10 L 806.81,383.95 L 805.73,381.64 L 804.98,379.19 L 804.57,376.66 L 804.52,374.11 L 804.82,371.57 L 805.47,369.09 L 806.45,366.73 L 807.75,364.52 L 809.34,362.52 L 811.20,360.76 L 813.27,359.26 L 815.54,358.07 L 817.94,357.20 L 820.45,356.68 L 823.00,356.50 L 825.55,356.68 L 828.06,357.20 L 830.46,358.07 L 832.73,359.26 L 834.80,360.76 L 836.66,362.52 L 838.25,364.52 L 839.55,366.73 L 840.53,369.09 L 841.18,371.57 L 841.48,374.11 L 841.43,376.66 L 841.02,379.19 L 840.27,381.64 L 839.19,383.95 L 837.80,386.10 L 836.12,388.04 L 834.20,389.72 L 832.06,391.13 L 829.75,392.22" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="823.00" y1="369.00" x2="823.00" y2="356.60" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="823.00" y="407.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 st (1.00x)</text>
+</g>
+<g id="global.output">
+<text x="823.00" y="428.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" fill="rgba(26,26,23,0.55)" text-anchor="middle">Output</text>
+<path d="M 816.25,472.22 L 813.94,471.13 L 811.80,469.72 L 809.88,468.04 L 808.20,466.10 L 806.81,463.95 L 805.73,461.64 L 804.98,459.19 L 804.57,456.66 L 804.52,454.11 L 804.82,451.57 L 805.47,449.09 L 806.45,446.73 L 807.75,444.52 L 809.34,442.52 L 811.20,440.76 L 813.27,439.26 L 815.54,438.07 L 817.94,437.20 L 820.45,436.68 L 823.00,436.50 L 825.55,436.68 L 828.06,437.20 L 830.46,438.07 L 832.73,439.26 L 834.80,440.76 L 836.66,442.52 L 838.25,444.52 L 839.55,446.73 L 840.53,449.09 L 841.18,451.57 L 841.48,454.11 L 841.43,456.66 L 841.02,459.19 L 840.27,461.64 L 839.19,463.95 L 837.80,466.10 L 836.12,468.04 L 834.20,469.72 L 832.06,471.13 L 829.75,472.22" fill="none" stroke="rgba(26,26,23,0.16)" stroke-width="3" stroke-linecap="round"/>
+<line x1="823.00" y1="449.00" x2="823.00" y2="436.60" stroke="#1a1a17" stroke-width="2" stroke-linecap="round"/>
+<text x="823.00" y="487.00" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="8.5" font-weight="700" fill="rgba(26,26,23,0.7)" text-anchor="middle">+0.0 dB</text>
+</g>
+<rect x="871.0" y="430.0" width="10" height="50" fill="rgba(26,26,23,0.13)"/>
+<rect x="871.0" y="465.00" width="10" height="15.00" fill="#4f7ea8"/>
+<rect x="871.0" y="430.0" width="10" height="50" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+<g id="global.limitBtn">
+<rect x="733.0" y="440.5" width="40" height="16" fill="none" stroke="rgba(26,26,23,0.32)" stroke-width="1.2"/>
+<text x="753.00" y="451.50" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="7.5" font-weight="700" letter-spacing="0.4" fill="rgba(26,26,23,0.62)" text-anchor="middle">LIMIT</text>
+</g>
+<circle cx="753.0" cy="465.0" r="4.5" fill="rgba(26,26,23,0.13)" stroke="rgba(26,26,23,0.32)" stroke-width="1"/>
+<text x="959" y="521" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" letter-spacing="2.4" fill="rgba(26,26,23,0.85)" text-anchor="end">LOOPTRACK</text>
+<text x="959" y="536" font-family="Nunito, -apple-system, 'Segoe UI', sans-serif" font-size="10" letter-spacing="1.0" fill="rgba(26,26,23,0.45)" text-anchor="end">TAPE MULTITRACK</text>
+</svg>

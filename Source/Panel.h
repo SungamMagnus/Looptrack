@@ -27,18 +27,28 @@ namespace colour
     block, so these numbers are also hit-test geometry. */
 namespace metric
 {
-    constexpr int designW = 742;
-    constexpr int designH = 690;
+    constexpr int numTracks = 4;
+    constexpr int trackW    = 150;  // one track column
+    constexpr int trackGap  = 10;   // between track columns
+    constexpr int globalW   = 272;
+    constexpr int pad       = 24;
+    constexpr int gap       = 16;   // track block <-> global divider
 
-    constexpr int pad      = 24;
-    constexpr int trackW   = 320;
-    constexpr int globalW  = 340;
-    constexpr int gap      = 16;
+    constexpr int designW = pad * 2 + trackW * numTracks + trackGap * (numTracks - 1) + gap * 2 + 1 + globalW;
+    constexpr int designH = 565;
 
-    constexpr int knobD    = 46;   // standard knob diameter
-    constexpr int knobBigD = 60;   // varispeed
-    constexpr int cellH    = 70;   // label + knob + value
-    constexpr int cellW    = 76;
+    constexpr int knobD      = 46;   // standard knob diameter (global column)
+    constexpr int knobBigD   = 60;   // varispeed
+    constexpr int knobSmallD = 34;   // unused now that tracks are always compact; kept for reference
+    constexpr int knobTinyD  = 26;   // every knob within a compact track column
+    constexpr int cellH      = 70;   // label + knob + value (global column)
+    constexpr int cellW      = 76;
+    constexpr int cellHSmall = 58;
+    constexpr int cellWSmall = 66;
+    constexpr int cellHBig   = 82;
+    constexpr int cellWBig   = 96;
+    constexpr int cellHTiny  = 46;   // every cell within a compact track column
+    constexpr int cellWTiny  = 44;
 
     constexpr float sweepDeg = 317.2f;
     constexpr float startDeg = 201.4f; // clockwise from 12 o'clock
@@ -163,31 +173,30 @@ public:
     void paint (juce::Graphics&) override;
     void setLevel (float newLevel);
 
+    /** Fills bottom-up instead of left-to-right -- for a slim meter sitting
+        beside a knob rather than spanning a row. */
+    void setVertical (bool shouldBeVertical) { vertical = shouldBeVertical; }
+
 private:
     float level = 0.0f;
+    bool vertical = false;
 };
 
 /** A titled hairline box -- the frames the global sections sit in. */
 class FrameBox final : public juce::Component
 {
 public:
-    FrameBox (const juce::String& t, juce::Colour c) : title (t), colour (c) {}
+    // titleSize shrinks the label for boxes too narrow for the default size
+    // (the vertical GLOBAL section columns) -- the label is measured and
+    // drawn at whatever size is passed, so it never overflows the frame.
+    FrameBox (const juce::String& t, juce::Colour c, float titleSize = 9.0f)
+        : title (t), colour (c), titleFontSize (titleSize) {}
     void paint (juce::Graphics&) override;
 
 private:
     juce::String title;
     juce::Colour colour;
-};
-
-/** A decorative jack, matching the terminals on the design. */
-class Terminal final : public juce::Component
-{
-public:
-    explicit Terminal (const juce::String& l) : label (l) {}
-    void paint (juce::Graphics&) override;
-
-private:
-    juce::String label;
+    float titleFontSize;
 };
 
 } // namespace panel

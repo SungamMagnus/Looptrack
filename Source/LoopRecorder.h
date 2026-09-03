@@ -51,13 +51,21 @@ public:
     int getWritePosition() const { return writePos; }
 
 private:
-    void onBoundary();
+    void onBoundary (double loopQ);
     void startWrap();
     void renderRange (const float* inL, const float* inR, float* outL, float* outR,
                        int count, bool playing, double ratio, bool canWrite);
     void readSample (double ratio, float& l, float& r);
 
     LoopState state = LoopState::Idle;
+
+    // The musical-time position of the next loop wrap/punch boundary --
+    // set once when recording starts (current ppq + one loopQ) and then
+    // advanced by exactly loopQ each time it's hit, so every pass measures
+    // the same length from that anchor. Not derived from an absolute
+    // bar-1 grid, so it doesn't matter what beat the transport was on
+    // when the user hit play.
+    double nextBoundaryPpq = 0.0;
 
     juce::AudioBuffer<float> buffer; // 2ch x capacitySamples
     int capacitySamples = 0;
