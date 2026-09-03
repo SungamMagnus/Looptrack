@@ -337,6 +337,52 @@ int main()
         }
     }
 
+    // --- playback survives a host stop: a track that's already looping
+    // must not go silent (or lose its place) just because the host
+    // transport pauses -- e.g. while the user stops to arm another track.
+    // Only the track's own PLAY switch should silence it.
+    {
+        Transport transport;
+        transport.prepare (sr);
+        LoopRecorder loop;
+        loop.prepare (sr);
+        FakePlayHead ph;
+        ph.bpm = bpm;
+
+        const int burstLen = (int) (0.05 * sr);
+        std::vector<float> recSignal ((size_t) loopSamples, 0.0f);
+        for (int i = 0; i < burstLen; ++i)
+            recSignal[(size_t) i] = 0.5f * std::sin (2.0 * juce::MathConstants<double>::pi * 1000.0 * i / sr);
+        feed (loop, transport, ph, sr, block, bars, true, false, true, 1.0, recSignal);
+        check (loop.getState() == LoopState::Playing, "stop-survival: recorded and looping before the stop");
+
+        // host stops: process 1.5 loop-lengths' worth of blocks with the
+        // playhead frozen (isPlaying=false, ppq held constant), exactly
+        // like a real DAW while paused
+        ph.isPlaying = false;
+        std::vector<float> silentIn ((size_t) block, 0.0f);
+        std::vector<float> tmpL ((size_t) block), tmpR ((size_t) block);
+        const int stoppedBlocks = (int) ((loopSamples * 3 / 2) / block);
+        for (int b = 0; b < stoppedBlocks; ++b)
+        {
+            auto t = transport.read (&ph, block); // ppq frozen -- FakePlayHead.advance() not called
+            loop.process (t, bars, false, false, true, 1.0, silentIn.data(), silentIn.data(),
+                          tmpL.data(), tmpR.data(), block, sr);
+        }
+        check (loop.getState() == LoopState::Playing, "stop-survival: still Playing after a long stop, not stuck/reset");
+        check (std::abs (loop.getReadPosition()) < 1e-6, "stop-survival: read head froze during the stop instead of drifting");
+
+        // host resumes -- the loop should still be producing the recorded
+        // material, not permanent silence from having run past its content
+        // with no wrap ever triggered
+        ph.isPlaying = true;
+        std::vector<float> resumeIn ((size_t) loopSamples, 0.0f);
+        auto resumed = feed (loop, transport, ph, sr, block, bars, false, false, true, 1.0, resumeIn);
+        const float peakAfterResume = peakValueIn (resumed, 0, (size_t) loopSamples);
+        check (peakAfterResume > 0.3f, "stop-survival: audible again after resuming, not silenced by the stop (peak "
+                                            + juce::String (peakAfterResume, 3) + ")");
+    }
+
     // --- varispeed: same recorded tone, played back at 1x vs -12 semitones
     {
         auto recordThenPlay = [&] (double ratio) -> std::vector<float>
@@ -660,6 +706,98 @@ int main()
         const float soloT1 = renderMasterPeak();
         check (soloT1 > expectT1 - 0.05f && soloT1 < expectT1 + 0.05f,
                "4-track mix: soloing track 1 excludes track 2 despite it being unmuted (" + juce::String (soloT1, 3) + ")");
+    }
+
+    // --- the reported bug, reproduced directly: record track 1, stop the
+    // host (as a user does to go arm another track), record track 2 while
+    // the host is running again, and confirm track 1's recording survived
+    // the whole thing untouched.
+    {
+        auto setValue = [] (LooptrackProcessor& p, const juce::String& id, float value)
+        {
+            if (auto* param = p.apvts.getParameter (id))
+                param->setValueNotifyingHost (param->convertTo0to1 (value));
+        };
+
+        LooptrackProcessor proc;
+        FakePlayHead ph;
+        ph.bpm = bpm;
+        proc.setRateAndBufferSizeDetails (sr, block);
+        proc.setPlayHead (&ph);
+        proc.prepareToPlay (sr, block);
+
+        for (int t = 1; t <= 4; ++t)
+        {
+            setValue (proc, "t" + juce::String (t) + ".bars", 0.0f);
+            setValue (proc, "t" + juce::String (t) + ".play", 1.0f);
+            setValue (proc, "t" + juce::String (t) + ".preamp", 0.0f);
+            setValue (proc, "t" + juce::String (t) + ".mute", 1.0f);
+        }
+
+        juce::AudioBuffer<float> buf (2, block);
+        juce::MidiBuffer midi;
+
+        // record track 1 (host playing throughout)
+        setValue (proc, "t1.rec", 1.0f);
+        int pos = 0;
+        while (pos < loopSamples)
+        {
+            const int n = std::min (block, loopSamples - pos);
+            buf.setSize (2, n, false, false, true);
+            for (int i = 0; i < n; ++i)
+            {
+                buf.setSample (0, i, 0.35f);
+                buf.setSample (1, i, 0.35f);
+            }
+            proc.processBlock (buf, midi);
+            ph.advance (n, sr);
+            pos += n;
+        }
+        check ((tape::LoopState) proc.panelState.tracks[0].state.load() == tape::LoopState::Playing,
+               "recording-independence: track 1 finished recording and is looping");
+
+        // host stops -- user is now going to go arm track 2. Process a
+        // stretch of blocks with the playhead frozen.
+        ph.isPlaying = false;
+        buf.setSize (2, block, false, false, true);
+        buf.clear();
+        for (int b = 0; b < 40; ++b)
+            proc.processBlock (buf, midi);
+
+        // host resumes, arm and record track 2
+        ph.isPlaying = true;
+        setValue (proc, "t2.rec", 1.0f);
+        pos = 0;
+        while (pos < loopSamples)
+        {
+            const int n = std::min (block, loopSamples - pos);
+            buf.setSize (2, n, false, false, true);
+            for (int i = 0; i < n; ++i)
+            {
+                buf.setSample (0, i, 0.6f);
+                buf.setSample (1, i, 0.6f);
+            }
+            proc.processBlock (buf, midi);
+            ph.advance (n, sr);
+            pos += n;
+        }
+
+        // isolate track 1 and check it's still exactly what was recorded --
+        // not silence, not track 2's material
+        setValue (proc, "t1.mute", 0.0f);
+        buf.setSize (2, block, false, false, true);
+        buf.clear();
+        float peak = 0.0f;
+        for (int b = 0; b < 20; ++b)
+        {
+            proc.processBlock (buf, midi);
+            for (int i = 0; i < block; ++i)
+                peak = juce::jmax (peak, std::abs (buf.getSample (0, i)));
+        }
+        const float expected = 0.35f * 0.70710678f; // centre-pan constant-power law
+        check (peak > expected - 0.05f && peak < expected + 0.05f,
+               "recording-independence: track 1 survives a host stop + recording track 2 (peak "
+                   + juce::String (peak, 3) + ", want ~" + juce::String (expected, 3) + ")");
     }
 
     // --- output limiter: off lets a hot signal through uncaught, on keeps

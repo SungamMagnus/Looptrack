@@ -121,11 +121,18 @@ void LoopRecorder::process (const TransportInfo& transport, int loopBars, bool a
         }
     }
 
-    // While the host isn't rolling, freeze recording rather than capturing
-    // against a clock that isn't advancing. Playback is unaffected.
+    // The host not rolling freezes everything transport-driven: writing
+    // (nothing to capture against a clock that isn't moving) and, just as
+    // importantly, reading -- a track that's mid-loop should hold exactly
+    // where it is and pick back up from that same spot once the host
+    // starts again, not keep consuming its own tape in real time while the
+    // transport sits still (which is what used to run it clean off the end
+    // and into permanent silence, e.g. while the host was paused to arm
+    // another track). Only the track's own PLAY switch should silence it.
     const bool canWrite = transport.isPlaying;
+    const bool canRead = transport.isPlaying;
 
-    renderRange (inL, inR, outL, outR, splitAt, playing, varispeedRatio, canWrite);
+    renderRange (inL, inR, outL, outR, splitAt, playing, varispeedRatio, canWrite, canRead);
 
     if (crossesBoundary)
     {
@@ -133,7 +140,7 @@ void LoopRecorder::process (const TransportInfo& transport, int loopBars, bool a
         const int remaining = numSamples - splitAt;
         if (remaining > 0)
             renderRange (inL + splitAt, inR + splitAt, outL + splitAt, outR + splitAt,
-                         remaining, playing, varispeedRatio, canWrite);
+                         remaining, playing, varispeedRatio, canWrite, canRead);
     }
 }
 
@@ -170,7 +177,7 @@ void LoopRecorder::startWrap()
 }
 
 void LoopRecorder::renderRange (const float* inL, const float* inR, float* outL, float* outR,
-                                 int count, bool playing, double ratio, bool canWrite)
+                                 int count, bool playing, double ratio, bool canWrite, bool canRead)
 {
     for (int i = 0; i < count; ++i)
     {
@@ -187,10 +194,11 @@ void LoopRecorder::renderRange (const float* inL, const float* inR, float* outL,
         float ol = 0.0f, orr = 0.0f;
 
         // The tape owns the output only while it is actually playing material
-        // back. Any other time -- idle, armed, recording, or with PLAY off --
-        // the input is passed straight through, so what you are about to
-        // record is always audible.
-        const bool loopHasTheOutput = state == LoopState::Playing && playing && recordedLen > 0;
+        // back with the host actually rolling. Any other time -- idle, armed,
+        // recording, PLAY off, or the host paused -- the input is passed
+        // straight through, so what you are about to record is always
+        // audible, and a paused host doesn't consume the loop's own tape.
+        const bool loopHasTheOutput = state == LoopState::Playing && playing && recordedLen > 0 && canRead;
 
         if (! loopHasTheOutput)
         {

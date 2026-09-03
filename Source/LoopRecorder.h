@@ -15,7 +15,12 @@ enum class LoopState { Idle, Armed, Recording, Playing };
     tempo change mid-loop truncates or leaves silence exactly the way a real
     tape would, instead of drifting off the beat. Arming before the host
     transport starts rolling doesn't wait for a bar boundary that hasn't
-    happened yet -- recording begins the instant playback starts. */
+    happened yet -- recording begins the instant playback starts. Pausing
+    the host transport freezes a playing track exactly where it is (both
+    the read head and the loop's wrap clock) rather than letting it keep
+    consuming its own tape in real time -- it picks back up from that same
+    spot the moment the host starts again. Only the track's own PLAY switch
+    silences it. */
 class LoopRecorder
 {
 public:
@@ -54,7 +59,7 @@ private:
     void onBoundary (double loopQ);
     void startWrap();
     void renderRange (const float* inL, const float* inR, float* outL, float* outR,
-                       int count, bool playing, double ratio, bool canWrite);
+                       int count, bool playing, double ratio, bool canWrite, bool canRead);
     void readSample (double ratio, float& l, float& r);
 
     LoopState state = LoopState::Idle;
