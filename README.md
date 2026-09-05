@@ -9,7 +9,6 @@ real pitch-and-speed-together tape behaviour. Each track carries an input
 preamp with drive, a 3-band EQ, a DJ-style lo/hi filter, and two sends into a
 shared lofi delay and reverb bus.
 
-**Track 1 works today.** Tracks 2–4 are the plan, not yet built — see
 [Status](#status).
 
 ![Afrit panel](docs/readme-hero.png)
