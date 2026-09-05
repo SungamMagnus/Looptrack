@@ -17,7 +17,7 @@ if(APPLE)
     endif()
 endif()
 
-project(LooptrackVST VERSION 0.4.1 LANGUAGES C CXX)
+project(AfritVST VERSION 0.4.2 LANGUAGES C CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -33,11 +33,11 @@ add_subdirectory("${JUCE_DIR}" "${CMAKE_BINARY_DIR}/JUCE" EXCLUDE_FROM_ALL)
 # Nunito (SIL OFL 1.1, embeddable) -- the panel's typeface, baked in as C++
 # byte arrays so there's no runtime font file to go missing on someone else's
 # machine.
-juce_add_binary_data(LooptrackAssets SOURCES
+juce_add_binary_data(AfritAssets SOURCES
     Source/Assets/Nunito-Regular.ttf
     Source/Assets/Nunito-Bold.ttf)
 
-set(LOOPTRACK_SOURCES
+set(AFRIT_SOURCES
     Source/PluginProcessor.cpp
     Source/PluginEditor.cpp
     Source/Parameters.cpp
@@ -49,13 +49,13 @@ set(LOOPTRACK_SOURCES
     Source/Limiter.cpp
     Source/Panel.cpp)
 
-juce_add_plugin(Looptrack
+juce_add_plugin(Afrit
     COMPANY_NAME            "Sungam"
-    BUNDLE_ID               "com.sungam.looptrack"
+    BUNDLE_ID               "com.sungam.afrit"
     PLUGIN_MANUFACTURER_CODE Sngm
-    PLUGIN_CODE             Lptk
+    PLUGIN_CODE             Afrt
     FORMATS                 VST3 AU Standalone
-    PRODUCT_NAME            "Looptrack"
+    PRODUCT_NAME            "Afrit"
     DESCRIPTION             "4-track tape machine looper"
     IS_SYNTH                FALSE
     NEEDS_MIDI_INPUT        FALSE
@@ -64,38 +64,38 @@ juce_add_plugin(Looptrack
     EDITOR_WANTS_KEYBOARD_FOCUS FALSE
     COPY_PLUGIN_AFTER_BUILD TRUE
     MICROPHONE_PERMISSION_ENABLED TRUE
-    MICROPHONE_PERMISSION_TEXT "Looptrack records audio from the selected input."
+    MICROPHONE_PERMISSION_TEXT "Afrit records audio from the selected input."
     VST3_CATEGORIES         Fx
     AU_MAIN_TYPE            kAudioUnitType_Effect)
 
-target_sources(Looptrack PRIVATE ${LOOPTRACK_SOURCES})
+target_sources(Afrit PRIVATE ${AFRIT_SOURCES})
 
-target_compile_definitions(Looptrack PUBLIC
+target_compile_definitions(Afrit PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_VST3_CAN_REPLACE_VST2=0
     JUCE_REPORT_APP_USAGE=0)
 
-target_include_directories(Looptrack PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
+target_include_directories(Afrit PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
 
-target_link_libraries(Looptrack
-    PRIVATE juce::juce_audio_utils LooptrackAssets
+target_link_libraries(Afrit
+    PRIVATE juce::juce_audio_utils AfritAssets
     PUBLIC
         juce::juce_recommended_config_flags
         juce::juce_recommended_lto_flags
         juce::juce_recommended_warning_flags)
 
 # Dev tools: run the real processor through a set of configurations without a
-# host, and (later) render the faceplate to a PNG. -DLOOPTRACK_TOOLS=ON
-option(LOOPTRACK_TOOLS "Build the offscreen renderer and the DSP checker" OFF)
-if(LOOPTRACK_TOOLS)
+# host, and (later) render the faceplate to a PNG. -DAFRIT_TOOLS=ON
+option(AFRIT_TOOLS "Build the offscreen renderer and the DSP checker" OFF)
+if(AFRIT_TOOLS)
     foreach(tool dsp_check panel_shot)
         juce_add_console_app(${tool} PRODUCT_NAME "${tool}" NEEDS_CURL FALSE)
-        target_sources(${tool} PRIVATE tools/${tool}.cpp ${LOOPTRACK_SOURCES})
+        target_sources(${tool} PRIVATE tools/${tool}.cpp ${AFRIT_SOURCES})
         target_compile_definitions(${tool} PRIVATE
             JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0
             JUCE_STANDALONE_APPLICATION=1 JUCE_MODAL_LOOPS_PERMITTED=1)
         target_include_directories(${tool} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/Source")
-        target_link_libraries(${tool} PRIVATE juce::juce_audio_utils LooptrackAssets)
+        target_link_libraries(${tool} PRIVATE juce::juce_audio_utils AfritAssets)
     endforeach()
 endif()

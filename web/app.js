@@ -210,7 +210,7 @@ function buildGlobal (engine) {
   const outK = createKnob({ label: 'Output', min: -60, max: 6, value: 1.5, format: db, bipolar: true, color: '#4f7ea8', onChange: (v) => engine.setOutput(v) });
   outRow.append(outLeft, outK.el);
 
-  const wordmark = createWordmark('LOOPTRACK');
+  const wordmark = createWordmark('AFRIT');
   wordmark.style.marginTop = 'auto';
   wordmark.style.paddingTop = '10px';
 

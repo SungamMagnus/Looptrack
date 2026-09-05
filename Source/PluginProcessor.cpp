@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-LooptrackProcessor::LooptrackProcessor()
+AfritProcessor::AfritProcessor()
     : AudioProcessor (BusesProperties()
                            .withInput ("Input", juce::AudioChannelSet::stereo(), true)
                            .withOutput ("Output", juce::AudioChannelSet::stereo(), true)),
@@ -49,7 +49,7 @@ LooptrackProcessor::LooptrackProcessor()
     }
 }
 
-void LooptrackProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void AfritProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     outGain.reset (sampleRate, 0.02);
     outGain.setCurrentAndTargetValue (juce::Decibels::decibelsToGain (outParam->load()));
@@ -76,7 +76,7 @@ void LooptrackProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
     sendReverbAcc.setSize (1, samplesPerBlock, false, true, true);
 }
 
-bool LooptrackProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool AfritProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
     auto in = layouts.getMainInputChannelSet();
     auto out = layouts.getMainOutputChannelSet();
@@ -85,7 +85,7 @@ bool LooptrackProcessor::isBusesLayoutSupported (const BusesLayout& layouts) con
     return in == juce::AudioChannelSet::mono() || in == juce::AudioChannelSet::stereo();
 }
 
-void LooptrackProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer&)
+void AfritProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::MidiBuffer&)
 {
     juce::ScopedNoDenormals noDenormals;
 
@@ -265,19 +265,19 @@ void LooptrackProcessor::processBlock (juce::AudioBuffer<float>& buffer, juce::M
     panelState.outLevel.store (juce::jmax (peak, previous * 0.85f));
 }
 
-juce::AudioProcessorEditor* LooptrackProcessor::createEditor()
+juce::AudioProcessorEditor* AfritProcessor::createEditor()
 {
-    return new LooptrackEditor (*this);
+    return new AfritEditor (*this);
 }
 
-void LooptrackProcessor::getStateInformation (juce::MemoryBlock& destData)
+void AfritProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
     if (auto state = apvts.copyState(); state.isValid())
         if (auto xml = state.createXml())
             copyXmlToBinary (*xml, destData);
 }
 
-void LooptrackProcessor::setStateInformation (const void* data, int sizeInBytes)
+void AfritProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     if (auto xml = getXmlFromBinary (data, sizeInBytes))
         apvts.replaceState (juce::ValueTree::fromXml (*xml));
@@ -285,5 +285,5 @@ void LooptrackProcessor::setStateInformation (const void* data, int sizeInBytes)
 
 juce::AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new LooptrackProcessor();
+    return new AfritProcessor();
 }

@@ -1,4 +1,4 @@
-# Looptrack — web prototype
+# Afrit — web prototype
 
 A Web Audio implementation of Track 1, in the panel's real visual language
 (colors, knob geometry and layout pulled from `../design/panel-sketch.html`).

@@ -18,8 +18,8 @@ namespace
     int trackColumnX (int index) { return pad + index * (trackW + trackGap); }
 }
 
-LooptrackEditor::LooptrackEditor (LooptrackProcessor& p)
-    : juce::AudioProcessorEditor (p), looptrack (p)
+AfritEditor::AfritEditor (AfritProcessor& p)
+    : juce::AudioProcessorEditor (p), afrit (p)
 {
     addAndMakeVisible (content);
     content.setBounds (0, 0, designW, designH);
@@ -36,9 +36,9 @@ LooptrackEditor::LooptrackEditor (LooptrackProcessor& p)
     startTimerHz (24);
 }
 
-void LooptrackEditor::buildTrack (int trackIndex, int columnX)
+void AfritEditor::buildTrack (int trackIndex, int columnX)
 {
-    auto& apvts = looptrack.apvts;
+    auto& apvts = afrit.apvts;
     auto t = [trackIndex] (const char* leaf) { return tape::trackParamId (trackIndex, leaf); };
 
     const int bodyX = columnX + trackBodyPad;
@@ -71,7 +71,7 @@ void LooptrackEditor::buildTrack (int trackIndex, int columnX)
 
     // -- loop strip, with the state lamps sitting inside it at the right --
     const int loopY = y;
-    loopView[(size_t) trackIndex] = &add<LoopView> (looptrack, trackIndex);
+    loopView[(size_t) trackIndex] = &add<LoopView> (afrit, trackIndex);
     loopView[(size_t) trackIndex]->setBounds (bodyX, loopY, trackInnerW, 22);
 
     recLamp[(size_t) trackIndex] = &add<Lamp> (colour::coral);
@@ -136,9 +136,9 @@ void LooptrackEditor::buildTrack (int trackIndex, int columnX)
     place (add<KnobCell> (apvts, t (tape::track::volume), "Volume", colour::steel, true), volX, y, cellW, cellH);
 }
 
-void LooptrackEditor::buildGlobal()
+void AfritEditor::buildGlobal()
 {
-    auto& apvts = looptrack.apvts;
+    auto& apvts = afrit.apvts;
 
     // -- three section columns side by side: Tape Character / Delay / Reverb.
     //    Wow/flutter/hiss are all properties of the shared tape transport --
@@ -230,7 +230,7 @@ void LooptrackEditor::buildGlobal()
 
 }
 
-void LooptrackEditor::paint (juce::Graphics& g)
+void AfritEditor::paint (juce::Graphics& g)
 {
     g.fillAll (juce::Colour (0xffdedad0));
 
@@ -275,7 +275,7 @@ void LooptrackEditor::paint (juce::Graphics& g)
     // wordmark -- anchored to the page's actual bottom-right corner
     g.setColour (colour::inkAlpha (0.85f));
     g.setFont (panelFont (24.0f, true));
-    g.drawText ("LOOPTRACK", juce::Rectangle<int> (globalX, designH - pad - 42, globalW, 28),
+    g.drawText ("AFRIT", juce::Rectangle<int> (globalX, designH - pad - 42, globalW, 28),
                 juce::Justification::centredRight);
     g.setColour (colour::inkAlpha (0.45f));
     g.setFont (panelFont (10.0f));
@@ -283,23 +283,23 @@ void LooptrackEditor::paint (juce::Graphics& g)
                 juce::Justification::centredRight);
 }
 
-void LooptrackEditor::resized()
+void AfritEditor::resized()
 {
     const auto scale = (float) getWidth() / (float) designW;
     content.setTransform (juce::AffineTransform::scale (scale));
     content.setBounds (0, 0, designW, designH);
 }
 
-void LooptrackEditor::timerCallback()
+void AfritEditor::timerCallback()
 {
     if (meter != nullptr)
-        meter->setLevel (looptrack.panelState.outLevel.load());
+        meter->setLevel (afrit.panelState.outLevel.load());
     if (limitLamp != nullptr)
-        limitLamp->setOn (looptrack.panelState.limiting.load());
+        limitLamp->setOn (afrit.panelState.limiting.load());
 
     for (int i = 0; i < kNumTracks; ++i)
     {
-        const auto& ts = looptrack.panelState.tracks[(size_t) i];
+        const auto& ts = afrit.panelState.tracks[(size_t) i];
         const auto state = (tape::LoopState) ts.state.load();
 
         if (recLamp[(size_t) i] != nullptr)

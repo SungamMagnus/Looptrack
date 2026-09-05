@@ -1,4 +1,4 @@
-# Looptrack
+# Afrit
 
 A 4-track tape machine plug-in. Record from your input into a 1–4 bar loop,
 synced to host tempo so a tempo change truncates the loop rather than
@@ -12,7 +12,7 @@ shared lofi delay and reverb bus.
 **Track 1 works today.** Tracks 2–4 are the plan, not yet built — see
 [Status](#status).
 
-![Looptrack panel](docs/readme-hero.png)
+![Afrit panel](docs/readme-hero.png)
 
 *The plug-in's own editor, rendered offscreen by `panel_shot`. The same
 panel runs in the browser — see [Web prototype](#web-prototype).*
@@ -20,7 +20,7 @@ panel runs in the browser — see [Web prototype](#web-prototype).*
 ## Install
 
 Download the latest build from
-[Releases](https://github.com/SungamMagnus/Looptrack/releases), then copy
+[Releases](https://github.com/SungamMagnus/afrit/releases), then copy
 the plug-ins where your host looks for them:
 
 ```
@@ -37,7 +37,7 @@ quarantined, and Gatekeeper then refuses to load the plug-in — usually
 installing:
 
 ```sh
-xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/Looptrack.vst3 ~/Library/Audio/Plug-Ins/Components/Looptrack.component
+xattr -dr com.apple.quarantine ~/Library/Audio/Plug-Ins/VST3/Afrit.vst3 ~/Library/Audio/Plug-Ins/Components/Afrit.component
 ```
 
 Then restart your host and rescan. Building from source avoids this
@@ -101,7 +101,7 @@ AU and the standalone into your user plug-in folders, and produces universal
 ### Dev tools
 
 ```sh
-cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DLOOPTRACK_TOOLS=ON
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DAFRIT_TOOLS=ON
 cmake --build build --target dsp_check panel_shot -j8
 
 ./build/dsp_check_artefacts/Release/dsp_check     # record/loop/varispeed correctness, headless

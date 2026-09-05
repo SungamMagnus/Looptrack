@@ -10,14 +10,14 @@
 #include "Panel.h"
 #include "PluginProcessor.h"
 
-/** The Looptrack panel. Laid out once at design size and scaled as a block,
+/** The Afrit panel. Laid out once at design size and scaled as a block,
     so the window is resizable without the geometry drifting. */
-class LooptrackEditor final : public juce::AudioProcessorEditor,
+class AfritEditor final : public juce::AudioProcessorEditor,
                               private juce::Timer
 {
 public:
-    explicit LooptrackEditor (LooptrackProcessor&);
-    ~LooptrackEditor() override = default;
+    explicit AfritEditor (AfritProcessor&);
+    ~AfritEditor() override = default;
 
     void paint (juce::Graphics&) override;
     void resized() override;
@@ -29,7 +29,7 @@ private:
     void buildGlobal();
     void timerCallback() override;
 
-    LooptrackProcessor& looptrack;
+    AfritProcessor& afrit;
 
     /** Everything lives on this child, laid out at design size; the editor
         scales it to whatever the window actually is. */
@@ -59,5 +59,5 @@ private:
     panel::Meter* meter = nullptr;       // master output meter -- global, not per-track
     panel::Lamp* limitLamp = nullptr;    // lit while the output limiter is actively reducing gain
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LooptrackEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AfritEditor)
 };

@@ -500,11 +500,11 @@ int main()
     // --- wow/flutter through the real plugin, on looped playback --
     // reported as inaudible during loop playback specifically, even though
     // TapeCharacter tested clean in isolation above. Drive the actual
-    // LooptrackProcessor::processBlock through record-then-loop with wow
+    // AfritProcessor::processBlock through record-then-loop with wow
     // maxed, exactly like a user arming, recording a bar, and listening to
     // it loop, and check the played-back tone still drifts.
     {
-        auto setValue = [] (LooptrackProcessor& p, const juce::String& id, float value)
+        auto setValue = [] (AfritProcessor& p, const juce::String& id, float value)
         {
             if (auto* param = p.apvts.getParameter (id))
                 param->setValueNotifyingHost (param->convertTo0to1 (value));
@@ -512,7 +512,7 @@ int main()
 
         auto renderLoop = [&] (float wowDepth) -> std::vector<float>
         {
-            LooptrackProcessor proc;
+            AfritProcessor proc;
             FakePlayHead ph;
             ph.bpm = bpm;
             proc.setRateAndBufferSizeDetails (sr, block);
@@ -604,13 +604,13 @@ int main()
     // decide what reaches the master mix without touching what's actually
     // recorded or how it loops
     {
-        auto setValue = [] (LooptrackProcessor& p, const juce::String& id, float value)
+        auto setValue = [] (AfritProcessor& p, const juce::String& id, float value)
         {
             if (auto* param = p.apvts.getParameter (id))
                 param->setValueNotifyingHost (param->convertTo0to1 (value));
         };
 
-        LooptrackProcessor proc;
+        AfritProcessor proc;
         FakePlayHead ph;
         ph.bpm = bpm;
         proc.setRateAndBufferSizeDetails (sr, block);
@@ -713,13 +713,13 @@ int main()
     // the host is running again, and confirm track 1's recording survived
     // the whole thing untouched.
     {
-        auto setValue = [] (LooptrackProcessor& p, const juce::String& id, float value)
+        auto setValue = [] (AfritProcessor& p, const juce::String& id, float value)
         {
             if (auto* param = p.apvts.getParameter (id))
                 param->setValueNotifyingHost (param->convertTo0to1 (value));
         };
 
-        LooptrackProcessor proc;
+        AfritProcessor proc;
         FakePlayHead ph;
         ph.bpm = bpm;
         proc.setRateAndBufferSizeDetails (sr, block);
@@ -804,7 +804,7 @@ int main()
     // it under the ceiling, and the panel-facing "limiting" flag only lights
     // up when it's actually doing something
     {
-        auto setValue = [] (LooptrackProcessor& p, const juce::String& id, float value)
+        auto setValue = [] (AfritProcessor& p, const juce::String& id, float value)
         {
             if (auto* param = p.apvts.getParameter (id))
                 param->setValueNotifyingHost (param->convertTo0to1 (value));
@@ -812,7 +812,7 @@ int main()
 
         auto renderHot = [&] (bool limiterOn) -> float
         {
-            LooptrackProcessor proc;
+            AfritProcessor proc;
             FakePlayHead ph;
             ph.bpm = bpm;
             proc.setRateAndBufferSizeDetails (sr, block);
@@ -870,13 +870,13 @@ int main()
     // otherwise the parameter would stay stuck on true forever after the
     // first hands-off recording
     {
-        auto setValue = [] (LooptrackProcessor& p, const juce::String& id, float value)
+        auto setValue = [] (AfritProcessor& p, const juce::String& id, float value)
         {
             if (auto* param = p.apvts.getParameter (id))
                 param->setValueNotifyingHost (param->convertTo0to1 (value));
         };
 
-        LooptrackProcessor proc;
+        AfritProcessor proc;
         FakePlayHead ph;
         ph.bpm = bpm;
         proc.setRateAndBufferSizeDetails (sr, block);

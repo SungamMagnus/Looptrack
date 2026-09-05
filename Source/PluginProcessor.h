@@ -36,11 +36,11 @@ struct PanelState
     std::atomic<bool> limiting { false }; // true while the output limiter is actively reducing gain
 };
 
-class LooptrackProcessor final : public juce::AudioProcessor
+class AfritProcessor final : public juce::AudioProcessor
 {
 public:
-    LooptrackProcessor();
-    ~LooptrackProcessor() override = default;
+    AfritProcessor();
+    ~AfritProcessor() override = default;
 
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override {}
@@ -50,7 +50,7 @@ public:
     juce::AudioProcessorEditor* createEditor() override;
     bool hasEditor() const override { return true; }
 
-    const juce::String getName() const override { return "Looptrack"; }
+    const juce::String getName() const override { return "Afrit"; }
     bool acceptsMidi() const override { return false; }
     bool producesMidi() const override { return false; }
     bool isMidiEffect() const override { return false; }
@@ -137,5 +137,5 @@ private:
     juce::AudioBuffer<float> inputCopy, trackScratch, trackSendTmp;
     juce::AudioBuffer<float> sendDelayAcc, sendReverbAcc;
 
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (LooptrackProcessor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AfritProcessor)
 };
