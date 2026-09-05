@@ -113,6 +113,3 @@ cmake --build build --target dsp_check panel_shot -j8
   wow/flutter, hiss, a boxed input stage (preamp + 2-band EQ + VU), 3-band
   EQ, DJ filter, shared lofi delay/reverb bus.
 - ✅ The panel, in the plug-in and in the browser prototype.
-- 📋 Tracks 2–4 — the architecture (shared mod-LFO phase, prefixed parameter
-  IDs, a mono-summed FX bus) is already built for four tracks; only the
-  replication is left.
